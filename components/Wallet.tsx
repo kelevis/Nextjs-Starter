@@ -5,6 +5,7 @@ import {Loading} from "./Loading";
 import {ethers} from "ethers";
 import * as config from "../config.js"
 import React, { useState } from 'react';
+import {notFound, redirect} from "next/navigation";
 
 // const handleClick = async () => {
 //     setLoading(true);
@@ -32,7 +33,9 @@ export default function Wallet() {
     const [inputTokenId, setInputTokenId] = useState<string>('');
 
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
-        const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
+
+        // const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
+        const wallet =new ethers.Wallet(config.demoContractSepoliaPrivateKey)
 
         // const providerSepolia= new ethers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_sepolia)
         // const wallet = new ethers.Wallet(config.mylinkContractSepoliaPrivateKey, providerSepolia)
@@ -95,7 +98,17 @@ export default function Wallet() {
     };
 
     const handleInputAddressChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setInputAddress(event.target.value); // 更新文本输入框的值
+
+        try {
+            setInputAddress(event.target.value); // 更新文本输入框的值
+
+        }catch (error){
+
+
+            return {message:"setInputAddress error"}
+
+        }
+
     };
 
     const handleInputTokenIdChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -108,7 +121,6 @@ export default function Wallet() {
             setSignature(signatureResult); // 更新签名结果
             setError(null); // 清除之前的错误状态
         } catch (error) {
-
             console.error('Error getting signature:', error);
             setError(error.message); // 设置错误状态为捕获到的错误信息
 
@@ -122,7 +134,7 @@ export default function Wallet() {
         const account = await signer.getAddress();
 
         const balance = await browserProvider.getBalance(account);
-        const contract = new ethers.Contract(config.myContractSepoliaSignNft, config.abiMyContractSepoliaSignNft, signer);
+        const contract = new ethers.Contract(config.demoContractSepoliaSignNFT, config.abiDemoContractSepoliaSignNFT, signer);
 
         console.log(`以太坊余额： ${ethers.formatUnits(balance)}`)
 
@@ -216,7 +228,7 @@ export default function Wallet() {
     };
 
     return (
-        <div className="bg-truffle">
+        <div className="bg-violet-500">
             <div className="mx-auto max-w-2xl py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                     <span className="block">Metamask Api Invoke</span>
@@ -239,16 +251,17 @@ export default function Wallet() {
                                 <div className="flex items-center">
                                     <div className="ml-4">
                                         <h1 className=" text-white">
-                                            demo-Contract: 0xe0B07aAbDeA7bFd007399827D76e14F8A3722ad5
+                                            demo-Contract: 0xa74348Ce54504bC306cF85c6281816C4d3676ed4
                                         </h1>
                                         <h2 className=" text-white">
-                                            demo-Private: Ask the administrator                   .
+                                            demo-Private: 227dbb8586117d55284e26620bc76534dfbd2394be34cf4a09cb775d593b6f2b
                                         </h2>
+                                        <br/>
 
                                         <h3 className="text-lg font-medium leading-6 text-white">
                                             Address: <span>{wallet}</span>
                                         </h3>
-                                        <p className="text-sm text-white">
+                                        <p className="text-lg font-medium leading-6 text-white">
                                             Balance:{" "}
                                             <span>
                         {(parseInt(balance) / 1000000000000000000).toFixed(4)}{" "}
@@ -282,24 +295,51 @@ export default function Wallet() {
                 )}
 
                 {isConnected && (
-                    <div className="flex  w-full justify-center space-x-2">
-                        <h1>数字签名输入</h1>
-                        {/* 输入框 */}
-                        <input
-                            type="text"
-                            value={inputAddress}
-                            onChange={handleInputAddressChange}
-                            placeholder="address"
-                        />
 
-                        <input
-                            type="text"
-                            value={inputTokenId}
-                            onChange={handleInputTokenIdChange}
-                            placeholder="tokenId"
-                        />
+                    <form className="flex w-full justify-center space-x-2">
+                        <div className="flex flex-col space-y-1">
+                            {/* 地址输入框 */}
+                            <label htmlFor="address-input">地址</label>
+                            <input
+                                id="address-input"
+                                type="text"
+                                value={inputAddress}
+                                onChange={handleInputAddressChange}
+                                placeholder="address"
+                            />
 
-                    </div>
+                            {/* tokenId 输入框 */}
+                            <label htmlFor="token-id-input">tokenId</label>
+                            <input
+                                id="token-id-input"
+                                type="text"
+                                value={inputTokenId}
+                                onChange={handleInputTokenIdChange}
+                                placeholder="tokenId"
+                            />
+                        </div>
+                    </form>
+
+                    // <div className="flex  w-full justify-center space-x-2">
+                    //     <h1>数字签名输入</h1>
+                    //     {/* 输入框 */}
+                    //     <input
+                    //         type="text"
+                    //         value={inputAddress}
+                    //         onChange={handleInputAddressChange}
+                    //         placeholder="address"
+                    //     />
+                    //
+                    //     <input
+                    //         type="text"
+                    //         value={inputTokenId}
+                    //         onChange={handleInputTokenIdChange}
+                    //         placeholder="tokenId"
+                    //     />
+                    //
+                    // </div>
+
+
                 )}
 
                 {isConnected && (
@@ -338,8 +378,8 @@ export default function Wallet() {
                             </div>
                         )}
 
-                        {/* 显示错误信息 */}
-                        {error && <div className="error-message">错误信息: {error}</div>}
+                        {/*/!* 显示错误信息 *!/*/}
+                        {/*{error && <div className="error-message">错误信息: {error}</div>}*/}
 
 
                     </div>

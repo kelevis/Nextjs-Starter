@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a08c42d0-079d-43f3-9399-89e58bd1f09e" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/components/error.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignNft.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/not-found.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/error.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nextjs-blog1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nextjs-dashboard1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -51,6 +54,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter" />
     </key>
   </component>
@@ -67,7 +74,10 @@
       <workItem from="1713489817107" duration="10134000" />
       <workItem from="1713507883470" duration="840000" />
       <workItem from="1713508867073" duration="11873000" />
-      <workItem from="1713767168137" duration="7774000" />
+      <workItem from="1713767168137" duration="8102000" />
+      <workItem from="1713845385619" duration="5664000" />
+      <workItem from="1713925818553" duration="7232000" />
+      <workItem from="1713946555371" duration="1867000" />
     </task>
     <servers />
   </component>
