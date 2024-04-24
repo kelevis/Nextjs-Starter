@@ -122,7 +122,7 @@ export default function Wallet() {
             setError(null); // 清除之前的错误状态
         } catch (error) {
             console.error('Error getting signature:', error);
-            setError(error.message); // 设置错误状态为捕获到的错误信息
+            // setError(error.message); // 设置错误状态为捕获到的错误信息
 
         }
     };
