@@ -32,6 +32,9 @@ export default function Wallet() {
     const [inputAddress, setInputAddress] = useState<string>('');
     const [inputTokenId, setInputTokenId] = useState<string>('');
 
+    const [inputTokenIdSign, setInputTokenIdSign] = useState<string>('');
+    const [inputSignature, setInputSignature] = useState<string>('');
+
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
 
         // const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
@@ -115,6 +118,24 @@ export default function Wallet() {
         setInputTokenId(event.target.value); // 更新文本输入框的值
     };
 
+    const handleInputTokenIdSignChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+        setInputTokenIdSign(event.target.value); // 更新文本输入框的值
+    };
+
+    const handleInputSignatureChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+
+        try {
+            setInputSignature(event.target.value); // 更新文本输入框的值
+
+        }catch (error){
+
+
+            return {message:"setInputAddress error"}
+
+        }
+
+    };
+
     const handleGetSignature = async () => {
         try {
             const signatureResult = await getSignature(inputAddress,BigInt(inputTokenId)); // 调用 getSignature 函数，并传递文本输入框的值
@@ -143,7 +164,7 @@ export default function Wallet() {
             console.log("safeMint tokenUrlImageJson ",config.tokenUrlImageJson)
             console.log("safeMint  signature",signature)
 
-            const tx = await contract.safeMint(BigInt(inputTokenId), config.tokenUrlImageJson, signature)
+            const tx = await contract.safeMint(BigInt(inputTokenId), config.tokenUrlImageJson, inputSignature)
 
             console.log("result tx:", tx.toString());
 
@@ -383,6 +404,35 @@ export default function Wallet() {
 
 
                     </div>
+                )}
+
+                {isConnected && (
+
+                    <form className="flex w-full justify-center space-x-2">
+                        <div className="flex flex-col space-y-1">
+                            {/* 地址输入框 */}
+                            {/* tokenId 输入框 */}
+                            <label htmlFor="token-id-input">tokenId</label>
+                            <input
+                                id="token-id-input"
+                                type="text"
+                                value={inputTokenIdSign}
+                                onChange={handleInputTokenIdSignChange}
+                                placeholder="tokenId"
+                            />
+
+                            <label htmlFor="signature-input">signature</label>
+                            <input
+                                id="signature-input"
+                                type="text"
+                                value={inputSignature}
+                                onChange={handleInputSignatureChange}
+                                placeholder="signature"
+                            />
+
+                        </div>
+                    </form>
+
                 )}
 
                 {isConnected && (
