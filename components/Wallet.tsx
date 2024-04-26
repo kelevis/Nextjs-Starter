@@ -4,8 +4,9 @@ import {useMetamask} from "../hooks/useMetamask";
 import {Loading} from "./Loading";
 import {ethers} from "ethers";
 import * as config from "../config.js"
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {notFound, redirect} from "next/navigation";
+import {Button} from './button';
 
 // const handleClick = async () => {
 //     setLoading(true);
@@ -38,7 +39,7 @@ export default function Wallet() {
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
 
         // const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
-        const wallet =new ethers.Wallet(config.demoContractSepoliaPrivateKey)
+        const wallet = new ethers.Wallet(config.demoContractSepoliaPrivateKey)
 
         // const providerSepolia= new ethers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_sepolia)
         // const wallet = new ethers.Wallet(config.mylinkContractSepoliaPrivateKey, providerSepolia)
@@ -105,10 +106,10 @@ export default function Wallet() {
         try {
             setInputAddress(event.target.value); // 更新文本输入框的值
 
-        }catch (error){
+        } catch (error) {
 
 
-            return {message:"setInputAddress error"}
+            return {message: "setInputAddress error"}
 
         }
 
@@ -127,10 +128,10 @@ export default function Wallet() {
         try {
             setInputSignature(event.target.value); // 更新文本输入框的值
 
-        }catch (error){
+        } catch (error) {
 
 
-            return {message:"setInputAddress error"}
+            return {message: "setInputAddress error"}
 
         }
 
@@ -138,7 +139,7 @@ export default function Wallet() {
 
     const handleGetSignature = async () => {
         try {
-            const signatureResult = await getSignature(inputAddress,BigInt(inputTokenId)); // 调用 getSignature 函数，并传递文本输入框的值
+            const signatureResult = await getSignature(inputAddress, BigInt(inputTokenId)); // 调用 getSignature 函数，并传递文本输入框的值
             setSignature(signatureResult); // 更新签名结果
             setError(null); // 清除之前的错误状态
         } catch (error) {
@@ -148,7 +149,7 @@ export default function Wallet() {
         }
     };
 
-    const handleContractWrite =async () => {
+    const handleContractWrite = async () => {
         const browserProvider = new ethers.BrowserProvider(window.ethereum);
         // 获取当前钱包账户
         const signer = await browserProvider.getSigner()
@@ -161,8 +162,8 @@ export default function Wallet() {
 
         try {
             console.log("safeMint inputTokenId:", BigInt(inputTokenId))
-            console.log("safeMint tokenUrlImageJson ",config.tokenUrlImageJson)
-            console.log("safeMint  signature",signature)
+            console.log("safeMint tokenUrlImageJson ", config.tokenUrlImageJson)
+            console.log("safeMint  signature", signature)
 
             const tx = await contract.safeMint(BigInt(inputTokenId), config.tokenUrlImageJson, inputSignature)
 
@@ -210,7 +211,7 @@ export default function Wallet() {
             });
 
             console.log("r.address:", signer.address)
-            console.log("signer:",signer)
+            console.log("signer:", signer)
 
         } catch (error) {
             console.error("Error:", error);
@@ -249,10 +250,10 @@ export default function Wallet() {
     };
 
     return (
-        <div className="bg-violet-500">
-            <div className="mx-auto max-w-2xl py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
+        <div className="bg-black">
+            <div className={"text-center sm:py-20 sm:px-6 lg:px-84"}>
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                    <span className="block">Metamask Api Invoke</span>
+                    <span>Metamask API Invoke</span>
                 </h2>
                 <p className="mt-4 text-lg leading-6 text-white">
                     Follow along with the{" "}
@@ -264,45 +265,62 @@ export default function Wallet() {
                     </Link>{" "}
                     in order to learn how to use the Metamask API.
                 </p>
-
+            </div>
+            <div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl text-center sm:py-20 sm:px-6 lg:px-8">
                 {wallet && balance && (
-                    <div className=" px-4 py-5 sm:px-6">
-                        <div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
-                            <div className="ml-4 mt-4">
-                                <div className="flex items-center">
-                                    <div className="ml-4">
-                                        <h1 className=" text-white">
-                                            demo-Contract: 0xa74348Ce54504bC306cF85c6281816C4d3676ed4
-                                        </h1>
-                                        <h2 className=" text-white">
-                                            demo-Private: 227dbb8586117d55284e26620bc76534dfbd2394be34cf4a09cb775d593b6f2b
-                                        </h2>
-                                        <br/>
+                    <div className=" px-0 py-0 sm:px-6">
+                        {/*<div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">*/}
+                        {/*    <div className="ml-4 mt-4">*/}
+                        {/*        <div className="flex items-center">*/}
+                        {/*            <div className="ml-4">*/}
 
-                                        <h3 className="text-lg font-medium leading-6 text-white">
-                                            Address: <span>{wallet}</span>
-                                        </h3>
-                                        <p className="text-lg font-medium leading-6 text-white">
-                                            Balance:{" "}
-                                            <span>
+                        <h3 className="text-lg font-medium leading-6 text-white">
+                            Address: <span>{wallet}</span>
+                        </h3>
+                        <p className="text-lg font-medium leading-6 text-white">
+                            Balance:{" "}
+                            <span>
                         {(parseInt(balance) / 1000000000000000000).toFixed(4)}{" "}
-                                                ETH
+                                ETH
                       </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </p>
+
+                        <br/>
+
+
+                        <Link
+                            href="https://sepolia.etherscan.io/address/0xa74348Ce54504bC306cF85c6281816C4d3676ed4"
+                            target="_blank"
+                            className=" text-white text-center"
+                        >
+                            <Button>
+                                demo-Contract:0xa74348Ce54504bC306cF85c6281816C4d3676ed4
+                                <br/>
+                                demo-Private:227dbb8586117d55284e26620bc76534dfbd2394be34cf4a09cb775d593b6f2b
+
+
+                            </Button>
+                        </Link>
+                        {/*<h1 className=" text-white">*/}
+                        {/*    demo-Contract: 0xa74348Ce54504bC306cF85c6281816C4d3676ed4*/}
+                        {/*</h1>*/}
+
+                        <br/>
+
+                        {/*            </div>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 )}
 
                 {showConnectButton && (
-                    <button
+                    <Button
                         onClick={handleConnect}
                         className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                     >
                         {status === "loading" ? <Loading/> : "Connect Wallet"}
-                    </button>
+                    </Button>
                 )}
 
                 {showInstallMetamask && (
@@ -317,10 +335,10 @@ export default function Wallet() {
 
                 {isConnected && (
 
-                    <form className="flex w-full justify-center space-x-2">
-                        <div className="flex flex-col space-y-1">
+                    <form className="flex w-full justify-center space-x-2 text-center">
+                        <div className="flex flex-col space-y-1 text-center">
                             {/* 地址输入框 */}
-                            <label htmlFor="address-input">地址</label>
+                            <label htmlFor="address-input  " className={"text-white"}>地址</label>
                             <input
                                 id="address-input"
                                 type="text"
@@ -330,7 +348,7 @@ export default function Wallet() {
                             />
 
                             {/* tokenId 输入框 */}
-                            <label htmlFor="token-id-input">tokenId</label>
+                            <label htmlFor="token-id-input" className={"text-white"}>tokenId</label>
                             <input
                                 id="token-id-input"
                                 type="text"
@@ -365,12 +383,12 @@ export default function Wallet() {
 
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
-                        <button
+                        <Button
                             onClick={handleGetSignature}
                             className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             {status === "loading" ? <Loading/> : "get Signature"}
-                        </button>
+                        </Button>
 
 
                     </div>
@@ -385,7 +403,7 @@ export default function Wallet() {
                                 {/*<h3 className="text-lg font-medium leading-6 text-white">*/}
                                 {/*    <span><text>{signature}</text></span>*/}
                                 {/*</h3>*/}
-                                <h2 >Signature:
+                                <h2>Signature:
                                     <textarea
                                         className="p-2 rounded border-2 border-gray-300 focus:outline-none focus:border-blue-500"
                                         rows={2} // 设置行数为 5，高度适中
@@ -393,7 +411,6 @@ export default function Wallet() {
                                         value={signature}
                                     />
                                 </h2>
-
 
 
                             </div>
@@ -408,11 +425,11 @@ export default function Wallet() {
 
                 {isConnected && (
 
-                    <form className="flex w-full justify-center space-x-2">
-                        <div className="flex flex-col space-y-1">
+                    <form className="flex w-full justify-center space-x-2 text-center">
+                        <div className="flex flex-col space-y-1 text-center">
                             {/* 地址输入框 */}
                             {/* tokenId 输入框 */}
-                            <label htmlFor="token-id-input">tokenId</label>
+                            <label htmlFor="token-id-input" className={"text-white"}>tokenId</label>
                             <input
                                 id="token-id-input"
                                 type="text"
@@ -421,7 +438,7 @@ export default function Wallet() {
                                 placeholder="tokenId"
                             />
 
-                            <label htmlFor="signature-input">signature</label>
+                            <label htmlFor="signature-input" className={"text-white"}>signature</label>
                             <input
                                 id="signature-input"
                                 type="text"
@@ -437,37 +454,40 @@ export default function Wallet() {
 
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
-                        <button
+                        <Button
                             onClick={handleContractWrite}
                             className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             {status === "loading" ? <Loading/> : "invoke Contract"}
-                        </button>
+                        </Button>
 
                     </div>
                 )}
 
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
-                        <button
-                            onClick={handleAddUsdc}
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            {status === "loading" ? <Loading/> : "Add Token"}
-                        </button>
+                        {/*<Button*/}
+                        {/*    onClick={handleAddUsdc}*/}
+                        {/*    className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"*/}
+                        {/*>*/}
+                        {/*    {status === "loading" ? <Loading/> : "Add Token"}*/}
+                        {/*</Button>*/}
 
-                        <button
+                        <Button
                             onClick={handleDisconnect}
                             className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             Disconnect
-                        </button>
+                        </Button>
                     </div>
                 )}
 
 
             </div>
+
+
         </div>
+
     );
 }
 
