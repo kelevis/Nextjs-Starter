@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a08c42d0-079d-43f3-9399-89e58bd1f09e" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/components/button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Wallet.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
@@ -100,7 +99,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="github/nextjs-my-demo" />
                       </list>
                     </value>
                   </entry>

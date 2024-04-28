@@ -7,6 +7,7 @@ import * as config from "../config.js"
 import React, {useState} from 'react';
 import {notFound, redirect} from "next/navigation";
 import {Button} from './button';
+import {FaCopy} from 'react-icons/fa';
 
 // const handleClick = async () => {
 //     setLoading(true);
@@ -35,6 +36,7 @@ export default function Wallet() {
 
     const [inputTokenIdSign, setInputTokenIdSign] = useState<string>('');
     const [inputSignature, setInputSignature] = useState<string>('');
+    const [copied, setCopied] = useState(false);
 
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
 
@@ -249,13 +251,39 @@ export default function Wallet() {
 
     };
 
+    const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
+
+        const handleCopy = () => {
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    console.log('Text copied to clipboard');
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
+                })
+                .catch(err => {
+                    console.error('Error copying text: ', err);
+                    alert('Failed to copy wallet address!');
+                });
+        };
+
+        return (
+            <div>
+                <button onClick={handleCopy} className={"text-gray-400"}>
+                    {copied ? 'PrivateKey Copied!' : <FaCopy/>}
+                    {/*{copied ? 'Copied!' : 'Copy'}*/}
+                </button>
+            </div>
+        );
+    };
+
     return (
-        <div className="bg-black">
-            <div className={"text-center sm:py-20 sm:px-6 lg:px-84"}>
-                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <div className="bg-black w-full h-auto columns-1 ">
+
+            <div className={"text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
+                <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight text-white sm:text-4xl">
                     <span>Metamask API Invoke</span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-white">
+                <p className="mt-4 text-lg leading-6 text-white text-center px-0 py-0 mx-0 my-0">
                     Follow along with the{" "}
                     <Link
                         href="https://github.com/GuiBibeau/web3-unleashed-demo"
@@ -266,24 +294,40 @@ export default function Wallet() {
                     in order to learn how to use the Metamask API.
                 </p>
             </div>
-            <div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl text-center sm:py-20 sm:px-6 lg:px-8">
+            {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
+            <div className="bg-gray-800 w-2/3 h-screen mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
                 {wallet && balance && (
-                    <div className=" px-0 py-0 sm:px-6">
+                    <div className="mx-auto justify-self-center content-center sm:px-6">
                         {/*<div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">*/}
                         {/*    <div className="ml-4 mt-4">*/}
                         {/*        <div className="flex items-center">*/}
                         {/*            <div className="ml-4">*/}
 
-                        <h3 className="text-lg font-medium leading-6 text-white">
-                            Address: <span>{wallet}</span>
-                        </h3>
-                        <p className="text-lg font-medium leading-6 text-white">
+                        <h3 className="text-3xl font-medium leading-6 text-white">
                             Balance:{" "}
                             <span>
                         {(parseInt(balance) / 1000000000000000000).toFixed(4)}{" "}
                                 ETH
                       </span>
-                        </p>
+                        </h3>
+
+
+                        <div className={"text-center"}>
+                            <p className="text-gray-300 text-1xl">
+                                <span>{wallet}</span>
+                            </p>
+
+                            {/*<CopyButton textToCopy={wallet}/>*/}
+
+                        </div>
+
+                        {/*<div style={{ display: "flex", justifyContent: 'center' }} className="text-gray-300 text-s">*/}
+                        {/*    <p style={{ marginRight: '16px' }} className="text-gray-300 text-xl">*/}
+                        {/*        <span>{wallet}</span>*/}
+                        {/*    </p>*/}
+                        {/*    <CopyButton style={{ marginLeft: '16px' }} textToCopy={wallet} />*/}
+                        {/*</div>*/}
+
 
                         <br/>
 
@@ -294,13 +338,13 @@ export default function Wallet() {
                             className=" text-white text-center"
                         >
                             <Button>
-                                demo-Contract:0xa74348Ce54504bC306cF85c6281816C4d3676ed4
+                                demo-Contract:{config.demoContractSepoliaSignNFT}
                                 <br/>
-                                demo-Private:227dbb8586117d55284e26620bc76534dfbd2394be34cf4a09cb775d593b6f2b
-
-
+                                demo-PrivateKey:{config.demoContractSepoliaPrivateKey}
                             </Button>
+
                         </Link>
+                        <CopyButton textToCopy={config.demoContractSepoliaPrivateKey}/>
                         {/*<h1 className=" text-white">*/}
                         {/*    demo-Contract: 0xa74348Ce54504bC306cF85c6281816C4d3676ed4*/}
                         {/*</h1>*/}
@@ -317,7 +361,7 @@ export default function Wallet() {
                 {showConnectButton && (
                     <Button
                         onClick={handleConnect}
-                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
+                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white text-base font-medium  sm:w-auto"
                     >
                         {status === "loading" ? <Loading/> : "Connect Wallet"}
                     </Button>
@@ -387,12 +431,13 @@ export default function Wallet() {
                             onClick={handleGetSignature}
                             className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                         >
-                            {status === "loading" ? <Loading/> : "get Signature"}
+                            {status === "loading" ? <Loading/> : "Get Signature"}
                         </Button>
 
 
                     </div>
                 )}
+                <br/>
 
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
@@ -458,7 +503,7 @@ export default function Wallet() {
                             onClick={handleContractWrite}
                             className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
                         >
-                            {status === "loading" ? <Loading/> : "invoke Contract"}
+                            {status === "loading" ? <Loading/> : "Invoke Contract"}
                         </Button>
 
                     </div>
