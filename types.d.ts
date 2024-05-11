@@ -10,3 +10,4 @@ interface Window {
     request<T = any>(args: any): Promise<T>;
   };
 }
+

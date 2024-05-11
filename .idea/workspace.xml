@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a08c42d0-079d-43f3-9399-89e58bd1f09e" name="变更" comment="">
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/SearchDialog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/error.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_4_24_17_05____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_4_24_17_05_取消提交了变更_[变更]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useListen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useListen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useMetamask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useMetamask.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instructions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/hello.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +46,25 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-my-demo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2fDECB78FyYTHk0acUr1fODVMsX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -41,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -53,17 +92,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\components" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\styles" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\pages" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="a08c42d0-079d-43f3-9399-89e58bd1f09e" name="变更" comment="" />
+      <changelist id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="" />
       <created>1713327118989</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -82,6 +126,17 @@
       <workItem from="1714100481100" duration="141000" />
       <workItem from="1714104941058" duration="2813000" />
       <workItem from="1714117114147" duration="7820000" />
+      <workItem from="1714377806322" duration="194000" />
+      <workItem from="1714378932173" duration="4716000" />
+      <workItem from="1714442318889" duration="9056000" />
+      <workItem from="1714957963826" duration="5881000" />
+      <workItem from="1714983364740" duration="5113000" />
+      <workItem from="1715047977391" duration="8388000" />
+      <workItem from="1715131512324" duration="2424000" />
+      <workItem from="1715240365637" duration="240000" />
+      <workItem from="1715330968712" duration="672000" />
+      <workItem from="1715415199048" duration="201000" />
+      <workItem from="1715415413908" duration="6000000" />
     </task>
     <servers />
   </component>
@@ -99,7 +154,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="github/nextjs-my-demo" />
+                        <option value="test" />
                       </list>
                     </value>
                   </entry>

@@ -1,27 +1,23 @@
 import Link from "next/link";
-import {useListen} from "../hooks/useListen";
-import {useMetamask} from "../hooks/useMetamask";
+import {useListen} from "@/app/hooks/useListen";
+import {useMetamask} from "@/app/hooks/useMetamask";
 import {Loading} from "./Loading";
 import {ethers} from "ethers";
-import * as config from "../config.js"
+import * as config from "../../config.js"
 import React, {useState} from 'react';
-import {notFound, redirect} from "next/navigation";
-import {Button} from './button';
 import {FaCopy} from 'react-icons/fa';
+import {Button,Input} from "@nextui-org/react";
+import { useTheme } from '@mui/system';
+import { FormControl, useFormControlContext } from '@mui/base/FormControl';
+// import { Input } from '@mui/base/Input';
+// import clsx from 'clsx';
+// import {notFound, redirect} from "next/navigation";
+// import {Button} from './button';
 
-// const handleClick = async () => {
-//     setLoading(true);
-//     try {
-//         const signatureResult = await getSignature(config.myAddress1,3);
-//         setSignature(signatureResult);
-//     } catch (error) {
-//         console.error('Error getting signature:', error);
-//     } finally {
-//         setLoading(false);
-//     }
-// };
+
 
 export default function Wallet() {
+
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
     const showInstallMetamask = status !== "pageNotLoaded" && !isMetamaskInstalled;
@@ -268,7 +264,7 @@ export default function Wallet() {
 
         return (
             <div>
-                <button onClick={handleCopy} className={"text-gray-400"}>
+                <button onClick={handleCopy} className={""}>
                     {copied ? 'PrivateKey Copied!' : <FaCopy/>}
                     {/*{copied ? 'Copied!' : 'Copy'}*/}
                 </button>
@@ -277,13 +273,13 @@ export default function Wallet() {
     };
 
     return (
-        <div className="bg-black w-full h-auto columns-1 ">
+        <div className="w-full h-full columns-1 ">
 
             <div className={"text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
-                <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight text-white sm:text-4xl">
+                <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight  sm:text-4xl">
                     <span>Metamask API Invoke</span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-white text-center px-0 py-0 mx-0 my-0">
+                <p className="mt-4 text-lg leading-6 text-center px-0 py-0 mx-0 my-0">
                     Follow along with the{" "}
                     <Link
                         href="https://github.com/GuiBibeau/web3-unleashed-demo"
@@ -295,15 +291,11 @@ export default function Wallet() {
                 </p>
             </div>
             {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
-            <div className="bg-gray-800 w-2/3 h-screen mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
+            <div className="w-2/3 h-full mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
                 {wallet && balance && (
                     <div className="mx-auto justify-self-center content-center sm:px-6">
-                        {/*<div className="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">*/}
-                        {/*    <div className="ml-4 mt-4">*/}
-                        {/*        <div className="flex items-center">*/}
-                        {/*            <div className="ml-4">*/}
 
-                        <h3 className="text-3xl font-medium leading-6 text-white">
+                        <h3 className="text-3xl font-medium leading-6 ">
                             Balance:{" "}
                             <span>
                         {(parseInt(balance) / 1000000000000000000).toFixed(4)}{" "}
@@ -311,9 +303,8 @@ export default function Wallet() {
                       </span>
                         </h3>
 
-
                         <div className={"text-center"}>
-                            <p className="text-gray-300 text-1xl">
+                            <p className=" text-1xl">
                                 <span>{wallet}</span>
                             </p>
 
@@ -321,23 +312,17 @@ export default function Wallet() {
 
                         </div>
 
-                        {/*<div style={{ display: "flex", justifyContent: 'center' }} className="text-gray-300 text-s">*/}
-                        {/*    <p style={{ marginRight: '16px' }} className="text-gray-300 text-xl">*/}
-                        {/*        <span>{wallet}</span>*/}
-                        {/*    </p>*/}
-                        {/*    <CopyButton style={{ marginLeft: '16px' }} textToCopy={wallet} />*/}
-                        {/*</div>*/}
-
-
                         <br/>
 
 
                         <Link
                             href="https://sepolia.etherscan.io/address/0xa74348Ce54504bC306cF85c6281816C4d3676ed4"
                             target="_blank"
-                            className=" text-white text-center"
+                            className="  text-center"
                         >
-                            <Button>
+                            <Button
+                                color="primary" variant="flat"
+                            >
                                 demo-Contract:{config.demoContractSepoliaSignNFT}
                                 <br/>
                                 demo-PrivateKey:{config.demoContractSepoliaPrivateKey}
@@ -345,23 +330,17 @@ export default function Wallet() {
 
                         </Link>
                         <CopyButton textToCopy={config.demoContractSepoliaPrivateKey}/>
-                        {/*<h1 className=" text-white">*/}
-                        {/*    demo-Contract: 0xa74348Ce54504bC306cF85c6281816C4d3676ed4*/}
-                        {/*</h1>*/}
 
                         <br/>
 
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
                 )}
 
                 {showConnectButton && (
                     <Button
+                        color="primary" variant="shadow"
                         onClick={handleConnect}
-                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white text-base font-medium  sm:w-auto"
+                        // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
                     >
                         {status === "loading" ? <Loading/> : "Connect Wallet"}
                     </Button>
@@ -371,7 +350,7 @@ export default function Wallet() {
                     <Link
                         href="https://metamask.io/"
                         target="_blank"
-                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
+                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
                     >
                         Install Metamask
                     </Link>
@@ -379,48 +358,41 @@ export default function Wallet() {
 
                 {isConnected && (
 
-                    <form className="flex w-full justify-center space-x-2 text-center">
-                        <div className="flex flex-col space-y-1 text-center">
+                    <form className="flex w-full justify-center space-x-2 my-4 gap-6 text-center">
+                        <div className="flex flex-col text-center">
                             {/* 地址输入框 */}
-                            <label htmlFor="address-input  " className={"text-white"}>地址</label>
-                            <input
+                            {/*<label htmlFor="address-input  " className={""}>地址</label>*/}
+                            <Input
                                 id="address-input"
                                 type="text"
                                 value={inputAddress}
                                 onChange={handleInputAddressChange}
                                 placeholder="address"
+                                label="地址"
+                                variant="bordered"
+                                labelPlacement={"outside"}
+                                // className={"text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 dark:text-slate-900 dark:text-slate-300 focus-visible:outline-0"}
+
                             />
 
                             {/* tokenId 输入框 */}
-                            <label htmlFor="token-id-input" className={"text-white"}>tokenId</label>
-                            <input
+                            {/*<label htmlFor="token-id-input" className={""}>tokenId</label>*/}
+                            <Input
                                 id="token-id-input"
                                 type="text"
                                 value={inputTokenId}
                                 onChange={handleInputTokenIdChange}
                                 placeholder="tokenId"
+                                label="tokenId"
+                                variant="bordered"
+                                labelPlacement={"outside"}
+                                // className={"text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0"}
+
                             />
                         </div>
                     </form>
 
-                    // <div className="flex  w-full justify-center space-x-2">
-                    //     <h1>数字签名输入</h1>
-                    //     {/* 输入框 */}
-                    //     <input
-                    //         type="text"
-                    //         value={inputAddress}
-                    //         onChange={handleInputAddressChange}
-                    //         placeholder="address"
-                    //     />
-                    //
-                    //     <input
-                    //         type="text"
-                    //         value={inputTokenId}
-                    //         onChange={handleInputTokenIdChange}
-                    //         placeholder="tokenId"
-                    //     />
-                    //
-                    // </div>
+
 
 
                 )}
@@ -428,8 +400,9 @@ export default function Wallet() {
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
                         <Button
+                            color="primary" variant="shadow"
                             onClick={handleGetSignature}
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
+                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             {status === "loading" ? <Loading/> : "Get Signature"}
                         </Button>
@@ -440,14 +413,10 @@ export default function Wallet() {
                 <br/>
 
                 {isConnected && (
-                    <div className="flex  w-full justify-center space-x-2">
+                    <div className="flex  w-full justify-center my-4 space-x-2">
                         {/* 显示签名结果 */}
                         {signature && (
                             <div className="mt-4">
-                                {/*<h2 className="text-lg font-medium leading-6 text-white">Signature:</h2>*/}
-                                {/*<h3 className="text-lg font-medium leading-6 text-white">*/}
-                                {/*    <span><text>{signature}</text></span>*/}
-                                {/*</h3>*/}
                                 <h2>Signature:
                                     <textarea
                                         className="p-2 rounded border-2 border-gray-300 focus:outline-none focus:border-blue-500"
@@ -461,35 +430,39 @@ export default function Wallet() {
                             </div>
                         )}
 
-                        {/*/!* 显示错误信息 *!/*/}
-                        {/*{error && <div className="error-message">错误信息: {error}</div>}*/}
-
 
                     </div>
                 )}
 
                 {isConnected && (
 
-                    <form className="flex w-full justify-center space-x-2 text-center">
-                        <div className="flex flex-col space-y-1 text-center">
-                            {/* 地址输入框 */}
-                            {/* tokenId 输入框 */}
-                            <label htmlFor="token-id-input" className={"text-white"}>tokenId</label>
-                            <input
+                    <form className="flex w-full justify-center space-x-2 my-4 gap-6 text-center">
+                        <div className="flex flex-col text-center">
+                            {/*<label htmlFor="token-id-input" className={""}>tokenId</label>*/}
+                            <Input
                                 id="token-id-input"
                                 type="text"
                                 value={inputTokenIdSign}
                                 onChange={handleInputTokenIdSignChange}
                                 placeholder="tokenId"
+                                label="tokenId"
+                                variant="bordered"
+                                labelPlacement={"outside"}
+                                // className={"text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0"}
                             />
 
-                            <label htmlFor="signature-input" className={"text-white"}>signature</label>
-                            <input
+                            {/*<label htmlFor="signature-input" className={""}>signature</label>*/}
+                            <Input
                                 id="signature-input"
                                 type="text"
                                 value={inputSignature}
                                 onChange={handleInputSignatureChange}
                                 placeholder="signature"
+                                label="signature"
+                                variant="bordered"
+                                labelPlacement={"outside"}
+                                // className={"text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0"}
+
                             />
 
                         </div>
@@ -498,10 +471,11 @@ export default function Wallet() {
                 )}
 
                 {isConnected && (
-                    <div className="flex  w-full justify-center space-x-2">
+                    <div className="flex  w-full justify-center my-4 space-x-2">
                         <Button
+                            color="primary" variant="shadow"
                             onClick={handleContractWrite}
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
+                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             {status === "loading" ? <Loading/> : "Invoke Contract"}
                         </Button>
@@ -510,17 +484,12 @@ export default function Wallet() {
                 )}
 
                 {isConnected && (
-                    <div className="flex  w-full justify-center space-x-2">
-                        {/*<Button*/}
-                        {/*    onClick={handleAddUsdc}*/}
-                        {/*    className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"*/}
-                        {/*>*/}
-                        {/*    {status === "loading" ? <Loading/> : "Add Token"}*/}
-                        {/*</Button>*/}
+                    <div className="flex  w-full justify-center my-4 space-x-2">
 
                         <Button
+                            color="primary" variant="shadow"
                             onClick={handleDisconnect}
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache text-white px-5 py-3 text-base font-medium  sm:w-auto"
+                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             Disconnect
                         </Button>

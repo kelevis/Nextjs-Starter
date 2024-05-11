@@ -11,7 +11,7 @@ You are presented with a Next.js application that has a basic layout and a Conte
 Few notes about the initial setup and constraints:
 
 - You do not need any additional dependencies.
-- The context provider is already setup so that any react code under [components](./components/) and [pages](./pages/) can access the context using a hook.
+- The context provider is already setup so that any react code under [components](app/components/) and [pages](./pages/) can access the context using a hook.
 - The context uses a reducer to manage state, so you can dispatch actions to update the state. Feel free to edit and add to the reducer as needed.
 - Next.js runs in multiple environments, you will have to remember that Metamask is only available in the browser, so you will need to check for that before using it.
 
