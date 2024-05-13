@@ -3,16 +3,14 @@ import {useListen} from "@/app/hooks/useListen";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {Loading} from "./Loading";
 import {ethers} from "ethers";
-import * as config from "../../config.js"
+import * as config from "@/config.js"
 import React, {useState} from 'react';
 import {FaCopy} from 'react-icons/fa';
-import {Button,Input} from "@nextui-org/react";
-import { useTheme } from '@mui/system';
-import { FormControl, useFormControlContext } from '@mui/base/FormControl';
-// import { Input } from '@mui/base/Input';
-// import clsx from 'clsx';
-// import {notFound, redirect} from "next/navigation";
-// import {Button} from './button';
+import {Button,Input, Textarea} from "@nextui-org/react";
+import CalenderBtn from "@/app/components/calender";
+// import { useTheme } from '@mui/system';
+// import { FormControl, useFormControlContext } from '@mui/base/FormControl';
+
 
 
 
@@ -273,7 +271,7 @@ export default function Wallet() {
     };
 
     return (
-        <div className="w-full h-full columns-1 ">
+        <div className="w-full h-full ">
 
             <div className={"text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
                 <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight  sm:text-4xl">
@@ -337,13 +335,7 @@ export default function Wallet() {
                 )}
 
                 {showConnectButton && (
-                    <Button
-                        color="primary" variant="shadow"
-                        onClick={handleConnect}
-                        // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
-                    >
-                        {status === "loading" ? <Loading/> : "Connect Wallet"}
-                    </Button>
+                    <CalenderBtn></CalenderBtn>
                 )}
 
                 {showInstallMetamask && (
@@ -400,7 +392,7 @@ export default function Wallet() {
                 {isConnected && (
                     <div className="flex  w-full justify-center space-x-2">
                         <Button
-                            color="primary" variant="shadow"
+                            color="primary" variant="flat"
                             onClick={handleGetSignature}
                             // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
                         >
@@ -410,19 +402,25 @@ export default function Wallet() {
 
                     </div>
                 )}
-                <br/>
 
                 {isConnected && (
                     <div className="flex  w-full justify-center my-4 space-x-2">
                         {/* 显示签名结果 */}
                         {signature && (
                             <div className="mt-4">
-                                <h2>Signature:
-                                    <textarea
-                                        className="p-2 rounded border-2 border-gray-300 focus:outline-none focus:border-blue-500"
-                                        rows={2} // 设置行数为 5，高度适中
-                                        cols={100} // 设置列数为 50，显示为横向长条
+                                <h2>
+                                    <Textarea
+                                        // className="p-2 rounded border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+                                        // rows={2} // 设置行数为 5，高度适中
+                                        // minRows={2}
+                                        // minRows={2}
                                         value={signature}
+                                        cols={100} // 设置列数为 50，显示为横向长条
+                                        maxRows={2}       //最大行数,NextUI
+                                        variant="bordered"
+                                        placeholder="This is signature"
+                                        label="Signature:"
+                                        labelPlacement="outside"
                                     />
                                 </h2>
 
@@ -458,8 +456,8 @@ export default function Wallet() {
                                 value={inputSignature}
                                 onChange={handleInputSignatureChange}
                                 placeholder="signature"
-                                label="signature"
                                 variant="bordered"
+                                label="signature"
                                 labelPlacement={"outside"}
                                 // className={"text-sm font-sans font-normal leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 dark:shadow-slate-900 focus:shadow-outline-purple dark:focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-purple-500 dark:hover:border-purple-500 focus:border-purple-500 dark:focus:border-purple-500 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-300 focus-visible:outline-0"}
 
@@ -473,26 +471,13 @@ export default function Wallet() {
                 {isConnected && (
                     <div className="flex  w-full justify-center my-4 space-x-2">
                         <Button
-                            color="primary" variant="shadow"
+                            color="primary" variant="flat"
                             onClick={handleContractWrite}
                             // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
                         >
                             {status === "loading" ? <Loading/> : "Invoke Contract"}
                         </Button>
 
-                    </div>
-                )}
-
-                {isConnected && (
-                    <div className="flex  w-full justify-center my-4 space-x-2">
-
-                        <Button
-                            color="primary" variant="shadow"
-                            onClick={handleDisconnect}
-                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            Disconnect
-                        </Button>
                     </div>
                 )}
 

@@ -1,12 +1,22 @@
 
 import React from 'react'
 import SearchDialog from './SearchDialog'
+import ThemeSwitchBtn from "@/app/components/ThemeSwitchBtn";
+import ConnectSwitchBtn from "@/app/components/ConnectSwitchBtn";
+
 
 const HomeHeader = () => {
     
   return (
     <div className='w-full flex  justify-center  h-[8vh] sticky top-0  shadow-box'>
-        <SearchDialog></SearchDialog>
+
+        <div className=' absolute right-[8vw] top-1/2  -translate-y-1/2'>
+            <ThemeSwitchBtn></ThemeSwitchBtn>
+            <ConnectSwitchBtn></ConnectSwitchBtn>
+
+            <></>
+        </div>
+
     </div>
   )
 }

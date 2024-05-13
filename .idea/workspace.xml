@@ -2,40 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/SearchDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/error.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_4_24_17_05____.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2024_4_24_17_05_取消提交了变更_[变更]/shelved.patch" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/calender.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/next.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/error.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useListen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useListen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/useMetamask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useMetamask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instructions.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/hello.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/truffle.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -93,10 +70,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\components" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\public" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\styles" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\pages" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
@@ -137,6 +114,7 @@
       <workItem from="1715330968712" duration="672000" />
       <workItem from="1715415199048" duration="201000" />
       <workItem from="1715415413908" duration="6000000" />
+      <workItem from="1715563858485" duration="8747000" />
     </task>
     <servers />
   </component>
@@ -154,7 +132,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="test" />
+                        <option value="github/main" />
                       </list>
                     </value>
                   </entry>
