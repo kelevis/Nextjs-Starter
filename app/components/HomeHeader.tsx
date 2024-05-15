@@ -1,8 +1,8 @@
 
 import React from 'react'
-import SearchDialog from './SearchDialog'
 import ThemeSwitchBtn from "@/app/components/ThemeSwitchBtn";
 import ConnectSwitchBtn from "@/app/components/ConnectSwitchBtn";
+import SearchDialog from './SearchDialog'
 
 
 const HomeHeader = () => {

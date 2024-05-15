@@ -40,7 +40,7 @@ export default function ConnectSwitchBtn() {
     return (
             showConnectButton && (
                 <Button
-                    color="primary" variant="flat"
+                    variant="bordered"
                     onClick={handleConnect}
                     // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
                 >
@@ -48,11 +48,11 @@ export default function ConnectSwitchBtn() {
                 </Button>
             )||(
                 <Button
-                    color="primary" variant="flat"
+                    variant="bordered"
                     onClick={handleDisconnect}
                     // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
                 >
-                    {status === "loading" ? <Loading/> : "DisConnect"}
+                    {status === "loading" ? <Loading/> : "Disconnect"}
                 </Button>
             )
 
