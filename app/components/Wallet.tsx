@@ -273,7 +273,7 @@ export default function Wallet() {
     return (
         <div className="w-full h-full ">
 
-            <div className={"text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
+            <div className={"dark text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
                 <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight  sm:text-4xl">
                     <span>Metamask API Invoke</span>
                 </h2>

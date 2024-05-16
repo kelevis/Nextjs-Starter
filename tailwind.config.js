@@ -3,7 +3,7 @@ import {nextui} from "@nextui-org/react";
 
 module.exports = {
   darkMode: ["class"],
-  content: [
+  content: [                      //定义tailwind需要扫描的文件
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',

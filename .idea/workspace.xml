@@ -4,7 +4,11 @@
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/calender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/calender.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my-blog" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -108,6 +112,7 @@
       <workItem from="1715415413908" duration="6000000" />
       <workItem from="1715563858485" duration="8747000" />
       <workItem from="1715745850840" duration="1626000" />
+      <workItem from="1715823120404" duration="3688000" />
     </task>
     <servers />
   </component>
@@ -125,7 +130,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="github/main" />
+                        <option value="nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>

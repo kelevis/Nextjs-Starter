@@ -3,6 +3,7 @@ import React from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import { PiSunDim } from "react-icons/pi";
 export default function ThemeSwitchBtn() {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["light"]));
     const [mounted, setMounted] = useState(false)
@@ -25,10 +26,12 @@ export default function ThemeSwitchBtn() {
         <Dropdown>
             <DropdownTrigger>
                 <Button
-                    variant="bordered"
+                    // variant="bordered"
+                    variant="flat"
                     className="capitalize"
+                    isIconOnly={true}
                 >
-                    {theme}
+                    <PiSunDim/>
                 </Button>
             </DropdownTrigger>
             <DropdownMenu

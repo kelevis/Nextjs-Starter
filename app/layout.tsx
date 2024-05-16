@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import {Providers} from "@/app/providers"
 import HomeHeader from '@/app/components/HomeHeader'
 import {MetamaskProvider} from "@/app/hooks/useMetamask"
+// import {NextUIProvider} from "@nextui-org/react";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -14,13 +15,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en" >
-        <body >
+        <html lang="en">
+        <body>
         <Providers>
-            <MetamaskProvider>
-                <HomeHeader></HomeHeader>
-                {children}
-            </MetamaskProvider>
+        {/*<NextUIProvider>*/}
+        {/*    <main className="purple-dark text-foreground bg-background">*/}
+                <MetamaskProvider>
+                    <HomeHeader></HomeHeader>
+                    {children}
+                </MetamaskProvider>
+        {/*    </main>*/}
+        {/*</NextUIProvider>*/}
+
         </Providers>
 
 

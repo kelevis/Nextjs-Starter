@@ -1,11 +1,13 @@
 "use client"
 import React from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import { useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import {useState, useEffect} from 'react'
+import {useTheme} from 'next-themes'
 import {Loading} from "@/app/components/Loading";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
+import {RiEthFill} from "react-icons/ri";
+
 export default function ConnectSwitchBtn() {
 
 
@@ -38,24 +40,28 @@ export default function ConnectSwitchBtn() {
         dispatch({type: "disconnect"});
     };
     return (
-            showConnectButton && (
-                <Button
-                    variant="bordered"
-                    onClick={handleConnect}
-                    // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
-                >
-                    {status === "loading" ? <Loading/> : "Connect Wallet"}
-                </Button>
-            )||(
-                <Button
-                    variant="bordered"
-                    onClick={handleDisconnect}
-                    // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
-                >
-                    {status === "loading" ? <Loading/> : "Disconnect"}
-                </Button>
-            )
-
+        showConnectButton && (
+            <Button
+                variant="bordered"
+                onClick={handleConnect}
+                isIconOnly={true}
+                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
+            >
+                <RiEthFill style={{ color: 'red' }}/>
+                {/*{status === "loading" ? <Loading/> : "Connect Wallet"}*/}
+            </Button>
+        ) || (
+            <Button
+                variant="bordered"
+                onClick={handleDisconnect}
+                isIconOnly={true}
+                // className={"text-green"}
+                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
+            >
+                <RiEthFill style={{ color: 'forestgreen' }}/>
+                {/*{status === "loading" ? <Loading/> : "Disconnect"}*/}
+            </Button>
+        )
 
 
     );
