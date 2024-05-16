@@ -9,6 +9,8 @@ import {FaCopy} from 'react-icons/fa';
 import {Button,Input, Textarea} from "@nextui-org/react";
 import CalenderBtn from "@/app/components/calender";
 import {Snippet} from "@nextui-org/react";
+import DashboardClock from "@/app/components/Time"
+// import TimeClockViews from "@/app/components/Time";
 // import { useTheme } from '@mui/system';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
 
@@ -344,17 +346,37 @@ export default function Wallet() {
                 )}
 
                 {showConnectButton && (
-                    <CalenderBtn></CalenderBtn>
+                    <DashboardClock/>
                 )}
 
+                {showConnectButton && (
+
+                    <CalenderBtn/>
+
+                )}
+
+
                 {showInstallMetamask && (
-                    <Link
-                        href="https://metamask.io/"
-                        target="_blank"
-                        className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
-                    >
-                        Install Metamask
-                    </Link>
+
+                    <div className={"flex flex-row justify-center gap-4"}>
+                        <Link
+                            href="https://metamask.io/"
+                            target="_blank"
+                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
+                        >
+                            Install Metamask
+                        </Link>
+
+                        <DashboardClock/>
+
+                        <CalenderBtn/>
+
+                    </div>
+
+
+
+
+
                 )}
 
                 {isConnected && (
