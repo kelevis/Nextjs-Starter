@@ -1,6 +1,6 @@
 "use client"
 import React, {useState, useEffect} from 'react';
-import {Card, CardBody} from "@nextui-org/react";
+// import {Card, CardBody} from "@nextui-org/react";
 
 const DashboardClock = () => {
     const [time, setTime] = useState(new Date());
@@ -21,8 +21,7 @@ const DashboardClock = () => {
 
     return (
 
-        <Card>
-            <CardBody>
+
                 <div>
                     <div className="clock flex flex-row gap-4 justify-center">
                         <div className="date">
@@ -37,8 +36,7 @@ const DashboardClock = () => {
 
                     </div>
                 </div>
-            </CardBody>
-        </Card>
+
     );
 };
 
