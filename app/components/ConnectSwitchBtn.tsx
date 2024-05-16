@@ -39,29 +39,30 @@ export default function ConnectSwitchBtn() {
     const handleDisconnect = () => {
         dispatch({type: "disconnect"});
     };
+
+    let myButton;
+
+    if (status === 'loading') {
+        myButton = <Button isLoading={true} isIconOnly={true}/>;
+
+    } else if (showConnectButton) {
+
+        myButton = <Button variant="bordered" onClick={handleConnect} isIconOnly={true}>
+            <RiEthFill style={{color: 'gray'}}/>
+        </Button>
+
+    } else if (!showConnectButton) {
+
+        myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
+            <RiEthFill style={{color: 'forestgreen'}}/>
+        </Button>
+    }
+
+
     return (
-        showConnectButton && (
-            <Button
-                variant="bordered"
-                onClick={handleConnect}
-                isIconOnly={true}
-                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
-            >
-                <RiEthFill style={{ color: 'red' }}/>
-                {/*{status === "loading" ? <Loading/> : "Connect Wallet"}*/}
-            </Button>
-        ) || (
-            <Button
-                variant="bordered"
-                onClick={handleDisconnect}
-                isIconOnly={true}
-                // className={"text-green"}
-                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent text-base font-medium  sm:w-auto"
-            >
-                <RiEthFill style={{ color: 'forestgreen' }}/>
-                {/*{status === "loading" ? <Loading/> : "Disconnect"}*/}
-            </Button>
-        )
+        <div>
+            {myButton}
+        </div>
 
 
     );

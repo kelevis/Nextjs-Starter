@@ -4,11 +4,8 @@
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/calender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/calender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -130,7 +127,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="nextjs-app-demo" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>

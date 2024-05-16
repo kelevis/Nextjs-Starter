@@ -8,6 +8,7 @@ import React, {useState} from 'react';
 import {FaCopy} from 'react-icons/fa';
 import {Button,Input, Textarea} from "@nextui-org/react";
 import CalenderBtn from "@/app/components/calender";
+import {Snippet} from "@nextui-org/react";
 // import { useTheme } from '@mui/system';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
 
@@ -316,18 +317,26 @@ export default function Wallet() {
                         <Link
                             href="https://sepolia.etherscan.io/address/0xa74348Ce54504bC306cF85c6281816C4d3676ed4"
                             target="_blank"
-                            className="  text-center"
+                            className="my-4 text-center"
+
+
                         >
                             <Button
                                 color="primary" variant="flat"
                             >
-                                demo-Contract:{config.demoContractSepoliaSignNFT}
-                                <br/>
-                                demo-PrivateKey:{config.demoContractSepoliaPrivateKey}
+                                Sepolia-Contract: {config.demoContractSepoliaSignNFT}
+
                             </Button>
 
                         </Link>
-                        <CopyButton textToCopy={config.demoContractSepoliaPrivateKey}/>
+                        {/*<CopyButton textToCopy={config.demoContractSepoliaPrivateKey}/>*/}
+                        <br/>
+                        <Snippet
+                            variant="flat"
+                            color={"primary"}
+                            className={"my-4 mx-4"}
+                        >
+                            demo-PrivateKey:{config.demoContractSepoliaPrivateKey}</Snippet>
 
                         <br/>
 
