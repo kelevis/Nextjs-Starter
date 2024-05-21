@@ -27,7 +27,7 @@ export default function ThemeSwitchBtn() {
             <DropdownTrigger>
                 <Button
                     // variant="bordered"
-                    variant="flat"
+                    variant="bordered"
                     className="capitalize"
                     isIconOnly={true}
                 >

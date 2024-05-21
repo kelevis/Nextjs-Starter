@@ -7,15 +7,16 @@ import {Loading} from "@/app/components/Loading";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import {RiEthFill} from "react-icons/ri";
+import { CiSaveDown1 } from "react-icons/ci";
 
 export default function ConnectSwitchBtn() {
 
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
-    const showInstallMetamask = status !== "pageNotLoaded" && !isMetamaskInstalled;
-    const showConnectButton = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
-    const isConnected = status !== "pageNotLoaded" && typeof wallet === "string";
+    const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
+    const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
+    const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
     const handleConnect = async () => {
         dispatch({type: "loading"});
         const accounts = await window.ethereum.request({
@@ -45,16 +46,20 @@ export default function ConnectSwitchBtn() {
     if (status === 'loading') {
         myButton = <Button isLoading={true} isIconOnly={true}/>;
 
-    } else if (showConnectButton) {
+    } else if (MetamaskInstall) {
 
         myButton = <Button variant="bordered" onClick={handleConnect} isIconOnly={true}>
             <RiEthFill style={{color: 'gray'}}/>
         </Button>
 
-    } else if (!showConnectButton) {
+    } else if (MetamaskInstallAndConnected) {
 
         myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
             <RiEthFill style={{color: 'forestgreen'}}/>
+        </Button>
+    }else if (MetamaskNotInstall) {
+        myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
+            <CiSaveDown1 style={{color: 'gray'}}/>
         </Button>
     }
 

@@ -5,7 +5,7 @@ import Wallet from "@/app/components/Wallet";
 import { useListen } from "@/app/hooks/useListen";
 import { useMetamask } from "@/app/hooks/useMetamask";
 
-const Home = () => {
+export default  function Home() {
   const { dispatch } = useMetamask();
   const listen = useListen();
 
@@ -47,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+// export default Home;

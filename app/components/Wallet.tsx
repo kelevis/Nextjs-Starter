@@ -6,24 +6,24 @@ import {ethers} from "ethers";
 import * as config from "@/config.js"
 import React, {useState} from 'react';
 import {FaCopy} from 'react-icons/fa';
-import {Button,Input, Textarea} from "@nextui-org/react";
+import {Button, Input, Textarea} from "@nextui-org/react";
 import CalenderBtn from "@/app/components/calender";
 import {Snippet} from "@nextui-org/react";
 import DashboardClock from "@/app/components/Time"
+
+import App from "@/app/components/time1"
 // import TimeClockViews from "@/app/components/Time";
 // import { useTheme } from '@mui/system';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
-
-
 
 
 export default function Wallet() {
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
-    const showInstallMetamask = status !== "pageNotLoaded" && !isMetamaskInstalled;
-    const showConnectButton = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
-    const isConnected = status !== "pageNotLoaded" && typeof wallet === "string";
+    const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
+    const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
+    const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
 
     const [error, setError] = useState(null);
     const [signature, setSignature] = useState<string | null>(null);
@@ -34,6 +34,7 @@ export default function Wallet() {
     const [inputTokenIdSign, setInputTokenIdSign] = useState<string>('');
     const [inputSignature, setInputSignature] = useState<string>('');
     const [copied, setCopied] = useState(false);
+    const [invokeLoading, setInvokeLoading] = useState(false);
 
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
 
@@ -149,6 +150,9 @@ export default function Wallet() {
     };
 
     const handleContractWrite = async () => {
+
+        setInvokeLoading(true);
+
         const browserProvider = new ethers.BrowserProvider(window.ethereum);
         // 获取当前钱包账户
         const signer = await browserProvider.getSigner()
@@ -171,6 +175,9 @@ export default function Wallet() {
         } catch (error) {
             console.error("Error:", error);
         }
+
+        setInvokeLoading(false);
+
 
     };
 
@@ -248,7 +255,7 @@ export default function Wallet() {
 
     };
 
-    const CopyButton: React.FC<{ textToCopy: string }> = ({ textToCopy }) => {
+    const CopyButton: React.FC<{ textToCopy: string }> = ({textToCopy}) => {
 
         const handleCopy = () => {
             navigator.clipboard.writeText(textToCopy)
@@ -293,15 +300,55 @@ export default function Wallet() {
             </div>
             {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
             <div className="w-2/3 h-full mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
-                {wallet && balance && (
+                {MetamaskNotInstall && (
+
+                    <div className={"flex flex-row justify-center gap-4"}>
+                        <Link
+                            href="https://metamask.io/"
+                            target="_blank"
+                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
+                        >
+                            Install Metamask
+                        </Link>
+
+                        {/*<DashboardClock/>*/}
+
+                        <CalenderBtn/>
+
+                    </div>
+
+                )}
+
+                {/*{MetamaskInstall && (*/}
+                {/*    <DashboardClock/>*/}
+                {/*)}*/}
+
+                {MetamaskInstall && (
+
+
+
+                    <div className={"flex flex-col justify-center items-center"}>
+                        <App/>
+
+                        {/*<p className="mt-4 text-lg leading-6 text-center px-0 py-0 mx-0 my-0">*/}
+                        {/*    Please connect to Metamask Wallet.*/}
+                        {/*</p>*/}
+                    </div>
+
+
+
+                )}
+
+
+                {MetamaskInstallAndConnected && (
                     <div className="mx-auto justify-self-center content-center sm:px-6">
 
                         <h3 className="text-3xl font-medium leading-6 ">
                             Balance:{" "}
-                            <span>
-                        {(parseInt(balance) / 1000000000000000000).toFixed(4)}{" "}
-                                ETH
-                      </span>
+                            {/*      <span>*/}
+                            {/*  {(parseInt(balance as string) / 1000000000000000000).toFixed(4)}{" "}*/}
+                            {/*          ETH*/}
+                            {/*</span>*/}
                         </h3>
 
                         <div className={"text-center"}>
@@ -345,41 +392,7 @@ export default function Wallet() {
                     </div>
                 )}
 
-                {showConnectButton && (
-                    <DashboardClock/>
-                )}
-
-                {showConnectButton && (
-
-                    <CalenderBtn/>
-
-                )}
-
-
-                {showInstallMetamask && (
-
-                    <div className={"flex flex-row justify-center gap-4"}>
-                        <Link
-                            href="https://metamask.io/"
-                            target="_blank"
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            Install Metamask
-                        </Link>
-
-                        <DashboardClock/>
-
-                        <CalenderBtn/>
-
-                    </div>
-
-
-
-
-
-                )}
-
-                {isConnected && (
+                {MetamaskInstallAndConnected && (
 
                     <form className="flex w-full justify-center space-x-2 my-4 gap-6 text-center">
                         <div className="flex flex-col text-center">
@@ -415,12 +428,9 @@ export default function Wallet() {
                         </div>
                     </form>
 
-
-
-
                 )}
 
-                {isConnected && (
+                {MetamaskInstallAndConnected && (
                     <div className="flex  w-full justify-center space-x-2">
                         <Button
                             color="primary" variant="flat"
@@ -434,7 +444,7 @@ export default function Wallet() {
                     </div>
                 )}
 
-                {isConnected && (
+                {MetamaskInstallAndConnected && (
                     <div className="flex  w-full justify-center my-4 space-x-2">
                         {/* 显示签名结果 */}
                         {signature && (
@@ -463,7 +473,7 @@ export default function Wallet() {
                     </div>
                 )}
 
-                {isConnected && (
+                {MetamaskInstallAndConnected && (
 
                     <form className="flex w-full justify-center space-x-2 my-4 gap-6 text-center">
                         <div className="flex flex-col text-center">
@@ -499,17 +509,36 @@ export default function Wallet() {
 
                 )}
 
-                {isConnected && (
-                    <div className="flex  w-full justify-center my-4 space-x-2">
-                        <Button
-                            color="primary" variant="flat"
-                            onClick={handleContractWrite}
-                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            {status === "loading" ? <Loading/> : "Invoke Contract"}
-                        </Button>
 
-                    </div>
+                {MetamaskInstallAndConnected && (
+               // 只有当 Metamask 安装并连接时才会渲染内容
+
+                    invokeLoading ? (
+                        <div className="flex  w-full justify-center my-4 space-x-2">
+                            <Button
+                                color="primary" variant="flat"
+                                isLoading={true}
+                                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
+                            >
+                            </Button>
+
+                        </div>
+                    ) : (
+                        <div className="flex  w-full justify-center my-4 space-x-2">
+                            <Button
+                                color="primary" variant="flat"
+                                onClick={handleContractWrite}
+                                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
+                            >
+                                {status === "loading" ? <Loading/> : "Invoke Contract"}
+                            </Button>
+
+                        </div>
+
+
+                    )
+
+
                 )}
 
 

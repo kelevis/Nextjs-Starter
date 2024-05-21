@@ -3,12 +3,7 @@ import React, { useEffect, type PropsWithChildren } from "react";
 
 type ConnectAction = { type: "connect"; wallet: string; balance: string };
 type DisconnectAction = { type: "disconnect" };
-type PageLoadedAction = {
-  type: "pageLoaded";
-  isMetamaskInstalled: boolean;
-  wallet: string | null;
-  balance: string | null;
-};
+type PageLoadedAction = {  type: "pageLoaded";  isMetamaskInstalled: boolean;  wallet: string | null;  balance: string | null;};
 type LoadingAction = { type: "loading" };
 type IdleAction = { type: "idle" };
 
