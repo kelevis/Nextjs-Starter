@@ -11,7 +11,7 @@ import CalenderBtn from "@/app/components/calender";
 import {Snippet} from "@nextui-org/react";
 import DashboardClock from "@/app/components/Time"
 
-import App from "@/app/components/time1"
+import Time2 from "@/app/components/Time2"
 // import TimeClockViews from "@/app/components/Time";
 // import { useTheme } from '@mui/system';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
@@ -319,20 +319,14 @@ export default function Wallet() {
 
                 )}
 
-                {/*{MetamaskInstall && (*/}
-                {/*    <DashboardClock/>*/}
-                {/*)}*/}
 
                 {MetamaskInstall && (
 
 
 
-                    <div className={"flex flex-col justify-center items-center"}>
-                        <App/>
+                    <div className={"flex flex-row justify-center items-center"}>
+                        <Time2/>
 
-                        {/*<p className="mt-4 text-lg leading-6 text-center px-0 py-0 mx-0 my-0">*/}
-                        {/*    Please connect to Metamask Wallet.*/}
-                        {/*</p>*/}
                     </div>
 
 

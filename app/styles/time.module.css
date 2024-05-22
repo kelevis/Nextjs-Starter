@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/*这是一个媒体查询，它检查用户是否禁用了动画效果。如果用户没有禁用动画效果，则应用 .App-logo-spin 动画。*/
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes color-change {
+  0% { color: red; }
+  25% { color: blue; }
+  50% { color: green; }
+  75% { color: yellow; }
+  100% { color: red; }
+}
+
+
+.a{
+  animation: color-change 10s infinite;
+  font-size: 30px;
+  font-family: "Times New Roman",times,"serif";
+}
+
+.card {
+  /*background-color: powderblue;*/
+  /*border-radius: 10px;*/
+  /*padding: 20px;*/
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+  /*width: 200px;*/
+  /*margin: 20px auto;*/
+}
+
+.time {
+  font-family: "Times New Roman";
+  font-size: 20px;
+  font-weight: bold;
+  /*color: whitesmoke;*/
+}
+
+.icon-container {
+  display: inline-block;
+  animation: rotate 2s linear infinite; /* 定义旋转动画 */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); /* 开始时的角度为0度 */
+  }
+  to {
+    transform: rotate(360deg); /* 结束时的角度为360度，即一圈 */
+  }
+}
+
+
+

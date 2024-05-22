@@ -1,0 +1,16 @@
+.container {
+    display: inline-block;
+}
+
+.icon {
+    animation: rotate 2s linear infinite; /* 定义旋转动画 */
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg); /* 开始时的角度为0度 */
+    }
+    to {
+        transform: rotate(360deg); /* 结束时的角度为360度，即一圈 */
+    }
+}

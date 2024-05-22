@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/time1.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/ReactLogo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/RotaIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Time2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/styles/Logo.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/styles/RotatingIcon.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/styles/time.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/hooks/useMetamask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/hooks/useMetamask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/time1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Time1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -26,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,6 +60,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../my-blog" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -72,9 +79,11 @@
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\components" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\styles" />
+      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\public" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -117,6 +126,8 @@
       <workItem from="1716275132546" duration="2827000" />
       <workItem from="1716278332415" duration="28000" />
       <workItem from="1716278384429" duration="6419000" />
+      <workItem from="1716344684300" duration="1298000" />
+      <workItem from="1716346685586" duration="6291000" />
     </task>
     <servers />
   </component>
