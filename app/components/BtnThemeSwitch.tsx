@@ -4,7 +4,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { PiSunDim } from "react-icons/pi";
-export default function ThemeSwitchBtn() {
+export default function BtnThemeSwitch() {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["light"]));
     const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()

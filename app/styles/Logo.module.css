@@ -42,7 +42,7 @@
 .logo {
     width: 150px;
     height: 150px;
-    animation: rotate 2s linear infinite; /* 定义旋转动画 */
+    animation: rotate 10s linear infinite; /* 定义旋转动画,2s完成一次循环 */
 }
 
 @keyframes rotate {

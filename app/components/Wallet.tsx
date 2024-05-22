@@ -7,11 +7,11 @@ import * as config from "@/config.js"
 import React, {useState} from 'react';
 import {FaCopy} from 'react-icons/fa';
 import {Button, Input, Textarea} from "@nextui-org/react";
-import CalenderBtn from "@/app/components/calender";
 import {Snippet} from "@nextui-org/react";
+import TimeAndLogo from "@/app/components/uiTimeAndLogo"
+import CalenderBtn from "@/app/components/uiCalender";
 import DashboardClock from "@/app/components/Time"
 
-import Time2 from "@/app/components/Time2"
 // import TimeClockViews from "@/app/components/Time";
 // import { useTheme } from '@mui/system';
 // import { FormControl, useFormControlContext } from '@mui/base/FormControl';
@@ -27,7 +27,6 @@ export default function Wallet() {
 
     const [error, setError] = useState(null);
     const [signature, setSignature] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
     const [inputAddress, setInputAddress] = useState<string>('');
     const [inputTokenId, setInputTokenId] = useState<string>('');
 
@@ -303,17 +302,19 @@ export default function Wallet() {
                 {MetamaskNotInstall && (
 
                     <div className={"flex flex-row justify-center gap-4"}>
-                        <Link
-                            href="https://metamask.io/"
-                            target="_blank"
-                            className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            Install Metamask
-                        </Link>
 
-                        {/*<DashboardClock/>*/}
+                        <TimeAndLogo text={"Please install Metamask"}/>
 
-                        <CalenderBtn/>
+                        {/*<Link*/}
+                        {/*    href="https://metamask.io/"*/}
+                        {/*    target="_blank"*/}
+                        {/*    className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent  px-5 py-3 text-base font-medium  sm:w-auto"*/}
+                        {/*>*/}
+                        {/*    Install Metamask*/}
+                        {/*</Link>*/}
+
+
+                        {/*<CalenderBtn/>*/}
 
                     </div>
 
@@ -322,14 +323,10 @@ export default function Wallet() {
 
                 {MetamaskInstall && (
 
-
-
                     <div className={"flex flex-row justify-center items-center"}>
-                        <Time2/>
+                        <TimeAndLogo text={"Please connect Metamask"}/>
 
                     </div>
-
-
 
                 )}
 
@@ -339,10 +336,10 @@ export default function Wallet() {
 
                         <h3 className="text-3xl font-medium leading-6 ">
                             Balance:{" "}
-                            {/*      <span>*/}
-                            {/*  {(parseInt(balance as string) / 1000000000000000000).toFixed(4)}{" "}*/}
-                            {/*          ETH*/}
-                            {/*</span>*/}
+                                  <span>
+                              {(parseInt(balance as string) / 1000000000000000000).toFixed(4)}{" "}
+                                      ETH
+                            </span>
                         </h3>
 
                         <div className={"text-center"}>

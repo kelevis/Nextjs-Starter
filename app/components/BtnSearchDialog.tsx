@@ -2,15 +2,15 @@
 import React, { useState } from 'react'
 
 import Link from 'next/link'
-import ThemeSwitchBtn from './ThemeSwitchBtn'
+import BtnThemeSwitch from './BtnThemeSwitch'
 
-const SearchDialog = () => {
+const BtnSearchDialog = () => {
     
     return (
         <div className=' absolute right-[8vw] top-1/2  -translate-y-1/2'>
-            <ThemeSwitchBtn></ThemeSwitchBtn>
+            <BtnThemeSwitch/>
         </div>
     )
 }
 
-export default SearchDialog
+export default BtnSearchDialog;

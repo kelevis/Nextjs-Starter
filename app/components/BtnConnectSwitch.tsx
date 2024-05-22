@@ -7,16 +7,16 @@ import {Loading} from "@/app/components/Loading";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import {RiEthFill} from "react-icons/ri";
-import { CiSaveDown1 } from "react-icons/ci";
+import {CiSaveDown1} from "react-icons/ci";
 
-export default function ConnectSwitchBtn() {
-
+export default function BtnConnectSwitch() {
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
     const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
     const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
     const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
+
     const handleConnect = async () => {
         dispatch({type: "loading"});
         const accounts = await window.ethereum.request({
@@ -41,6 +41,13 @@ export default function ConnectSwitchBtn() {
         dispatch({type: "disconnect"});
     };
 
+    const handleDownMetamask = () => {
+
+        // 当按钮被点击时，将会打开一个新的浏览器窗口或标签页，地址为谷歌的主页。
+        // window.open() 方法的第一个参数是要打开的链接地址，第二个参数是窗口的名称或标识符
+        window.open('https://metamask.io/', '_blank');
+    };
+
     let myButton;
 
     if (status === 'loading') {
@@ -57,8 +64,8 @@ export default function ConnectSwitchBtn() {
         myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
             <RiEthFill style={{color: 'forestgreen'}}/>
         </Button>
-    }else if (MetamaskNotInstall) {
-        myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
+    } else if (MetamaskNotInstall) {
+        myButton = <Button variant="bordered" onClick={handleDownMetamask} isIconOnly={true}>
             <CiSaveDown1 style={{color: 'gray'}}/>
         </Button>
     }
