@@ -25,7 +25,9 @@ export default function Wallet() {
     const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
     const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
 
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
+
     const [signature, setSignature] = useState<string | null>(null);
     const [inputAddress, setInputAddress] = useState<string>('');
     const [inputTokenId, setInputTokenId] = useState<string>('');
@@ -33,12 +35,18 @@ export default function Wallet() {
     const [inputTokenIdSign, setInputTokenIdSign] = useState<string>('');
     const [inputSignature, setInputSignature] = useState<string>('');
     const [copied, setCopied] = useState(false);
+
     const [invokeLoading, setInvokeLoading] = useState(false);
+    const [sgnLoading, setSgnLoading] = useState(false);
 
     const getSignature = async (account: string, tokenId: bigint): Promise<string> => {
 
         // const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
-        const wallet = new ethers.Wallet(config.demoContractSepoliaPrivateKey)
+
+        // const wallet = new ethers.Wallet(config.demoContractSepoliaPrivateKey)
+        const browserProvider = new ethers.BrowserProvider(window.ethereum);
+        // 获取当前钱包账户
+        const signer = await browserProvider.getSigner()
 
         // const providerSepolia= new ethers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_sepolia)
         // const wallet = new ethers.Wallet(config.mylinkContractSepoliaPrivateKey, providerSepolia)
@@ -52,7 +60,7 @@ export default function Wallet() {
 
         // 签名
         const messageHashBytes = ethers.getBytes(msgHash)
-        const signature = wallet.signMessage(messageHashBytes);
+        const signature = signer.signMessage(messageHashBytes);
         console.log(`链下签名（相当于领货码）：${signature}`)
 
         return await signature
@@ -137,15 +145,20 @@ export default function Wallet() {
     };
 
     const handleGetSignature = async () => {
+        setSgnLoading(true)
+
         try {
             const signatureResult = await getSignature(inputAddress, BigInt(inputTokenId)); // 调用 getSignature 函数，并传递文本输入框的值
             setSignature(signatureResult); // 更新签名结果
             setError(null); // 清除之前的错误状态
         } catch (error) {
             console.error('Error getting signature:', error);
+            alert("Error Try again")
             // setError(error.message); // 设置错误状态为捕获到的错误信息
 
         }
+
+        setSgnLoading(false)
     };
 
     const handleContractWrite = async () => {
@@ -163,16 +176,29 @@ export default function Wallet() {
         console.log(`以太坊余额： ${ethers.formatUnits(balance)}`)
 
         try {
-            console.log("safeMint inputTokenId:", BigInt(inputTokenId))
+            console.log("safeMint inputTokenIdSign:", BigInt(inputTokenIdSign))
             console.log("safeMint tokenUrlImageJson ", config.tokenUrlImageJson)
             console.log("safeMint  signature", signature)
 
-            const tx = await contract.safeMint(BigInt(inputTokenId), config.tokenUrlImageJson, inputSignature)
+            const tx = await contract.safeMint(BigInt(inputTokenIdSign), config.tokenUrlImageJson, inputSignature)
 
             console.log("result tx:", tx.toString());
 
         } catch (error) {
             console.error("Error:", error);
+            alert("Error Try again")
+            //
+            // if (error instanceof Error) { // 确保 error 是 Error 类型
+            //
+            //     alert("Try again"); // 在警告框中显示错误消息
+            //     console.error("Error:", error);
+            //     // setError(error.message); // 设置错误状态
+            //
+            // } else {
+            //
+            //     alert("Try again"); // 在警告框中显示错误消息
+            //     console.error("Error:", error);
+            // }
         }
 
         setInvokeLoading(false);
@@ -422,17 +448,35 @@ export default function Wallet() {
                 )}
 
                 {MetamaskInstallAndConnected && (
-                    <div className="flex  w-full justify-center space-x-2">
-                        <Button
-                            color="primary" variant="flat"
-                            onClick={handleGetSignature}
-                            // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
-                        >
-                            {status === "loading" ? <Loading/> : "Get Signature"}
-                        </Button>
+
+                    sgnLoading ? (
+                        <div className="flex  w-full justify-center my-4 space-x-2">
+                            <Button
+                                color="primary" variant="flat"
+                                isLoading={true}
+                                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
+                            >
+                            </Button>
+
+                        </div>
+                    ) : (
+                        <div className="flex  w-full justify-center space-x-2">
+                            <Button
+                                color="primary" variant="flat"
+                                onClick={handleGetSignature}
+                                // className="mt-8 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-ganache  px-5 py-3 text-base font-medium  sm:w-auto"
+                            >
+                                {status === "loading" ? <Loading/> : "Get Signature"}
+                            </Button>
 
 
-                    </div>
+                        </div>
+                        )
+
+
+
+
+
                 )}
 
                 {MetamaskInstallAndConnected && (
@@ -524,9 +568,9 @@ export default function Wallet() {
                                 {status === "loading" ? <Loading/> : "Invoke Contract"}
                             </Button>
 
+                            {/*{error && <div className="alert alert-danger">{error}</div>} /!* 显示错误提示 *!/*/}
+
                         </div>
-
-
                     )
 
 

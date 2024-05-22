@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ConnectSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnConnectSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ReactLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/uiReactLogo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/SearchDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnSearchDialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/ThemeSwitchBtn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnThemeSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Time2.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/uiTimeAndLogo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/calender.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/uiCalender.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/not-found.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styles/Logo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles/Logo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styles/time.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles/time.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +119,7 @@
       <workItem from="1716344684300" duration="1298000" />
       <workItem from="1716346685586" duration="6291000" />
       <workItem from="1716359725696" duration="2539000" />
+      <workItem from="1716370269907" duration="1821000" />
     </task>
     <servers />
   </component>
@@ -146,7 +137,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/nextjs-app-demo" />
+                        <option value="cmcc/nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>
