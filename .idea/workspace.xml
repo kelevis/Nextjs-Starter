@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +119,7 @@
       <workItem from="1716346685586" duration="6291000" />
       <workItem from="1716359725696" duration="2539000" />
       <workItem from="1716370269907" duration="1821000" />
+      <workItem from="1716429947629" duration="1848000" />
     </task>
     <servers />
   </component>
