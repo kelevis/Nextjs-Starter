@@ -13,13 +13,12 @@ const USDTMonitor: React.FC = () => {
 
     const fetchTransfers = async () => {
         try {
-            const response = await fetch('api/monitor-log-BNB', { cache: 'no-store' });
+            const response = await fetch('api/monitor-BNB-log', { cache: 'no-store' });
             const data = await response.json();
             setTransfers(data.transfers);
 
             console.log("response:",response)
-            console.log("data:",data)
-            console.log("transfers:",transfers)
+            console.log("data:",data.length)
         } catch (error) {
             console.error('Error fetching transfers:', error);
         }

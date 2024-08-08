@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="" />
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/app/components/MonitorHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/monitor/layout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignNft.sol" beforeDir="false" afterPath="$PROJECT_DIR$/SignNft.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/BtnConnectSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnConnectSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitor/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitor/page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,9 +47,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2fDECB78FyYTHk0acUr1fODVMsX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,23 +67,24 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\nodejsWorkspace\\Nextjs-Starter\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\components" />
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\monitor" />
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\components" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\public" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\styles" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\components" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\styles" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\public" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app" />
-      <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -122,6 +132,10 @@
       <workItem from="1716359725696" duration="2539000" />
       <workItem from="1716370269907" duration="1821000" />
       <workItem from="1716429947629" duration="1848000" />
+      <workItem from="1722503036060" duration="58000" />
+      <workItem from="1722503185244" duration="1668000" />
+      <workItem from="1722932802600" duration="2010000" />
+      <workItem from="1723082013241" duration="5536000" />
     </task>
     <servers />
   </component>
@@ -139,7 +153,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="cmcc/nextjs-app-demo" />
+                        <option value="nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>

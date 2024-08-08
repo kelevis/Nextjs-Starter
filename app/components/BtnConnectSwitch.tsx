@@ -1,7 +1,6 @@
 "use client"
 import React from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-import {useState, useEffect} from 'react'
 import {useTheme} from 'next-themes'
 import {Loading} from "@/app/components/Loading";
 import {useMetamask} from "@/app/hooks/useMetamask";
@@ -10,7 +9,7 @@ import {RiEthFill} from "react-icons/ri";
 import {CiSaveDown1} from "react-icons/ci";
 
 export default function BtnConnectSwitch() {
-
+    // dispatch用于触发操作或更新状态，通过调用useMetamask()钩子返回：dispatch函数、和state对象
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
     const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
