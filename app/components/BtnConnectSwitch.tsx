@@ -50,21 +50,21 @@ export default function BtnConnectSwitch() {
     let myButton;
 
     if (status === 'loading') {
-        myButton = <Button isLoading={true} isIconOnly={true}/>;
+        myButton = <Button variant="light" isLoading={true} isIconOnly={true} />;
 
     } else if (MetamaskInstall) {
 
-        myButton = <Button variant="bordered" onClick={handleConnect} isIconOnly={true}>
+        myButton = <Button variant="light" onClick={handleConnect} isIconOnly={true}>
             <RiEthFill style={{color: 'gray'}}/>
         </Button>
 
     } else if (MetamaskInstallAndConnected) {
 
-        myButton = <Button variant="bordered" onClick={handleDisconnect} isIconOnly={true}>
+        myButton = <Button variant="light" onClick={handleDisconnect} isIconOnly={true}>
             <RiEthFill style={{color: 'forestgreen'}}/>
         </Button>
     } else if (MetamaskNotInstall) {
-        myButton = <Button variant="bordered" onClick={handleDownMetamask} isIconOnly={true}>
+        myButton = <Button variant="light" onClick={handleDownMetamask} isIconOnly={true}>
             <CiSaveDown1 style={{color: 'gray'}}/>
         </Button>
     }

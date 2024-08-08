@@ -14,6 +14,9 @@ export async function GET(request) {
     const logs = await contractUSDT.queryFilter('Transfer', latestBlock, latestBlock);
 
     const transfers = logs.map(log => ({
+        blockNumber: log.blockNumber.toString(),
+        blockHash: log.blockHash.toString(),
+        transactionHash: log.transactionHash.toString(),
         from: log.args.from.toString(),
         to: log.args.to.toString(),
         value: log.args.value.toString()

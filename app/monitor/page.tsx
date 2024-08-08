@@ -1,5 +1,5 @@
 "use client"
-import USDTMonitor from '@/app/components/monter_BNB_on';
+import USDTMonitor from '@/app/components/monter_BNB_log';
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect} from "react";
@@ -40,6 +40,7 @@ const HomePage = () => {
     return (
 
         <div className="w-full h-full ">
+            <h1 className={'text-2xl'}>Welcome to USDT Transfer Monitor</h1>
             {MetamaskInstallAndConnected && (
                 <div>
                     <br></br>
@@ -56,8 +57,6 @@ const HomePage = () => {
 
                 </div>
             )}
-
-            <h1 className={'text-2xl'}>Welcome to USDT Transfer Monitor</h1>
             <USDTMonitor/>
         </div>
     );

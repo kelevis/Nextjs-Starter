@@ -1,8 +1,10 @@
-// pages/index.tsx
 "use client"
 import React, { useEffect, useState } from 'react';
-
+import styles from '../monitor/Home.module.css';
 interface Transfer {
+    blockNumber: string;
+    blockHash: string;
+    transactionHash: string;
     from: string;
     to: string;
     value: string;
@@ -17,8 +19,8 @@ const USDTMonitor: React.FC = () => {
             const data = await response.json();
             setTransfers(data.transfers);
 
-            console.log("response:",response)
-            console.log("data:",data.length)
+            console.log("response:", response)
+            console.log("data:", data.transfers.length)
         } catch (error) {
             console.error('Error fetching transfers:', error);
         }
@@ -28,7 +30,7 @@ const USDTMonitor: React.FC = () => {
         // Fetch initial transfers
         fetchTransfers();
 
-        // Set up interval to fetch transfers every 1 seconds
+        // Set up interval to fetch transfers every 1 second
         const interval = setInterval(fetchTransfers, 1000);
 
         return () => clearInterval(interval);  // Cleanup interval on component unmount
@@ -41,20 +43,36 @@ const USDTMonitor: React.FC = () => {
             {Array.isArray(transfers) && (
                 <div>
                     {transfers.map((transfer, index) => (
-                        <div key={index} className="flex justify-between border-b py-2">
-                            <span className="font-bold">From: {transfer.from}</span>
-                            <span className="font-bold">To: {transfer.to}</span>
-                            <span className="font-bold">Value-Wei: {transfer.value}</span>
+                        <div key={index} className="flex flex-col border-b py-2">
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">BlockNumber:</span>
+                                <span className={styles.truncate} title={transfer.blockNumber}>{transfer.blockNumber}</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">BlockHash:</span>
+                                <span className={styles.truncate} title={transfer.blockHash}>{transfer.blockHash}</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">TransactionHash:</span>
+                                <span className={styles.truncate} title={transfer.transactionHash}>{transfer.transactionHash}</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">From:</span>
+                                <span className={styles.truncate} title={transfer.from}>{transfer.from}</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">To:</span>
+                                <span className={styles.truncate} title={transfer.to}>{transfer.to}</span>
+                            </div>
+                            <div className="flex items-center mb-1">
+                                <span className="font-bold mr-2">Value-Wei:</span>
+                                <span className={styles.truncate} title={transfer.value}>{transfer.value}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
             )}
-
-
-
         </div>
-
-
     );
 };
 

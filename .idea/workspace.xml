@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/MonitorHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/monitor/layout.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/BtnPageHome.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/useIconStyle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/monitor/Home.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignNft.sol" beforeDir="false" afterPath="$PROJECT_DIR$/SignNft.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/monitor-BNB-log/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/monitor-BNB-log/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/BtnConnectSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnConnectSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/BtnThemeSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnThemeSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/HomeHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/HomeHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/monitor/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitor/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,15 +26,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +64,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "last_opened_file_path": "C:/Program Files/nodejsWorkspace/Nextjs-Starter",
+    "last_opened_file_path": "C:/Program Files/nodejsWorkspace/Nextjs-Starter/app/components",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -153,7 +157,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="nextjs-app-demo" />
+                        <option value="cmcc/nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>

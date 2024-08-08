@@ -4,10 +4,14 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { PiSunDim } from "react-icons/pi";
+import { useIconStyle } from '@/app/components/useIconStyle';
+
 export default function BtnThemeSwitch() {
     const [selectedKeys, setSelectedKeys] = React.useState(new Set(["light"]));
     const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()
+    const iconStyle = useIconStyle();
+
 
     useEffect(() => {
         setSelectedKeys(new Set([localStorage.getItem("theme")||'light']))
@@ -26,12 +30,12 @@ export default function BtnThemeSwitch() {
         <Dropdown>
             <DropdownTrigger>
                 <Button
+                    variant="light"
                     // variant="bordered"
-                    variant="bordered"
                     className="capitalize"
                     isIconOnly={true}
                 >
-                    <PiSunDim/>
+                    <PiSunDim style={iconStyle}/>
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
