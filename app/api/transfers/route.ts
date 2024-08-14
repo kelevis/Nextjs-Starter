@@ -1,4 +1,4 @@
-// app/api/transfers/route.ts
+// app/api/transfers/route.js
 import { NextResponse } from 'next/server';
 import { ethers } from 'ethers';
 

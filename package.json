@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@types/node": "18.7.23",
+    "@types/node": "^18.7.23",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/react-icons": "^3.0.0",
