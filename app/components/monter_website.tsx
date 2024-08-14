@@ -5,10 +5,6 @@ const HomePage: React.FC = () => {
     const [metrics, setMetrics] = useState<{
         pv: number;
         uv: number;
-        bounceRate: number;
-        avgSessionDuration: string;
-        pageDepth: number;
-        conversionRate: number;
     } | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);

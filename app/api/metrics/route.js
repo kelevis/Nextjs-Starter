@@ -10,36 +10,25 @@ export async function GET(request) {
 
     const token = request.cookies.get('token')   //
 
-    try {
-        // Read the current count from the file
-        const data = fs.readFileSync(filePath, 'utf8');
-        const pageviews = JSON.parse(data);
-
-        pageviews.count = (pageviews.count || 0) + 1;
-
-        pageviews.lastVisit = new Date().toISOString();
+    const data = fs.readFileSync(filePath, 'utf8');
+    const pageviews = JSON.parse(data);
+    pageviews.count = (pageviews.count || 0) + 1;
+    pageviews.lastVisit = new Date().toISOString();
+    // Write the updated count back to the file
+    fs.writeFileSync(filePath, JSON.stringify(pageviews, null, 2), 'utf8');
 
 
-        // Write the updated count back to the file
-        fs.writeFileSync(filePath, JSON.stringify(pageviews, null, 2), 'utf8');
+    console.log("filePath:", filePath)
+    console.log("data:", data)
+    console.log("pageviews", pageviews)
+    console.log("pageviews.count", pageviews.count)
 
-        console.log("filePath:",filePath)
-        console.log("data:",data)
-        console.log("pageviews",pageviews)
-        console.log("pageviews.count",pageviews.count)
+    // Default values for other metrics
+    const metrics = {
+        pv: pageviews.count || 0,
+        uv: 1234, // Default value
+    };
 
-        // Default values for other metrics
-        const metrics = {
-            pv: pageviews.count || 0,
-            uv: 1234, // Default value
-            bounceRate: 45.0, // Default value
-            avgSessionDuration: pageviews.lastVisit || '00:04:56', // Default value
-            pageDepth: 3.0, // Default value
-            conversionRate: 1.5, // Default value
-        };
+    return NextResponse.json(metrics);
 
-        return NextResponse.json(metrics);
-    } catch (error) {
-        return NextResponse.error();
-    }
 }
