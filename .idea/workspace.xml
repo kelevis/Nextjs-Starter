@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/metrics/route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/monter_website.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/pageviews/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/pageviews.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/transfers/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/transfers/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/pageviews.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/pageviews.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
