@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
 
     const fetchMetrics = async () => {
         try {
-            const response = await fetch('/api/metrics');
+            const response = await fetch('/api/metrics-by-disk');
             if (!response.ok) {
                 throw new Error('Failed to fetch metrics-by-disk');
             }
