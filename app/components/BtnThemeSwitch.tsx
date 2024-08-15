@@ -24,6 +24,7 @@ export default function BtnThemeSwitch() {
 
     const handleAction = (key:string) => {
         setTheme(key)
+        localStorage.setItem("theme", key); // Save theme to localStorage
     }
 
     return (

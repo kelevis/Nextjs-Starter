@@ -1,12 +1,7 @@
 "use client"
-import USDTMonitor from '@/app/components/monter_BNB_log';
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect} from "react";
-import Link from "next/link";
-import {Button, Snippet} from "@nextui-org/react";
-import * as config from "@/config";
-import {contractUSDTAddress} from "@/config";
 import WeatherMonitor from "@/app/components/monter_weather";
 
 const HomePage = () => {

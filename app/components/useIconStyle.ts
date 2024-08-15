@@ -2,6 +2,7 @@ import { useTheme } from 'next-themes';
 
 export function useIconStyle() {
     const { theme } = useTheme();
+    console.log("button theme:",theme)
 
     // Define icon color based on theme
     const colors: Record<string, string> = {
@@ -12,6 +13,6 @@ export function useIconStyle() {
 
     return {
         fontSize: '24px',         // Adjust the size as needed
-        color: colors[theme as keyof typeof colors] || '#000000',  // Set color based on theme, default to black
+        color: colors[theme as keyof typeof colors] ,  // Set color based on theme, default to black
     };
 }

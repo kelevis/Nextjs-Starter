@@ -26,16 +26,8 @@ const HomePage: React.FC = () => {
             const data = await response.json();
             setMetrics(data);
             setLoading(false);
-
             console.log("data:", data)
 
-            // // Initialize elapsed time based on last visit
-            // if (data.metrics-by-disk.lastVisitDate) {
-            //     console.log("data:",data)
-            //     console.log("data.lastVisitDate",data.lastVisitDate)
-            //     const lastVisitDate = new Date(data.lastVisit).getTime();
-            //     setElapsedTime(Math.floor((Date.now() - lastVisitDate) / 1000));
-            // }
 
         } catch (error) {
             setError('Error fetching metrics-by-disk');
