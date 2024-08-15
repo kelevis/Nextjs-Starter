@@ -1,20 +1,23 @@
-import { NextResponse } from 'next/server';
+import {NextResponse} from 'next/server';
 
-let pageviews = {
+const pageData = {
     count: 0,
     lastVisit: null
 };
 
 export async function GET(request) {
 
-    pageviews.count = (pageviews.count || 0) + 1;
-    pageviews.lastVisit = new Date().toISOString();
+    pageData.count = (pageData.count || 0) + 1;
+    pageData.lastVisit = new Date().toISOString();
 
     const metrics = {
-        pv: pageviews.count || 0,
+        pv: pageData.count || 0,
         uv: 1234, // Default value
     };
+
+    console.log(pageData);
+
     const token = request.cookies.get('token')   //
-    return NextResponse.json({ metrics });
+    return NextResponse.json(metrics);
 
 }
