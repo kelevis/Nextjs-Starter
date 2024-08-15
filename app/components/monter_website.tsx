@@ -1,58 +1,63 @@
 // app/page.tsx
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
+
+interface Metrics {
+    pv: number;
+    uv: number;
+}
 
 const HomePage: React.FC = () => {
-    const [metrics, setMetrics] = useState<{
-        pv: number;
-        uv: number;
-    } | null>(null);
+    const [metrics, setMetrics] = useState<Metrics | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
     const [elapsedTime, setElapsedTime] = useState<number>(0);
 
-    useEffect(() => {
-        const fetchMetrics = async () => {
-            try {
-                const response = await fetch('/api/metrics');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch metrics');
-                }
-                const data = await response.json();
-                setMetrics(data);
-                setLoading(false);
+    function setTime() {
+        setElapsedTime(pre => pre + 1);
+        console.log("ElapsedTime:", elapsedTime)
+    }
 
-                console.log("data:",data)
-
-                // // Initialize elapsed time based on last visit
-                // if (data.metrics.lastVisitDate) {
-                //     console.log("data:",data)
-                //     console.log("data.lastVisitDate",data.lastVisitDate)
-                //     const lastVisitDate = new Date(data.lastVisit).getTime();
-                //     setElapsedTime(Math.floor((Date.now() - lastVisitDate) / 1000));
-                // }
-
-            } catch (error) {
-                setError('Error fetching metrics');
-                setLoading(false);
+    const fetchMetrics = async () => {
+        try {
+            const response = await fetch('/api/metrics');
+            if (!response.ok) {
+                throw new Error('Failed to fetch metrics-by-disk');
             }
-        };
+            const data = await response.json();
+            setMetrics(data);
+            setLoading(false);
 
-        fetchMetrics();
-        const interval = setInterval(() => {
-            setElapsedTime(pre => pre + 1);
-            console.log("ElapsedTime:",elapsedTime)
-        }, 1000);
+            console.log("data:", data)
 
-        return () => clearInterval(interval); // Cleanup interval
+            // // Initialize elapsed time based on last visit
+            // if (data.metrics-by-disk.lastVisitDate) {
+            //     console.log("data:",data)
+            //     console.log("data.lastVisitDate",data.lastVisitDate)
+            //     const lastVisitDate = new Date(data.lastVisit).getTime();
+            //     setElapsedTime(Math.floor((Date.now() - lastVisitDate) / 1000));
+            // }
 
-
-    }, []);
+        } catch (error) {
+            setError('Error fetching metrics-by-disk');
+            setLoading(false);
+        }
+    };
 
     const formatTime = (seconds: number) => {
         const minutes = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
+
+    useEffect(() => {
+        fetchMetrics();
+        const interval = setInterval(setTime, 1000);
+
+        return () => clearInterval(interval); // Cleanup interval
+
+    }, []);
+
+
 
     return (
         <div className="p-4">
@@ -80,19 +85,6 @@ const HomePage: React.FC = () => {
                     </div>
 
 
-                    {/*<div className="p-4 border rounded shadow">*/}
-                    {/*    <h2 className="text-xl font-semibold">跳出率</h2>*/}
-                    {/*    <p>{metrics.bounceRate}%</p>*/}
-                    {/*</div>*/}
-
-                    {/*<div className="p-4 border rounded shadow">*/}
-                    {/*    <h2 className="text-xl font-semibold">页面浏览深度</h2>*/}
-                    {/*    <p>{metrics.pageDepth.toFixed(1)}</p>*/}
-                    {/*</div>*/}
-                    {/*<div className="p-4 border rounded shadow">*/}
-                    {/*    <h2 className="text-xl font-semibold">转化率</h2>*/}
-                    {/*    <p>{metrics.conversionRate}%</p>*/}
-                    {/*</div>*/}
                 </div>
             )}
         </div>
