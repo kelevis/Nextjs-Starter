@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/app/api/websocket/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/chat/page.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnPageHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageHome.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnThemeSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnThemeSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/monter_website.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/monter_website.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/useIconStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/useIconStyle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/weather/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/weather/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +21,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -48,10 +48,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2fDECB78FyYTHk0acUr1fODVMsX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -66,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "javascript.nodejs.core.library.configured.version": "20.10.0",
     "javascript.nodejs.core.library.typings.version": "20.10.8",
-    "last_opened_file_path": "C:/Program Files/nodejsWorkspace/Nextjs-Starter/app/api",
+    "last_opened_file_path": "C:/Program Files/nodejsWorkspace/Nextjs-Starter/app/chat",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,11 +78,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\chat" />
+      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\chat" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\components" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app" />
-      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\monitor" />
-      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app" />
@@ -142,6 +142,8 @@
       <workItem from="1722932802600" duration="2010000" />
       <workItem from="1723082013241" duration="5536000" />
       <workItem from="1723684893152" duration="7411000" />
+      <workItem from="1723779487039" duration="644000" />
+      <workItem from="1723798632731" duration="14217000" />
     </task>
     <servers />
   </component>
