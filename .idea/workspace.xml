@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/websocket/route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/chat/page.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +135,7 @@
       <workItem from="1723082013241" duration="5536000" />
       <workItem from="1723684893152" duration="7411000" />
       <workItem from="1723779487039" duration="644000" />
-      <workItem from="1723798632731" duration="14217000" />
+      <workItem from="1723798632731" duration="14546000" />
     </task>
     <servers />
   </component>
