@@ -32,7 +32,7 @@ export default function Home() {
         }
 
         // 创建一个新的 WebSocket 连接
-        const ws = new WebSocket(`ws://localhost:8080/ws/${userId}`);
+        const ws = new WebSocket(`ws://36.138.57.57:5050/ws/${userId}`);
 
         ws.onopen = () => {
             console.log('Connected to WebSocket server');
@@ -149,7 +149,8 @@ export default function Home() {
 
 
                         <form className="flex flex-col text-center gap-3">
-                            <h1>WebSocket Chat</h1>
+                            <h1>WebSocket Chat </h1>
+                            <h2>Connected as {userId} </h2>
                             <Input
                                 variant="bordered"
                                 type="text"

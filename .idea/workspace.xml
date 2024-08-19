@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="" />
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "javascript.nodejs.core.library.configured.version": "20.10.0",
     "javascript.nodejs.core.library.typings.version": "20.10.8",
-    "last_opened_file_path": "C:/Program Files/nodejsWorkspace/Nextjs-Starter/app/chat",
+    "last_opened_file_path": "C:/Program Files/goWorkSpace/src/websocket",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -136,6 +141,8 @@
       <workItem from="1723684893152" duration="7411000" />
       <workItem from="1723779487039" duration="644000" />
       <workItem from="1723798632731" duration="14546000" />
+      <workItem from="1724033509543" duration="2621000" />
+      <workItem from="1724059593221" duration="241000" />
     </task>
     <servers />
   </component>
