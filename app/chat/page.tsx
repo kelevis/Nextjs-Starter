@@ -19,10 +19,28 @@ export default function Home() {
     const [targetUserId, setTargetUserId] = useState<string>('');
     const [userId, setUserId] = useState<string>(''); // 用户输入的 userId
     const [connected, setConnected] = useState<boolean>(false); // 判断是否已连接
+    const [https, setHttps] = useState<boolean>(false); // 判断是否已连接
     const messagesEndRef = useRef<HTMLTextAreaElement>(null);
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
+
+    function testNetwork() {
+        // 在新窗口中发起一个 HTTPS 请求
+        const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
+        setHttps(true); // 设置为已测试
+        if (newWindow) {
+            newWindow.onload = () => {
+                console.log('HTTPS request successful');
+                newWindow.close(); // 关闭新窗口
+                setHttps(true); // 设置为已测试
+            };
+            newWindow.onerror = () => {
+                console.error('Failed to perform HTTPS request');
+                newWindow.close(); // 关闭新窗口
+            }
+        }
+    }
 
     function connectWeb(userId: string) {
         // 检查 userId 是否有效
@@ -32,7 +50,7 @@ export default function Home() {
         }
 
         // 创建一个新的 WebSocket 连接
-        const ws = new WebSocket(`ws://36.138.57.57:5050/ws/${userId}`);
+        const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
 
         ws.onopen = () => {
             console.log('Connected to WebSocket server');
@@ -98,8 +116,6 @@ export default function Home() {
         console.log("连接metamask成功！")
 
 
-
-
     }, [messages]); // 依赖 userId，当 userId 变化时重新执行
 
     const sendMessage = () => {
@@ -118,32 +134,52 @@ export default function Home() {
     return (
         <div className="w-full h-full ">
 
-            {!connected && (
+            {!https && (
                 <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
                     <h1>Enter your User ID to connect</h1>
                     <div className="flex justify-center">
-                            <form className="flex flex-col gap-2">
-                                <Input
-                                    variant="bordered"
-                                    type="text"
-                                    placeholder="Your User ID"
-                                    value={userId}
-                                    onChange={(e) => setUserId(e.target.value)}
-                                    width="300px" // 设置输入框的宽度
-                                    onKeyDown={(e) => e.key === 'Enter' && connectWeb(userId)}
-                                />
-                                <Button color="primary" variant="flat" onClick={() => connectWeb(userId)}>
-                                    Send
-                                </Button>
-                            </form>
+                        <form className="flex flex-col gap-2">
+                            <Button color="primary" variant="flat" onClick={testNetwork}>
+                                Test Network
+                            </Button>
+                        </form>
                     </div>
 
 
                 </div>
-                )}
+            )}
+
+            {https && !connected && (
+                <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
+                    <h1>Enter your User ID to connect</h1>
+                    <div className="flex justify-center">
+                        <form className="flex flex-col gap-2">
+                            <Input
+                                variant="bordered"
+                                type="text"
+                                placeholder="Your User ID"
+                                value={userId}
+                                onChange={(e) => setUserId(e.target.value)}
+                                width="300px" // 设置输入框的宽度
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault(); // 阻止表单提交
+                                        connectWeb(userId); // 连接WebSocket
+                                    }
+                                }}
+                            />
+                            <Button color="primary" variant="flat" onClick={() => connectWeb(userId)}>
+                                Send
+                            </Button>
+                        </form>
+                    </div>
 
 
-            {connected && (
+                </div>
+            )}
+
+
+            {https && connected && (
                 <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
                     <div className="flex w-full space-x-2 space-y-2 my-4 gap-6 text-center">
 
