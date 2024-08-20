@@ -136,7 +136,7 @@ export default function Home() {
 
             {!https && (
                 <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
-                    <h1>Enter your User ID to connect</h1>
+                    <h1>The Network is connecting</h1>
                     <div className="flex justify-center">
                         <form className="flex flex-col gap-2">
                             <Button color="primary" variant="flat" onClick={testNetwork}>

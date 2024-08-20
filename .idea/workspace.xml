@@ -161,7 +161,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="cmcc/nextjs-app-demo" />
+                        <option value="nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>

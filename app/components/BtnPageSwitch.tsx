@@ -11,7 +11,11 @@ export default function MultiPageNavButton() {
     const router = useRouter();
     const iconStyle = useIconStyle();
     const handleAction = (path: string) => {
-        router.push(path);
+        if (path === "/chat") {
+            window.open(path, '_blank'); // 在新标签页中打开 /chat 页面
+        } else {
+            router.push(path); // 正常导航
+        }
     };
 
     useEffect(() => {
