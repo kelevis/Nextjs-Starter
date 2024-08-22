@@ -31,4 +31,5 @@ export async function GET(request) {
     const token = request.cookies.get('token')   //
     return NextResponse.json({transfers});
 
+
 }
