@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="">
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/chat/page1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,19 +61,20 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.selected.package.eslint" value="" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="ts.external.directory.path" value="D:\nodejsWorkspace\Nextjs-Starter\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nodejsWorkspace\Nextjs-Starter\app\chat" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\chat" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\chat" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app\components" />
-      <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodejsWorkspace\Nextjs-Starter\app" />
@@ -80,6 +85,9 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\bbf\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
       <changelist id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="" />
@@ -137,6 +145,10 @@
       <workItem from="1724061066759" duration="1305000" />
       <workItem from="1724142531033" duration="2312000" />
       <workItem from="1724233216054" duration="617000" />
+      <workItem from="1724400212153" duration="587000" />
+      <workItem from="1724400821428" duration="274000" />
+      <workItem from="1724401098758" duration="2735000" />
+      <workItem from="1724403871777" duration="3634000" />
     </task>
     <servers />
   </component>
