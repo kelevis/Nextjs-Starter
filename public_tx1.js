@@ -1,22 +1,25 @@
-const Web3 = require('web3');
-const Tx = require('ethereumjs-tx').Transaction; // Use `ethereumjs-tx` package
-const fs = require('fs');
-const path = require('path');
+import Web3 from 'web3';
+import { Transaction as Tx } from 'ethereumjs-tx'; // Use `ethereumjs-tx` package
+import fs from 'fs';
+import path from 'path';
+import * as config from './config.js'; // Use import syntax
 
 // Create an async function to handle the asynchronous code
 async function deployContract() {
     // Initialize Web3
-    const web3 = new Web3('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID'); // Update with your Infura project ID
+    // const web3 = new Web3('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID'); // Update with your Infura project ID
+    const web3 = new Web3(config.alchemy_Endpoints_Url_ethereum_sepolia); // Update with your Infura project ID
+
 
     // Use an existing account or create a new one
     const privateKey = '0x8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63';
     const account = web3.eth.accounts.privateKeyToAccount(privateKey);
 
     // Read the contract ABI and binary
-    const contractJsonPath = path.resolve(__dirname, 'SimpleStorage.json');
+    const contractJsonPath = path.resolve('SimpleStorage.json');
     const contractJson = JSON.parse(fs.readFileSync(contractJsonPath));
     const contractAbi = contractJson.abi;
-    const contractBinPath = path.resolve(__dirname, 'SimpleStorage.bin');
+    const contractBinPath = path.resolve('SimpleStorage.bin');
     const contractBin = fs.readFileSync(contractBinPath);
 
     // Initialize the constructor with a value
