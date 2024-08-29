@@ -7,7 +7,7 @@ async function deployContract() {
     // const provider = new ethers.providers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_sepolia);
     // const provider = new ethers.providers.JsonRpcProvider(config.locall_Endpoints_Url_ethereum_QBFT);
     // const provider = new ethers.providers.JsonRpcProvider("https://rpc5.gemini.axiomesh.io");
-    const provider = new ethers.Provider.JsonRpcProvider("http://172.32.150.61:8546");
+    const provider = new ethers.JsonRpcProvider("http://172.32.150.61:8546");
 
     // 使用现有账户或创建一个新账户
     const wallet = new ethers.Wallet(config.besuPrivateKey2, provider);
