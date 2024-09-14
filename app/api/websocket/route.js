@@ -1,4 +1,4 @@
-// app/api/websocket/route.js
+// app/api/websocket/route.ts
 import { WebSocketServer } from 'ws';
 
 const clients = new Map();
