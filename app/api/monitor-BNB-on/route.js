@@ -6,6 +6,7 @@ const abi = [
     "event Transfer(address indexed from, address indexed to, uint value)"
 ];
 
+
 const provider = new ethers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/3BTT655Z0kgn8kQb4b7Sqo9CvhvbUf7Q");
 const contractUSDT = new ethers.Contract(contractAddress, abi, provider);
 

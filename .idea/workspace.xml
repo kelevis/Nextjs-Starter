@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/api/lyrics/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/music/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/music/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/lyrics/lyrics.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/lyrics/lyrics1.lrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/music/dream.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/hello/route.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/hello/route.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/transfers/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/transfers/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/websocket/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/websocket/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
+        <entry key="$PROJECT_DIR$" value="hot" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
