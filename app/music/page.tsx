@@ -85,19 +85,22 @@ const HomePage = () => {
     };
 
     const updateProgress = () => {
-        if (audioRef.current) {
-            setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
-            setDuration(audioRef.current.duration);
+        if (audioRef.current && !isNaN(audioRef.current.duration)) {
+            const currentTime = audioRef.current.currentTime;
+            const duration = audioRef.current.duration;
+
+            setProgress((currentTime / duration) * 100);
+            setDuration(currentTime);
 
             // Update current lyric based on currentTime
-            const currentTime = audioRef.current.currentTime;
-            const currentLine = lyrics.find((lyric) => lyric.time > currentTime);
+            const currentLine = lyrics.find((lyric) => lyric.time > currentTime) || lyrics[lyrics.length - 1];
             if (currentLine) {
                 setCurrentLyric(currentLine.text);
                 setCurrentTranslation(currentLine.translation);
             }
         }
     };
+
 
     const togglePlayPause = () => {
         if (playing) {
