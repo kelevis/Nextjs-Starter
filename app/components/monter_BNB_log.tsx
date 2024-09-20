@@ -20,6 +20,8 @@ const USDTMonitor: React.FC = () => {
             setTransfers(data.transfers);
 
             console.log("response:", response)
+            console.log("data:", data)
+            console.log("data.transfers:", data.transfers)
             // console.log("data:", data.transfers.length)
         } catch (error) {
             console.error('Error fetching transfers:', error);
