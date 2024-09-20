@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更" />
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/city/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/city/SHANGHAI30.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/music/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/music/page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/lyrics" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -64,11 +70,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\city" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\lyrics" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\lyrics" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\music" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\music" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\music" />

@@ -1,36 +1,34 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Button, Slider } from "@nextui-org/react";
-import {useMetamask} from "@/app/hooks/useMetamask";
-import {useListen} from "@/app/hooks/useListen";
+import { useMetamask } from "@/app/hooks/useMetamask";
+import { useListen } from "@/app/hooks/useListen";
 
 const HomePage = () => {
-    const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
+    const {
+        dispatch,
+        state: { status, isMetamaskInstalled, wallet, balance },
+    } = useMetamask();
     const listen = useListen();
+
     const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
     const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
     const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
 
     useEffect(() => {
         if (typeof window !== undefined) {
-
             const ethereumProviderInjected = typeof window.ethereum !== "undefined";
             const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
             const local = window.localStorage.getItem("metamaskState");
-            console.log("local:", local)
-            console.log("window:", window)
 
-            // user was previously connected, start listening to MM
+            // User was previously connected, start listening to MM
             if (local) {
                 listen();
             }
 
-            // local could be null if not present in LocalStorage
-            const {wallet, balance} = local ? JSON.parse(local) : {wallet: null, balance: null};
-            dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
+            const { wallet, balance } = local ? JSON.parse(local) : { wallet: null, balance: null };
+            dispatch({ type: "pageLoaded", isMetamaskInstalled, wallet, balance });
         }
-        console.log("连接metamask成功！")
-
     }, []);
 
     const [currentTrack, setCurrentTrack] = useState<string | null>(null);
@@ -43,7 +41,6 @@ const HomePage = () => {
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    // Load track and lyrics
     const loadTrackAndLyrics = async () => {
         try {
             const trackResponse = await fetch("/api/music");
@@ -69,19 +66,21 @@ const HomePage = () => {
 
     const parseLyrics = (lyrics: string) => {
         const lyricLines = lyrics.split("\n");
-        return lyricLines.map((line) => {
-            const match = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\](.*)/);
-            if (match) {
-                const time = parseInt(match[1], 10) * 60 + parseInt(match[2], 10) + parseInt(match[3], 10) / 1000;
-                const [englishText, translation] = match[4].split(/(?=\s\[)/);
-                return {
-                    time,
-                    text: englishText.trim(),
-                    translation: translation?.trim() || "",
-                };
-            }
-            return null;
-        }).filter(Boolean) as { time: number; text: string; translation: string }[];
+        return lyricLines
+            .map((line) => {
+                const match = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\](.*)/);
+                if (match) {
+                    const time = parseInt(match[1], 10) * 60 + parseInt(match[2], 10) + parseInt(match[3], 10) / 1000;
+                    const [englishText, translation] = match[4].split(/(?=\s\[)/);
+                    return {
+                        time,
+                        text: englishText.trim(),
+                        translation: translation?.trim() || "",
+                    };
+                }
+                return null;
+            })
+            .filter(Boolean) as { time: number; text: string; translation: string }[];
     };
 
     const updateProgress = () => {
@@ -92,7 +91,6 @@ const HomePage = () => {
             setProgress((currentTime / duration) * 100);
             setDuration(currentTime);
 
-            // Update current lyric based on currentTime
             const currentLine = lyrics.find((lyric) => lyric.time > currentTime) || lyrics[lyrics.length - 1];
             if (currentLine) {
                 setCurrentLyric(currentLine.text);
@@ -100,7 +98,6 @@ const HomePage = () => {
             }
         }
     };
-
 
     const togglePlayPause = () => {
         if (playing) {
@@ -113,7 +110,7 @@ const HomePage = () => {
 
     const handleSliderChange = (value: number | number[]) => {
         if (Array.isArray(value)) {
-            return; // 如果是数组，直接返回，因为我们不处理数组类型
+            return;
         }
         if (audioRef.current) {
             const newTime = (value / 100) * audioRef.current.duration;
@@ -123,29 +120,43 @@ const HomePage = () => {
     };
 
     return (
-        <div className="music-player">
-            <h2>Music Player</h2>
-            {currentTrack ? (
-                <div>
-                    <audio ref={audioRef} src={currentTrack} onTimeUpdate={updateProgress} />
-                    <Button onPress={togglePlayPause}>{playing ? "Pause" : "Play"}</Button>
-                    <Slider
-                        value={progress}
-                        minValue={0}
-                        maxValue={100}
-                        onChange={handleSliderChange}
-                    />
-                    <p>Duration: {Math.round(duration)} seconds</p>
+        <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex justify-center items-center">
+            <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl w-full text-center space-y-6">
+                <h2 className="text-4xl font-bold text-gray-800 mb-4">Music Player</h2>
 
-                    {/* Display synchronized lyrics */}
-                    <div className="lyrics">
-                        <p>{currentLyric}</p>
-                        <p>{currentTranslation}</p>
+                {currentTrack ? (
+                    <div>
+                        <audio ref={audioRef} src={currentTrack} onTimeUpdate={updateProgress} />
+                        <Button
+                            onPress={togglePlayPause}
+                            className="bg-indigo-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-indigo-700 transition"
+                        >
+                            {playing ? "Pause" : "Play"}
+                        </Button>
+
+                        <div className="mt-6">
+                            <Slider
+                                value={progress}
+                                minValue={0}
+                                maxValue={100}
+                                step={1}
+                                onChange={handleSliderChange}
+                                className="w-full"
+                            />
+                        </div>
+
+                        <p className="text-600 mt-2">Duration: {Math.round(duration)} seconds</p>
+
+                        {/* Display synchronized lyrics */}
+                        <div className="mt-6 lyrics text-xl">
+                            <p className="text-700 font-semibold">{currentLyric}</p>
+                            <p className="text-500">{currentTranslation}</p>
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <p>Loading track...</p>
-            )}
+                ) : (
+                    <p>Loading track...</p>
+                )}
+            </div>
         </div>
     );
 };
