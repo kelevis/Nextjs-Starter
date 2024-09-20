@@ -30,7 +30,12 @@ export async function GET(request) {
         // response.headers.set('Cache-Control', 'no-store, max-age=0');
         // return response;
         const token = request.cookies.get('token')   //
-        return NextResponse.json({ transfers });
+
+        // 返回数据，并且通过 `no-store` 禁用静态优化
+        const response = NextResponse.json({ transfers, token });
+        console.log("blockHash",transfers)
+        response.headers.set('Cache-Control', 'no-store, max-age=0');
+        return response;
 
     }catch (error) {
         console.error('Error fetching data:', error);
