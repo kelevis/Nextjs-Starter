@@ -1,4 +1,4 @@
-// app/page.tsx
+// app/page.txt
 import React, {useEffect, useState} from 'react';
 
 interface Metrics {
