@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/city/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/city/SHANGHAI30.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/music/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/music/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/monitor-BNB-log/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/monitor-BNB-log/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hot" />
+        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,6 +81,16 @@
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\app\styles" />
       <recent name="C:\Program Files\goWorkSpace\src\Nextjs-Starter\public" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="route.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app/api/monitor-BNB-on/route.js" working-dir="$PROJECT_DIR$/app/api/monitor-BNB-on">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.route.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -169,7 +177,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="nextjs-app-demo" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
