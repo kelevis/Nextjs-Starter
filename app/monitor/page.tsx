@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
+import Link from "next/link";
 
 interface Transfer {
     blockNumber: string;
@@ -64,9 +65,12 @@ const USDTMonitor: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-900 text-white p-6">
-            <h1 className="text-4xl text-fuchsia-400 font-bold mb-6 text-center">
-                USDT Transfer Monitor
-            </h1>
+
+            <Link href="https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7" >
+                <h1 className="text-4xl text-fuchsia-400 font-bold mb-6 text-center">
+                    USDT Transfer Monitor
+                </h1>
+            </Link>
 
             {Array.isArray(transfers) && transfers.length > 0 ? (
                 <div className="space-y-6">
