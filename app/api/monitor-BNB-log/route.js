@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
 import { ethers } from 'ethers';
 
@@ -10,7 +12,11 @@ const abi = [
 const provider = new ethers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/3BTT655Z0kgn8kQb4b7Sqo9CvhvbUf7Q");
 const contractUSDT = new ethers.Contract(contractAddress, abi, provider);
 
+
+
 export async function GET(request) {
+    const token = request.cookies.get('token')   //
+
     try {
         const latestBlock = await provider.getBlockNumber();
         const logs = await contractUSDT.queryFilter('Transfer', latestBlock, latestBlock);
@@ -29,11 +35,10 @@ export async function GET(request) {
         // const response = NextResponse.json({ transfers });
         // response.headers.set('Cache-Control', 'no-store, max-age=0');
         // return response;
-        const token = request.cookies.get('token')   //
+
 
         // 返回数据，并且通过 `no-store` 禁用静态优化
-        const response = NextResponse.json({ transfers, token });
-        console.log("blockHash",transfers)
+        const response = NextResponse.json({ transfers});
         response.headers.set('Cache-Control', 'no-store, max-age=0');
         return response;
 
