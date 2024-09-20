@@ -51,7 +51,7 @@ const WeatherMonitor: React.FC = () => {
                     type="text"
                     value={city}
                     onChange={handleCityChange}
-                    className="p-2 border border-gray-300 rounded"
+                    className="bg-white p-2 border border-gray-300 rounded"
                     placeholder="English City name"
                 />
                 <Button type="submit" color="primary" variant="flat" radius={"sm"} >Fetch Weather</Button>
