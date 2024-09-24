@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/weather/page.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/monter_weather.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/monter_weather.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/weather/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/weather/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/city/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/city/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +159,7 @@
       <workItem from="1726221158073" duration="354000" />
       <workItem from="1726283681853" duration="6534000" />
       <workItem from="1726301747109" duration="3146000" />
+      <workItem from="1727147157531" duration="1848000" />
     </task>
     <servers />
   </component>
