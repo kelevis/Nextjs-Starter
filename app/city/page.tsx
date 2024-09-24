@@ -32,7 +32,7 @@ const VideoPlayerPage = () => {
 
     return (
         <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-blue-500 p-4">
-            <div className="bg-white bg-opacity-90 rounded-lg p-6 shadow-lg max-w-4xl w-full text-center">
+            <div className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg max-w-4xl w-full text-center">
 
                 <video className="w-full rounded-lg shadow-md" controls>
                     <source src="/city/SHANGHAI30.mp4" type="video/mp4" />
