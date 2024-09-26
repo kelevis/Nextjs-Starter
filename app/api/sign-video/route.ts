@@ -8,9 +8,13 @@ import COS from 'cos-nodejs-sdk-v5';
 export async function GET() {
     try {
         const cos = new COS({
-            SecretId: process.env.TENCENT_SECRET_ID, // 使用环境变量
-            SecretKey: process.env.TENCENT_SECRET_KEY, // 使用环境变量
+            SecretId: process.env.TENCENT_SECRET_ID, // 确保正确使用环境变量
+            SecretKey: process.env.TENCENT_SECRET_KEY,
         });
+
+        console.log('SecretId:', process.env.TENCENT_SECRET_ID);
+        console.log('SecretKey:', process.env.TENCENT_SECRET_KEY);
+
 
         // 定义桶名称和对象路径
         const Bucket = 'kelevis-1317840261'; // 替换为你的 Bucket 名称
