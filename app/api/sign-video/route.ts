@@ -16,6 +16,7 @@ export async function GET() {
         console.log('SecretKey:', process.env.TENCENT_SECRET_KEY);
 
 
+
         // 定义桶名称和对象路径
         const Bucket = 'kelevis-1317840261'; // 替换为你的 Bucket 名称
         const Region = 'ap-beijing'; // 替换为你的存储区域
