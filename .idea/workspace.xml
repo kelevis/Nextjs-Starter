@@ -7,9 +7,7 @@
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/city/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/city/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/sign-video/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/sign-video/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,10 +70,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\other" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\city" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\weather" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\monitor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\music" />

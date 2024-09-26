@@ -1,8 +1,8 @@
 import COS from 'cos-nodejs-sdk-v5';
-import dotenv from 'dotenv';
 
-const env = process.env.NODE_ENV || 'development';
-dotenv.config({ path: `.env.${env}` });
+// import dotenv from 'dotenv';
+// const env = process.env.NODE_ENV || 'development';
+// dotenv.config({ path: `.env.${env}` });
 
 // 处理 GET 请求，返回多个预签名的 URL
 export async function GET() {
