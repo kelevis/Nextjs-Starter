@@ -9,30 +9,6 @@ const HomePage = () => {
 
     const {dispatch,} = useMetamask();
     const listen = useListen();
-    const [urls, setUrls] = useState([]);
-    const [loading, setLoading] = useState(true); // 控制加载状态
-    const fetchPresignedUrl = async () => {
-        try {
-            const response = await fetch('/api/sign-video'); // 替换为你的 API 路径
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log("API response:", data);
-            console.log("1.urls", urls)
-
-            // Ensure data.urls is an array
-            if (Array.isArray(data.urls)) {
-                setUrls(data.urls);  } else {
-                console.error('Expected data.urls to be an array');
-            }
-
-        } catch (error) {
-            console.log("error is:", error)
-        } finally {
-            setLoading(false); // 完成数据获取后，更新 loading 状态
-        }
-    };
 
     useEffect(() => {
         if (typeof window !== undefined) {
@@ -56,31 +32,15 @@ const HomePage = () => {
 
     }, []);
 
-    useEffect(() => {
-        fetchPresignedUrl();
-    }, []);// 没有任何以来，只在渲染时，执行一次fetchPresignedUrl()
-
-    useEffect(() => {
-        console.log("Updated urls:", urls);
-    }, [urls]); // 每当 urls 更新时，打印它的值
-
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r  from-purple-500 to-blue-500 p-4">
-            <div className="grid grid-cols-4 gap-5 max-w-8xl w-full">
+        <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-blue-500 p-4">
+            <div className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg max-w-4xl w-full text-center">
 
-                {loading ? ( <div><Loading /></div> ) : (
-                    urls.map((url, index) => ( // 遍历 URL 数组，生成多个视频元素
-                        <div key={index} className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg w-full text-center">
-                            {/*<video className="w-full rounded-lg shadow-md" controls autoPlay muted>*/}
-                            <video className="w-full rounded-lg shadow-md" controls>
-                                <source src={url} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    ))
-                )}
-
+                <video className="w-full rounded-lg shadow-md" controls>
+                    <source src="/city/SHANGHAI30.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     );

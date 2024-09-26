@@ -20,8 +20,7 @@ export async function GET() {
         // 定义桶名称和对象路径
         const Bucket = 'kelevis-1317840261'; // 替换为你的 Bucket 名称
         const Region = 'ap-beijing'; // 替换为你的存储区域
-        // const Keys = ['飞越中国.mp4','nanjizhou.mp4', 'france.mp4', 'NEW YORK5.mp4']; // 文件名或路径的数组
-        const Keys = ['飞越中国.mp4', 'france.mp4', 'NEW YORK5.mp4']; // 文件名或路径的数组
+        const Keys = ['飞越中国.mp4','nanjizhou.mp4', 'france.mp4', 'NEW YORK5.mp4']; // 文件名或路径的数组
 
         // 使用 Promise.all 生成多个预签名 URL
         const urls = await Promise.all(Keys.map(key => {
@@ -43,8 +42,8 @@ export async function GET() {
         }));
 
 
-        const localVideoUrl = `https://nextjs-starter-2wiux9oot-kelevis-projects.vercel.app/city/SHANGHAI30.mp4`;
-        urls.push(localVideoUrl);
+        // const localVideoUrl = `https://nextjs-starter-2wiux9oot-kelevis-projects.vercel.app/city/SHANGHAI30.mp4`;
+        // urls.push(localVideoUrl);
 
         console.log('Pre-signed URLs:', urls);
 
