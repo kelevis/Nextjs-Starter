@@ -306,7 +306,7 @@ export default function Wallet() {
     };
 
     return (
-        <div className="w-full h-full ">
+        <div className="w-full h-screen bg-gradient-to-r  from-purple-500 to-blue-500 p-4">
 
             <div className={"dark text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
                 <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight  sm:text-4xl">
@@ -324,7 +324,7 @@ export default function Wallet() {
                 </p>
             </div>
             {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
-            <div className="w-2/3 h-full mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
+            <div className="mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
                 {MetamaskNotInstall && (
 
                     <div className={"flex flex-row justify-center gap-4"}>

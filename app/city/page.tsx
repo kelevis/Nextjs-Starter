@@ -72,7 +72,8 @@ const HomePage = () => {
                 {loading ? ( <div><Loading /></div> ) : (
                     urls.map((url, index) => ( // 遍历 URL 数组，生成多个视频元素
                         <div key={index} className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg w-full text-center">
-                            <video className="w-full rounded-lg shadow-md" controls autoPlay muted>
+                            {/*<video className="w-full rounded-lg shadow-md" controls autoPlay muted>*/}
+                            <video className="w-full rounded-lg shadow-md" controls>
                                 <source src={url} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
