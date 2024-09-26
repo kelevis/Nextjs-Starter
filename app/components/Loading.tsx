@@ -1,13 +1,30 @@
-import { type FC } from "react";
+// import { type FC } from "react";
+//
+// export const Loading: FC = () => {
+//     return (
+//         <div className="flex justify-center items-center h-full">
+//             <div className="flex space-x-2">
+//                 <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+//                 <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+//                 <div className="w-3 h-3 bg-green-600 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+//             </div>
+//         </div>
+//     );
+// };
 
-const dot = `rounded-full h-2 w-2 mx-0.5 bg-current animate-[blink_1s_ease_0s_infinite_normal_both]"`;
+import { FC } from "react";
 
 export const Loading: FC = () => {
-  return (
-    <span className="inline-flex text-center items-center leading-7 h-6">
-      <span className={dot} key="dot_1'" />
-      <span className={dot} style={{ animationDelay: "0.2s" }} key="dot_2" />
-      <span className={dot} style={{ animationDelay: "0.2s" }} key="dot_3" />
-    </span>
-  );
+    return (
+        <div className="flex justify-center items-center h-screen">
+            <div className="relative">
+                <div className="w-16 h-16 rounded-full border-t-4 border-b-4 border-l-4 border-r-4 border-[transparent] animate-spin">
+                    <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                </div>
+                <div className="absolute inset-0 flex justify-center items-center">
+                    <span className="text-blue-500 font-semibold">Loading...</span>
+                </div>
+            </div>
+        </div>
+    );
 };
