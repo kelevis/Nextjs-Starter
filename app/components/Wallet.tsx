@@ -306,15 +306,12 @@ export default function Wallet() {
     };
 
     return (
-        <div className={`w-full h-screen ${!MetamaskInstallAndConnected ? "bg-gradient-to-r from-purple-500 to-blue-500" : ""}`  }>
-
-
-
+        <div className='w-full h-screen' >
+        {/*<div className={`w-full h-screen ${!MetamaskInstallAndConnected ? "bg-gradient-to-r from-purple-500 to-blue-500" : ""}`  }>*/}
 
             {/*<div className={"dark text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>*/}
             {/*</div>*/}
             {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
-
 
 
             <div className="mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
