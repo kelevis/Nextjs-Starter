@@ -306,13 +306,22 @@ export default function Wallet() {
     };
 
     return (
-        <div className="w-full h-full ">
+        <div className={`w-full h-screen ${!MetamaskInstallAndConnected ? "bg-gradient-to-r from-purple-500 to-blue-500" : ""}`  }>
 
-            <div className={"dark text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>
+
+
+
+            {/*<div className={"dark text-center w-full h-auto sm:py-20 sm:px-6 lg:px-84"}>*/}
+            {/*</div>*/}
+            {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
+
+
+
+            <div className="mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-bold text-center px-0 py-0 mx-0 my-0 tracking-tight  sm:text-4xl">
                     <span>Metamask API Invoke</span>
                 </h2>
-                <p className="mt-4 text-lg leading-6 text-center px-0 py-0 mx-0 my-0">
+                <p className="mt-4 text-lg leading-6 text-center px-0 py-0 mx-0 my-40">
                     Follow along with the{" "}
                     <Link
                         href="https://github.com/GuiBibeau/web3-unleashed-demo"
@@ -322,9 +331,8 @@ export default function Wallet() {
                     </Link>{" "}
                     in order to learn how to use the Metamask API.
                 </p>
-            </div>
-            {/*<div className="bg-gray-800  mt-0 mb-0 mx-auto  max-w-5xl px-0 py-0 text-center sm:py-20 sm:px-6 lg:px-8">*/}
-            <div className="w-2/3 h-full mx-auto px-auto text-center sm:py-20 sm:px-6 lg:px-8">
+
+
                 {MetamaskNotInstall && (
 
                     <div className={"flex flex-row justify-center gap-4"}>
@@ -407,6 +415,8 @@ export default function Wallet() {
                         <br/>
 
                     </div>
+
+
                 )}
 
                 {MetamaskInstallAndConnected && (
