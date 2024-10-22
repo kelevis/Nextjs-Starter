@@ -31,7 +31,7 @@ const HomePage = () => {
 
     return (
 
-        <div className="w-full h-full ">
+        <div className="min-h-screen bg-900 text-white p-6">
             hello
         </div>
     );
