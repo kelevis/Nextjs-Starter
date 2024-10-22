@@ -39,7 +39,9 @@ const HomePage = () => {
 
                 <video className="w-full rounded-lg shadow-md" controls autoPlay muted>
                     <source src="/city/SHANGHAI30.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
+                    // Your browser does not support the video tag.
+                    // New tag. Your browser does not support the video tag.
+                    New tag.
                 </video>
             </div>
         </div>
