@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/chat-voice/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/chat/page2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/picture/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/picture/pic.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2024_10_23_9_38____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2024_10_23_9_38____.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/city/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/city/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +59,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/picture" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\nodeWorkspace\Nextjs-Starter\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -175,6 +171,8 @@
       <workItem from="1727425124039" duration="763000" />
       <workItem from="1727660313360" duration="8898000" />
       <workItem from="1729647415315" duration="1412000" />
+      <workItem from="1729651036769" duration="635000" />
+      <workItem from="1729651679470" duration="1345000" />
     </task>
     <servers />
   </component>
@@ -192,7 +190,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="nextjs-app-demo" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
