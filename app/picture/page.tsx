@@ -2,6 +2,7 @@
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect, useState} from 'react';
+import Image from 'next/image';
 import { Loading } from '../components/Loading'; // Adjust the import path accordingly
 
 
@@ -37,12 +38,8 @@ const HomePage = () => {
         <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-blue-500 p-4">
             <div className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg max-w-4xl w-full text-center">
 
-                <video className="w-full rounded-lg shadow-md" controls autoPlay muted>
-                    <source src="/city/SHANGHAI30.mp4" type="video/mp4" />
-                    // Your browser does not support the video tag.
-                    // New tag. Your browser does not support the video tag.
-                    New tag.
-                </video>
+                {/* 使用普通的 img 标签 */}
+                <img src="/picture/pic.png" alt="Sample Picture" className="rounded-lg" />
 
             </div>
         </div>
