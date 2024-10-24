@@ -2,8 +2,8 @@
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect, useState} from 'react';
-import Image from 'next/image';
-import { Loading } from '../components/Loading'; // Adjust the import path accordingly
+// import Image from 'next/image';
+// import { Loading } from '../components/Loading'; // Adjust the import path accordingly
 
 
 const HomePage = () => {
