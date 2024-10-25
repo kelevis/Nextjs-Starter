@@ -39,6 +39,7 @@ const HomePage = () => {
             <div className="bg-white bg-opacity-90 rounded-lg p-2 shadow-lg max-w-4xl w-full text-center">
 
                 {/* 使用普通的 img 标签 */}
+                {/*<img src="/picture/pic2.png" alt="Sample Picture" className="rounded-lg" />*/}
                 <img src="/picture/pic.png" alt="Sample Picture" className="rounded-lg" />
 
             </div>
