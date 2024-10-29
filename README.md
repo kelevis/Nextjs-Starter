@@ -41,3 +41,30 @@ This is the time to get familiar with how to work with a Next.js application and
 ### 5. Cleaning Up:
 
 - removing event listeners if people disconnect
+
+---
+# You-Get
+
+[You-Get](https://you-get.org/) is a tiny command-line utility to download media contents (videos, audios, images) from the Web, in case there is no other handy way to do it.
+
+Here's how you use `you-get` to download a video from [YouTube](https://www.youtube.com/watch?v=jNQXAC9IVRw):
+
+```console
+$ you-get 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+site:                YouTube
+title:               Me at the zoo
+stream:
+    - itag:          43
+      container:     webm
+      quality:       medium
+      size:          0.5 MiB (564215 bytes)
+    # download-with: you-get --itag=43 [URL]
+
+Downloading Me at the zoo.webm ...
+ 100% (  0.5/  0.5MB) ├██████████████████████████████████┤[1/1]    6 MB/s
+
+Saving Me at the zoo.en.srt ... Done.
+```
+---
+# yt-dlp
+[yt-dlp](https://github.com/yt-dlp/yt-dlp.git)  is a feature-rich command-line audio/video downloader with support for [thousands of sites](supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).
