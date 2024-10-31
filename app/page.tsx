@@ -1,50 +1,49 @@
 "use client"
-import type { NextPage } from "next";
-import { useEffect } from "react";
-import Wallet from "@/app/components/Wallet";
-import { useListen } from "@/app/hooks/useListen";
-import { useMetamask } from "@/app/hooks/useMetamask";
+// app/page.tsx
+import { useEffect } from 'react';
+import { useVerification } from '@/app/context/VerificationContext';
+import Wallet from '@/app/components/Wallet';
+import Recaptcha from '@/app/components/Recaptcha';
+import { useListen } from '@/app/hooks/useListen';
+import { useMetamask } from '@/app/hooks/useMetamask';
 
-export default  function Home() {
+const Home = () => {
+  const { isVerified, setVerified } = useVerification(); // 使用 setVerified
   const { dispatch } = useMetamask();
   const listen = useListen();
 
-  useEffect(() => {
-    if (typeof window !== undefined) {
-
-      console.log("window:",window)
-
-      // start by checking if window.ethereum is present, indicating a wallet extension
-      const ethereumProviderInjected = typeof window.ethereum !== "undefined";
-      // this could be other wallets so we can verify if we are dealing with metamask
-      // using the boolean constructor to be explecit and not let this be used as a falsy value (optional)
-      const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
-
-      const local = window.localStorage.getItem("metamaskState");
-
-      console.log("local:",local)
-
-      // user was previously connected, start listening to MM
-      if (local) {
-        listen();
-      }
-
-      // local could be null if not present in LocalStorage
-      const { wallet, balance } = local
-          ? JSON.parse(local)
-          : // backup if local storage is empty
-          { wallet: null, balance: null };
-
-      dispatch({ type: "pageLoaded", isMetamaskInstalled, wallet, balance });
+  const handleVerify = (token: string | null) => {
+    if (token) {
+      setVerified(true); // 使用 setVerified
+      // 这里可以添加进一步的验证逻辑
     }
+  };
 
-    console.log("连接metamask成功！")
+  useEffect(() => {
+    if (isVerified) {
+      // 继续执行初始化逻辑
+      if (typeof window !== 'undefined') {
+        const ethereumProviderInjected = typeof window.ethereum !== 'undefined';
+        const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
+        const local = window.localStorage.getItem('metamaskState');
 
-  }, []);
+        if (local) {
+          listen();
+        }
+
+        const { wallet, balance } = local ? JSON.parse(local) : { wallet: null, balance: null };
+
+        dispatch({ type: 'pageLoaded', isMetamaskInstalled, wallet, balance });
+      }
+    }
+  }, [isVerified]);
 
   return (
-      <Wallet />
+      <>
+        {!isVerified && <Recaptcha onVerify={handleVerify} />}
+        {isVerified && <Wallet />}
+      </>
   );
 };
 
-// export default Home;
+export default Home;
