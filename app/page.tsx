@@ -12,12 +12,32 @@ const Home = () => {
   const { dispatch } = useMetamask();
   const listen = useListen();
 
-  const handleVerify = (token: string | null) => {
+  // const handleVerify = (token: string | null) => {
+  //   if (token) {
+  //     setVerified(true); // 使用 setVerified
+  //     // 这里可以添加进一步的验证逻辑
+  //   }
+  // };
+
+
+  const handleVerify = async (token: string | null) => {
     if (token) {
-      setVerified(true); // 使用 setVerified
-      // 这里可以添加进一步的验证逻辑
+      const response = await fetch('/api/verify-captcha', {
+        method: 'POST',
+        body: JSON.stringify({ token }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const data = await response.json();
+      if (data.success) {
+        setVerified(true); // 更新状态
+      } else {
+        // 处理验证失败的逻辑
+        console.error('Verification failed:', data.error);
+      }
     }
   };
+
+
 
   useEffect(() => {
     if (isVerified) {
@@ -41,6 +61,7 @@ const Home = () => {
   return (
       <>
         {!isVerified && <Recaptcha onVerify={handleVerify} />}
+
         {isVerified && <Wallet />}
       </>
   );
