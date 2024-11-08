@@ -56,7 +56,7 @@ import axios from 'axios';
 // 配置代理
 const verifyCaptcha = async (token: string) => {
     console.log('reCAPTCHA 密钥:', process.env.RECAPTCHA_SECRET_KEY);
-
+    console.log('token:', token);
     try {
         // 构建请求体, 打印请求体内容
         const params = new URLSearchParams({
@@ -101,12 +101,13 @@ const verifyCaptcha = async (token: string) => {
 
 export async function POST(req: Request) {
     const {token} = await req.json();
-    console.log("token:", token)
 
     if (!token) {
         console.log("error, error is token is null")
         return NextResponse.json({success: false, message: 'Token is required'}, {status: 400});
     }
+
+
     try {
         const verificationResponse = await verifyCaptcha(token);
 
