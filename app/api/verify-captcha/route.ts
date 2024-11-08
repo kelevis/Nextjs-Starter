@@ -15,25 +15,23 @@ const verifyCaptcha = async (token: string) => {
         console.log("Request body:", params.toString());
 
         // 发送请求到 reCAPTCHA v3 验证 API
-        // const response = await axios.post(
-        //     'https://www.google.com/recaptcha/api/siteverify',
-        //     params,
-        //     {
-        //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        //     }
-        // );
+        const response = await axios.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            params,
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            }
+        );
 
-        return NextResponse.json({ success: true });
+        // return NextResponse.json({ success: true });
         // 返回验证结果
-        // if (response.data.success && response.data.score > 0.5) {
-        //     // `score` 判断风险等级，0-1之间，0.5 是阈值
-        //     return response.data;
-        // } else {
-        //     console.error('reCAPTCHA v3 verification failed:', response.data['error-codes']);
-        //     throw new Error('reCAPTCHA verification failed');
-        // }
-
-
+        if (response.data.success && response.data.score > 0.5) {
+            // `score` 判断风险等级，0-1之间，0.5 是阈值
+            return response.data;
+        } else {
+            console.error('reCAPTCHA v3 verification failed:', response.data['error-codes']);
+            throw new Error('reCAPTCHA verification failed');
+        }
     } catch (error) {
         console.error('Error during CAPTCHA verification:', error);
         throw error;
