@@ -1,5 +1,5 @@
 // app/api/verify-captcha/route.ts
-import { NextResponse } from 'next/server';
+import {NextResponse} from 'next/server';
 
 // import { fetch } from 'undici'; // 或者使用 node-fetch
 //
@@ -58,15 +58,22 @@ const verifyCaptcha = async (token: string) => {
     console.log('reCAPTCHA 密钥:', process.env.RECAPTCHA_SECRET_KEY);
 
     try {
+        // 构建请求体, 打印请求体内容
+        const params = new URLSearchParams({
+            secret: process.env.RECAPTCHA_SECRET_KEY as string,
+            response: token,
+        });
+        console.log("Request body:", params.toString());
+
         const response = await axios.post(
             'https://www.google.com/recaptcha/api/siteverify',
-        new URLSearchParams({
+            new URLSearchParams({
                 secret: process.env.RECAPTCHA_SECRET_KEY as string,
                 response: token,
             }),
 
             {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }
 
             // {
@@ -92,24 +99,24 @@ const verifyCaptcha = async (token: string) => {
 
 
 export async function POST(req: Request) {
-    const { token } = await req.json();
-    console.log("token:",token)
+    const {token} = await req.json();
+    console.log("token:", token)
 
     if (!token) {
         console.log("error, error is token is null")
-        return NextResponse.json({ success: false, message: 'Token is required' }, { status: 400 });
+        return NextResponse.json({success: false, message: 'Token is required'}, {status: 400});
     }
     try {
         const verificationResponse = await verifyCaptcha(token);
 
         if (verificationResponse.success) {
-            return NextResponse.json({ success: true });
+            return NextResponse.json({success: true});
         } else {
             console.log("error verifyCaptcha(token)")
-            return NextResponse.json({ success: false, error: verificationResponse['error-codes'] }, { status: 400 });
+            return NextResponse.json({success: false, error: verificationResponse['error-codes']}, {status: 400});
         }
     } catch (error) {
-        console.log("error is:",error)
-        return NextResponse.json({ success: false, message: 'Internal server error' }, { status: 500 });
+        console.log("error is:", error)
+        return NextResponse.json({success: false, message: 'Internal server error'}, {status: 500});
     }
 }
