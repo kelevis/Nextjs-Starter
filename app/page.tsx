@@ -1,16 +1,17 @@
 "use client"
 // app/page.tsx
-import { useEffect } from 'react';
 import { useVerification } from '@/app/context/VerificationContext';
 import Wallet from '@/app/components/Wallet';
 import Recaptcha from '@/app/components/Recaptcha';
 import { useListen } from '@/app/hooks/useListen';
 import { useMetamask } from '@/app/hooks/useMetamask';
-
+import { useEffect, useState } from 'react';
 const Home = () => {
+
   const { isVerified, setVerified } = useVerification(); // 使用 setVerified
   const { dispatch } = useMetamask();
   const listen = useListen();
+  const [error, setError] = useState<string | null>(null); // 用来存储错误消息
 
   // const handleVerify = (token: string | null) => {
   //   if (token) {
@@ -21,19 +22,24 @@ const Home = () => {
 
 
   const handleVerify = async (token: string | null) => {
+    console.log("token is:",token)
     if (token) {
       const response = await fetch('/api/verify-captcha', {
         method: 'POST',
         body: JSON.stringify({ token }),
         headers: { 'Content-Type': 'application/json' },
       });
+
       const data = await response.json();
       if (data.success) {
         setVerified(true); // 更新状态
       } else {
+        setError('验证码验证失败，请重新尝试。'); // 验证失败，设置错误信息
         // 处理验证失败的逻辑
         console.error('Verification failed:', data.error);
       }
+
+
     }
   };
 
@@ -61,6 +67,7 @@ const Home = () => {
   return (
       <>
         {!isVerified && <Recaptcha onVerify={handleVerify} />}
+        {error && <div className="error-message">{error}</div>}
 
         {isVerified && <Wallet />}
       </>
