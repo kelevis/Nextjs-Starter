@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.txt3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Recaptcha.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recaptcha.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +174,7 @@
       <workItem from="1730974349173" duration="14000" />
       <workItem from="1730974365157" duration="311000" />
       <workItem from="1731029605209" duration="433000" />
-      <workItem from="1731030043005" duration="7582000" />
+      <workItem from="1731030043005" duration="7931000" />
     </task>
     <servers />
   </component>
