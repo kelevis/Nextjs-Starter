@@ -62,6 +62,11 @@ const verifyCaptcha = async (token: string) => {
                 secret: process.env.RECAPTCHA_SECRET_KEY as string,
                 response: token,
             }),
+
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }
+
             // {
             //     timeout: 5000,
             //     // 设置代理
