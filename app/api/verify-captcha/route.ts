@@ -15,13 +15,13 @@ const verifyCaptcha = async (token: string) => {
         console.log("Request body:", params.toString());
 
         // 发送请求到 reCAPTCHA v3 验证 API
-        const response = await axios.post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            params,
-            {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            }
-        );
+        // const response = await axios.post(
+        //     'https://www.google.com/recaptcha/api/siteverify',
+        //     params,
+        //     {
+        //         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        //     }
+        // );
 
         return NextResponse.json({ success: true });
         // 返回验证结果
