@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.txt2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,23 +59,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/api/verify-captcha" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="ts.external.directory.path" value="C:\Program Files\nodeWorkspace\Nextjs-Starter\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\verify-captcha" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\picture" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\chat" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\music" />
@@ -173,6 +177,10 @@
       <workItem from="1730196158788" duration="343000" />
       <workItem from="1730340343082" duration="2754000" />
       <workItem from="1730365711612" duration="3202000" />
+      <workItem from="1730974349173" duration="14000" />
+      <workItem from="1730974365157" duration="311000" />
+      <workItem from="1731029605209" duration="433000" />
+      <workItem from="1731030043005" duration="2113000" />
     </task>
     <servers />
   </component>
