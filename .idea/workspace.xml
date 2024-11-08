@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.txt3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Recaptcha.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recaptcha.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/api/verify-captcha" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -177,7 +179,7 @@
       <workItem from="1730974349173" duration="14000" />
       <workItem from="1730974365157" duration="311000" />
       <workItem from="1731029605209" duration="433000" />
-      <workItem from="1731030043005" duration="5784000" />
+      <workItem from="1731030043005" duration="7582000" />
     </task>
     <servers />
   </component>
