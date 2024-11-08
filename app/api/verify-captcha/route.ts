@@ -55,10 +55,12 @@ import axios from 'axios';
 
 // 配置代理
 const verifyCaptcha = async (token: string) => {
+    console.log('reCAPTCHA 密钥:', process.env.RECAPTCHA_SECRET_KEY);
+
     try {
         const response = await axios.post(
             'https://www.google.com/recaptcha/api/siteverify',
-            new URLSearchParams({
+        new URLSearchParams({
                 secret: process.env.RECAPTCHA_SECRET_KEY as string,
                 response: token,
             }),
