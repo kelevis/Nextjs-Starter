@@ -85,12 +85,13 @@ const verifyCaptcha = async (token: string) => {
             //     },
             // }
         );
-
-        if (response.status !== 200) {
-            console.error('Failed to verify CAPTCHA:', response.statusText);
-            throw new Error('Failed to verify CAPTCHA');
+        if (response.data.success) {
+            return response.data;
+        } else {
+            console.error('reCAPTCHA verification failed:', response.data['error-codes']);
+            throw new Error('reCAPTCHA verification failed');
         }
-        return response.data;
+
     } catch (error) {
         console.error('Error during CAPTCHA verification:', error);
         throw error;
