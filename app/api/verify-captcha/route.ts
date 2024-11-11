@@ -47,6 +47,8 @@ export async function POST(req: Request) {
     }
 
     try {
+        // return NextResponse.json({ success: true });
+
         const verificationResponse = await verifyCaptcha(token);
 
         if (verificationResponse.success) {
@@ -55,6 +57,9 @@ export async function POST(req: Request) {
             console.log("Error: verifyCaptcha failed");
             return NextResponse.json({ success: false, error: verificationResponse['error-codes'] }, { status: 400 });
         }
+
+
+
     } catch (error) {
         console.log("Error:", error);
         return NextResponse.json({ success: false, message: 'Internal server error' }, { status: 500 });
