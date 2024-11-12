@@ -5,10 +5,8 @@ import React, {useEffect} from "react";
 
 const HomePage = () => {
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
+
     const listen = useListen();
-    const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
-    const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
-    const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
 
     useEffect(() => {
         if (typeof window !== undefined) {
@@ -31,7 +29,7 @@ const HomePage = () => {
 
     return (
 
-        <div className="min-h-screen bg-900 text-white p-6">
+        <div className="min-h-screen bg-900 p-6">
             hello
         </div>
     );
