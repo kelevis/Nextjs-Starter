@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更" />
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Recaptcha.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Recaptcha.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/monter_BNB_log.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/monter_BNB_on.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pageviews/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/pageviews/page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,7 +185,7 @@
       <workItem from="1731030043005" duration="8819000" />
       <workItem from="1731287918972" duration="595000" />
       <workItem from="1731297815024" duration="2907000" />
-      <workItem from="1731380318642" duration="3935000" />
+      <workItem from="1731380318642" duration="10764000" />
     </task>
     <servers />
   </component>
@@ -195,7 +203,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/nextjs-app-demo" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>

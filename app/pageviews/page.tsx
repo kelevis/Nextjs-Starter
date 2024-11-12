@@ -1,5 +1,4 @@
 "use client"
-import USDTMonitor from '@/app/components/monter_BNB_log';
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect} from "react";

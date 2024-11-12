@@ -1,4 +1,5 @@
-// // components/Recaptcha.tsx
+// Recaptcha-V2
+// components/Recaptcha.tsx
 import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -14,6 +15,7 @@ const Recaptcha = ({ onVerify }: { onVerify: (token: string | null) => void }) =
 
 export default Recaptcha;
 
+// Recaptcha-V3
 // import React, { useRef } from "react";
 // import ReCAPTCHA from "react-google-recaptcha";
 //
