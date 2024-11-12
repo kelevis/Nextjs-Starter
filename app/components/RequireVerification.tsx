@@ -9,6 +9,7 @@ const RequireVerification: React.FC<{ children: React.ReactNode }> = ({ children
 
     const handleVerify = async (token: string | null) => {
         if (token) {
+            // setVerified(true);
             const response = await fetch('/api/verify-captcha', {
                 method: 'POST',
                 body: JSON.stringify({ token }),

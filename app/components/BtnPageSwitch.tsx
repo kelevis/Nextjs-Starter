@@ -1,15 +1,15 @@
-"use client"
-import React, {useEffect, useState} from "react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-import {useRouter} from 'next/navigation';
-import {TiThSmall} from "react-icons/ti";
-import {useIconStyle} from '@/app/components/useIconStyle';
-
+"use client";
+import React, { useEffect, useState } from "react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { useRouter } from 'next/navigation';  // 确保正确使用 next/navigation 中的 useRouter
+import { TiThSmall } from "react-icons/ti";
+import { useIconStyle } from '@/app/components/useIconStyle';
 
 export default function MultiPageNavButton() {
     const [mounted, setMounted] = useState(false);
     const router = useRouter();
     const iconStyle = useIconStyle();
+
     const handleAction = (path: string) => {
         if (path === "/chat") {
             window.open(path, '_blank'); // 在新标签页中打开 /chat 页面
@@ -19,12 +19,12 @@ export default function MultiPageNavButton() {
     };
 
     useEffect(() => {
-        // Set mounted to true after component has mounted
+        // 确保组件挂载
         setMounted(true);
     }, []);
 
     if (!mounted) {
-        return null; // Or return a loader/spinner if desired
+        return null; // 或者返回一个加载器/提示
     }
 
     return (
@@ -32,11 +32,10 @@ export default function MultiPageNavButton() {
             <DropdownTrigger>
                 <Button
                     variant="light"
-                    // variant="bordered"
                     className="capitalize"
                     isIconOnly={true}
                 >
-                    <TiThSmall style={iconStyle}/>
+                    <TiThSmall style={iconStyle} />
                 </Button>
             </DropdownTrigger>
             <DropdownMenu
@@ -53,8 +52,6 @@ export default function MultiPageNavButton() {
                 <DropdownItem key="/music">Music</DropdownItem>
                 <DropdownItem key="/city">City</DropdownItem>
                 <DropdownItem key="/picture">Pic</DropdownItem>
-
-
             </DropdownMenu>
         </Dropdown>
     );

@@ -29,6 +29,7 @@ export default function Layout({children,}: Readonly<{ children: React.ReactNode
                         {children}
                         </RequireVerification>
                     </VerificationProvider>
+
                 </MetamaskProvider>
         {/*    </main>*/}
         {/*</NextUIProvider>*/}
