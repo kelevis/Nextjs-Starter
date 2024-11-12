@@ -14,11 +14,8 @@ interface Transfer {
 }
 
 const USDTMonitor: React.FC = () => {
-    const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
+    const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
     const listen = useListen();
-    const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
-    const MetamaskInstall = status !== "pageNotLoaded" && isMetamaskInstalled && !wallet;
-    const MetamaskInstallAndConnected = status !== "pageNotLoaded" && typeof wallet === "string";
 
     useEffect(() => {
         if (typeof window !== undefined) {
@@ -38,7 +35,6 @@ const USDTMonitor: React.FC = () => {
         console.log("连接metamask成功！")
 
     }, []);
-
 
     const [transfers, setTransfers] = useState<Transfer[]>([]);
 
