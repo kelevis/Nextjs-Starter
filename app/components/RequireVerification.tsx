@@ -16,7 +16,7 @@ const RequireVerification: React.FC<{ children: React.ReactNode }> = ({ children
             });
             const data = await response.json();
 
-            if (data.success) {
+            if (data.code) {
                 setVerified(true);
             } else {
                 console.error('Verification failed. data is:',data);
