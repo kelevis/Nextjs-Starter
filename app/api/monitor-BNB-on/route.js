@@ -1,38 +1,55 @@
-import {NextResponse} from 'next/server';
-import {ethers} from 'ethers';
+import { NextResponse } from 'next/server';
+import { ethers } from 'ethers';
 
-const contractAddress = "0xdac17f958d2ee523a2206206994597c13d831ec7";
-const abi = [
-    "event Transfer(address indexed from, address indexed to, uint value)"
-];
-
-
+// 连接到 Ethereum 主网（Alchemy 或其他节点服务）
 const provider = new ethers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/3BTT655Z0kgn8kQb4b7Sqo9CvhvbUf7Q");
-const contractUSDT = new ethers.Contract(contractAddress, abi, provider);
 
-let transfers = [];
-contractUSDT.on('Transfer', (from, to, value) => {
-    // 将转账信息添加到最新转账信息数组的开头
-    transfers.unshift({
-        from: from.toString(),
-        to: to.toString(),
-        value: value.toString()
-    });
-    if (transfers.length > 10) transfers.pop();  // Keep only the latest 5 transfers，排出末尾数据
+let transactions = [];
 
-    // console.log("latestTransfers:", transfers)
-    console.log(`监控币安USDT合约: from: ${from} -> to: ${to} Value: ${value.toString()} ether`);
-});
+// 获取最新区块中的所有交易
+async function fetchLatestBlockTransactions() {
+    try {
+        // 获取最新区块的区块号
+        const latestBlockNumber = await provider.getBlockNumber();
 
+        // 获取该区块的详细信息，包括交易信息
+        const block = await provider.getBlock(latestBlockNumber, true); // true 表示获取交易信息
+
+        if (!block.transactions || block.transactions.length === 0) {
+            console.log(`No transactions found in block #${latestBlockNumber}`);
+            return; // 如果区块没有交易，直接返回
+        }
+
+        // 过滤出以太币转账交易（即 'value' 字段大于 0）
+        const blockTransactions = block.transactions.filter(tx => ethers.BigNumber.from(tx.value).gt(0))
+            .map(tx => ({
+                blockNumber: tx.blockNumber || 'N/A',
+                blockHash: tx.blockHash || 'N/A',
+                transactionHash: tx.hash || 'N/A',
+                from: tx.from || 'N/A',
+                to: tx.to || 'N/A',
+                value: tx.value, // 将以太币转换为以太
+                gasPrice: tx.gasPrice, // 将 Gas Price 转换为 Gwei
+                gasLimit: tx.gasLimit, // Gas Limit
+            }));
+
+        // 将最新的交易添加到数组中（保留最多 10 笔交易）
+        transactions.unshift(...blockTransactions);
+        if (transactions.length > 10) {
+            transactions.pop(); // 保留最新的 10 笔交易
+        }
+    } catch (error) {
+        console.error("Error fetching latest block transactions:", error);
+    }
+}
+
+// 每 15 秒更新一次最新的区块交易
+setInterval(fetchLatestBlockTransactions, 15000);
+
+// 处理 GET 请求，返回最新的交易
 export async function GET(request) {
-// get 请求默认处理为静态资源，所以需要添加request.token动态数据
-// 这是因为 cookies、headers 这种数据，只能在每次具体请求的时候才能知道，所以 Next.js 会按照正常的 API 进行处理。
-// 当你添加其他的 HTTP 方法比如 POST 方法的时候也会将其转为动态处理：
+    const token = request.cookies.get('token'); // 从请求中获取 token（如果需要）
 
-    const token = request.cookies.get('token')   //
-    return NextResponse.json({transfers});
-
-
-
-
+    // 返回最新的 10 笔以太币转账交易
+    return NextResponse.json({ transactions });
 }

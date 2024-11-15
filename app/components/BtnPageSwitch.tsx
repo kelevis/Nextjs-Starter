@@ -45,6 +45,7 @@ export default function MultiPageNavButton() {
             >
                 <DropdownItem key="/hello">Hello</DropdownItem>
                 <DropdownItem key="/monitor">Monitor</DropdownItem>
+                <DropdownItem key="/monitoreth">Monitor-ETH</DropdownItem>
                 <DropdownItem key="/weather">Weather</DropdownItem>
                 <DropdownItem key="/pageviews">Behavior</DropdownItem>
                 <DropdownItem key="/chat">Chat</DropdownItem>

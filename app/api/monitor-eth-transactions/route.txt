@@ -1,0 +1,73 @@
+export const dynamic = 'force-dynamic';
+import * as config from "config.js";
+import { NextResponse } from 'next/server';
+import { ethers } from 'ethers';
+
+// 连接到 Ethereum 主网，增加超时设置
+// 连接到 Ethereum 主网
+const provider = new ethers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_mainNet);
+
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 2000; // 每次重试的延迟（毫秒）
+
+async function fetchTransactionWithRetry(provider, txHash, retries = 0) {
+    try {
+        return await provider.getTransaction(txHash);
+    } catch (error) {
+        if (error.code === 429 && retries < MAX_RETRIES) {
+            console.log(`Rate limit exceeded, retrying... (${retries + 1}/${MAX_RETRIES})`);
+            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY)); // 延迟重试
+            return fetchTransactionWithRetry(provider, txHash, retries + 1);
+        }
+        throw error; // 如果超过最大重试次数或其他错误，抛出异常
+    }
+}
+
+export async function GET(request) {
+    const token = request.cookies.get('token'); // 获取请求中的 token
+
+    try {
+        // 获取最新区块号
+        const latestBlock = await provider.getBlockNumber();
+        console.log("Latest Block Number:", latestBlock);
+
+        // 获取该区块的详细信息，包括所有交易
+        const block = await provider.getBlock(latestBlock, true); // true 表示获取所有交易信息
+        console.log('Block:', block);
+        console.log('Transactions:', block.transactions);
+
+        // 如果没有交易数据，返回空
+        if (!block.transactions || block.transactions.length === 0) {
+            return NextResponse.json({ message: 'No transactions found in the latest block' });
+        }
+
+        // 获取每个交易的详细信息，带重试机制
+        const transactions = await Promise.all(block.transactions.map(async (txHash) => {
+            const tx = await provider.getTransaction(txHash);
+            const value=ethers.formatEther(tx.value)
+            const gasPrice=ethers.formatUnits(tx.gasPrice)
+            const gasLimit=ethers.formatEther(tx.gasLimit)
+
+            return {
+                blockNumber: tx.blockNumber ? tx.blockNumber.toString() : 'N/A',
+                blockHash: tx.blockHash ? tx.blockHash.toString() : 'N/A',
+                transactionHash: tx.hash,
+                from: tx.from,
+                to: tx.to,
+                value: tx.value, // 使用 ethers.utils.formatEther
+                gasPrice: tx.gasPrice, // 使用 ethers.utils.formatUnits
+                gasLimit: tx.gasLimit,
+            };
+        }));
+
+        console.log("Transactions:", transactions);
+        // 设置响应头，禁用缓存优化
+        const response = NextResponse.json({ transactions });
+        response.headers.set('Cache-Control', 'no-store, max-age=0');
+        return response;
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return NextResponse.json({ error: 'Unable to fetch data', details: error.message });
+    }
+}

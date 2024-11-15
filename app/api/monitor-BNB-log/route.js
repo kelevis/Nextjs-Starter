@@ -1,15 +1,16 @@
 export const dynamic = 'force-dynamic';
+import * as config from "config.js"
 
 import { NextResponse } from 'next/server';
 import { ethers } from 'ethers';
 
-const contractAddress = "0xdac17f958d2ee523a2206206994597c13d831ec7";
+const contractAddress = config.contractUSDTAddress;
 const abi = [
     "event Transfer(address indexed from, address indexed to, uint value)"
 ];
 
 
-const provider = new ethers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/3BTT655Z0kgn8kQb4b7Sqo9CvhvbUf7Q");
+const provider = new ethers.JsonRpcProvider(config.alchemy_Endpoints_Url_ethereum_mainNet);
 const contractUSDT = new ethers.Contract(contractAddress, abi, provider);
 
 

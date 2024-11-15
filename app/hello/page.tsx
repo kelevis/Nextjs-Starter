@@ -4,9 +4,9 @@ import {useListen} from "@/app/hooks/useListen";
 import React, {useEffect} from "react";
 
 const HomePage = () => {
-    const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
-
+    const {dispatch} = useMetamask();
     const listen = useListen();
+
 
     useEffect(() => {
         if (typeof window !== undefined) {
