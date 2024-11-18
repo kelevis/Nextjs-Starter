@@ -16,13 +16,11 @@ interface Transaction {
 }
 
 const EthTransactionMonitor: React.FC = () => {
-    const { dispatch, state: { status, isMetamaskInstalled, wallet } } = useMetamask();
+    const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
     const listen = useListen();
-
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
     const fetchTransactions = async () => {
         try {
             const response = await fetch('api/monitor-eth-transactions', { cache: 'no-store' });
@@ -34,6 +32,25 @@ const EthTransactionMonitor: React.FC = () => {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            const ethereumProviderInjected = typeof window.ethereum !== "undefined";
+            const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
+            const local = window.localStorage.getItem("metamaskState");
+
+            // user was previously connected, start listening to MM
+            if (local) {
+                listen();
+            }
+
+            // local could be null if not present in LocalStorage
+            const {wallet, balance} = local ? JSON.parse(local) : {wallet: null, balance: null};
+            dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
+        }
+        console.log("连接metamask成功！")
+
+    }, []);
 
     useEffect(() => {
         fetchTransactions();
