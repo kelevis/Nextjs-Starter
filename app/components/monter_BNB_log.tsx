@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import styles from '../monitor/Home.module.css';
+import styles from '../monitorusdt/Home.module.css';
 interface Transfer {
     blockNumber: string;
     blockHash: string;

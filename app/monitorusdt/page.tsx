@@ -107,7 +107,7 @@ const USDTMonitor: React.FC = () => {
                                     </p>
                                 </div>
                                 <div>
-                                    <span className="font-semibold text-sm">Value (in Wei):</span>
+                                    <span className="font-semibold text-sm">Value (in USDT):</span>
                                     <p className="text-yellow-400 break-words">
                                         {transfer.value}
                                     </p>

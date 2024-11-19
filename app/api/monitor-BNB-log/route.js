@@ -27,7 +27,7 @@ export async function GET(request) {
             transactionHash: log.transactionHash.toString(),
             from: log.args.from.toString(),
             to: log.args.to.toString(),
-            value: log.args.value.toString()
+            value: ethers.formatUnits(log.args.value.toString(), 6)
         }));
 
 // get 请求默认处理为静态资源，所以需要添加request.token动态数据

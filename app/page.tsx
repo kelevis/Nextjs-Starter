@@ -14,7 +14,6 @@ const Home = () => {
 
     const handleVerify = async (token: string | null) => {
         setError(null); // 清除之前的错误消息
-        console.log("token is:", token)
         if (token) {
             // setVerified(true); // 更新状态
             const response = await fetch('api/verify-captcha', {

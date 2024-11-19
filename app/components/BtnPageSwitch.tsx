@@ -44,7 +44,7 @@ export default function MultiPageNavButton() {
                 onAction={(key) => handleAction(key as string)}
             >
                 <DropdownItem key="/hello">Hello</DropdownItem>
-                <DropdownItem key="/monitor">Monitor</DropdownItem>
+                <DropdownItem key="/monitorusdt">Monitor-USDT</DropdownItem>
                 <DropdownItem key="/monitoreth">Monitor-ETH</DropdownItem>
                 <DropdownItem key="/weather">Weather</DropdownItem>
                 <DropdownItem key="/pageviews">Behavior</DropdownItem>
