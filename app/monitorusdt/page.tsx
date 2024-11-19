@@ -46,7 +46,6 @@ const USDTMonitor: React.FC = () => {
 
             console.log("response:", response);
             console.log("data:", data);
-            console.log("data.transfers:", data.transfers);
         } catch (error) {
             console.error('Error fetching transfers:', error);
         }
