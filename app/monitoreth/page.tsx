@@ -94,7 +94,7 @@ const EthTransactionMonitor: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-900 text-white p-6">
+        <div className="min-h-screen bg-900 p-6">
             <Link href="https://etherscan.io">
                 <h1 className="text-4xl text-fuchsia-400 font-bold mb-6 text-center">
                     Ethereum Transaction Monitor
