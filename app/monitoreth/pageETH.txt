@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { ethers } from 'ethers';  // 确保导入 ethers 库
 import { useMetamask } from "@/app/hooks/useMetamask";
 import { useListen } from "@/app/hooks/useListen";
 import Link from "next/link";
@@ -17,13 +16,11 @@ interface Transaction {
 }
 
 const EthTransactionMonitor: React.FC = () => {
-    const { dispatch, state: { status, isMetamaskInstalled, wallet } } = useMetamask();
+    const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
     const listen = useListen();
-
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
     const fetchTransactions = async () => {
         try {
             const response = await fetch('api/monitor-eth-transactions', { cache: 'no-store' });
@@ -37,8 +34,27 @@ const EthTransactionMonitor: React.FC = () => {
     };
 
     useEffect(() => {
+        if (typeof window !== undefined) {
+            const ethereumProviderInjected = typeof window.ethereum !== "undefined";
+            const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
+            const local = window.localStorage.getItem("metamaskState");
+
+            // user was previously connected, start listening to MM
+            if (local) {
+                listen();
+            }
+
+            // local could be null if not present in LocalStorage
+            const {wallet, balance} = local ? JSON.parse(local) : {wallet: null, balance: null};
+            dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
+        }
+        console.log("连接metamask成功！")
+
+    }, []);
+
+    useEffect(() => {
         fetchTransactions();
-        const interval = setInterval(fetchTransactions, 10000);
+        const interval = setInterval(fetchTransactions, 3000);
         return () => clearInterval(interval);
     }, []);
 
@@ -82,11 +98,11 @@ const EthTransactionMonitor: React.FC = () => {
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Value (in Ether):</span>
-                                        <p className="text-yellow-400 break-words">{ethers.formatEther(transaction.value)} ETH</p>
+                                        <p className="text-yellow-400 break-words">{transaction.value} ETH</p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Gas Price (in Gwei):</span>
-                                        <p className="text-blue-400 break-words">{ethers.formatUnits(transaction.gasPrice, 'gwei')}</p>
+                                        <p className="text-blue-400 break-words">{transaction.gasPrice}</p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Gas Limit:</span>

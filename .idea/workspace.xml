@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更" />
+    <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/api/search-transaction/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/search-transaction/route.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/monitor-eth-transactions/route.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/monitor-eth-transactions/route.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitoreth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitoreth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitoreth/page.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitoreth/pageETH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitoreth/pageETH.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitoreth/pageusdt.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitorusdt/page.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitorusdt/page.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/api/monitor-eth-transactions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -65,10 +76,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-eth-transactions" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\monitor" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-BNB-log" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -200,7 +211,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>
