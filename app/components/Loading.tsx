@@ -14,7 +14,7 @@
 
 import { FC } from "react";
 
-export const Loading: FC = () => {
+export const Loading  = () => {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="relative">

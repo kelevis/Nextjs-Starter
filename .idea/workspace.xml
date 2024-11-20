@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/app/api/search-transaction/route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/search-transaction/route.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/monitor-eth-transactions/route.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/monitor-eth-transactions/route.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/monitoreth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitoreth/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/monitoreth/page.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/monitoreth/pageETH.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitoreth/pageETH.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/monitoreth/pageusdt.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/monitorusdt/page.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitorusdt/page.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/monitorusdt/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitorusdt/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -194,6 +188,7 @@
       <workItem from="1731895869416" duration="1009000" />
       <workItem from="1731980421882" duration="572000" />
       <workItem from="1731981011945" duration="1805000" />
+      <workItem from="1732071722676" duration="3891000" />
     </task>
     <servers />
   </component>

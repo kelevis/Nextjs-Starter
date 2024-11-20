@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useMetamask } from "@/app/hooks/useMetamask";
-import { useListen } from "@/app/hooks/useListen";
+import React, {useEffect, useState} from "react";
+import {useMetamask} from "@/app/hooks/useMetamask";
+import {useListen} from "@/app/hooks/useListen";
 import Link from "next/link";
 import {Button, Input, Textarea} from "@nextui-org/react";
 
@@ -16,15 +16,12 @@ interface Transaction {
     gasLimit: string; // Gas limit
 }
 
-const EthTransactionMonitor: React.FC = () => {
-    const {
-        dispatch,
-        state: { status, isMetamaskInstalled, wallet },
-    } = useMetamask();
+const EthTransactionMonitor = () => {
+    const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
     const listen = useListen();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const [seachLoading, setSeachLoading] = useState<boolean>(true);
+    const [searchLoading, setSearchLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [searchHash, setSearchHash] = useState<string>(""); // 输入的交易哈希
     const [searchResult, setSearchResult] = useState<Transaction | null>(null); // 搜索结果
@@ -38,7 +35,7 @@ const EthTransactionMonitor: React.FC = () => {
             setTransactions(data.transactions || []);
             setLoading(false);
         } catch (error) {
-            setError("Failed to fetch transactions. Please try again.");
+            setError("Failed to fetch monitor transactions. Please try again.");
             setLoading(false);
         }
     };
@@ -47,7 +44,7 @@ const EthTransactionMonitor: React.FC = () => {
         if (!searchHash.trim()) return;
 
         try {
-            setSeachLoading(true);
+            setSearchLoading(true);
             const response = await fetch(`/api/search-transaction?hash=${encodeURIComponent(searchHash)}`);
             const data = await response.json();
 
@@ -55,13 +52,13 @@ const EthTransactionMonitor: React.FC = () => {
                 setSearchResult(data);
             } else {
                 setSearchResult(null);
-                setError(data.error || "Failed to fetch transaction.");
+                setError(data.error || "Failed to search transaction.");
             }
         } catch (err) {
             setError("An unexpected error occurred. Please try again.");
             setSearchResult(null);
         } finally {
-            setSeachLoading(false);
+            setSearchLoading(false);
         }
     };
 
@@ -79,10 +76,10 @@ const EthTransactionMonitor: React.FC = () => {
             }
 
             // local could be null if not present in LocalStorage
-            const { wallet, balance } = local
+            const {wallet, balance} = local
                 ? JSON.parse(local)
-                : { wallet: null, balance: null };
-            dispatch({ type: "pageLoaded", isMetamaskInstalled, wallet, balance });
+                : {wallet: null, balance: null};
+            dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
         }
         console.log("连接metamask成功！");
     }, []);
@@ -121,53 +118,59 @@ const EthTransactionMonitor: React.FC = () => {
                 </Button>
             </div>
 
-
             {
+                searchLoading ? (
+                    // <p className="text-center text-gray-400">Loading search transactions...</p>
+                    <div className="bg-gray-700 border-fuchsia-600 p-4 rounded-lg shadow-lg space-y-2 h-80">
+                        <h2 className="text-xl text-center text-green-400 mb-4">
+                            Loading...
+                        </h2>
 
-                seachLoading ? (
-                    <p className="text-center text-gray-400">Loading search transactions...</p>
-                ):(searchResult && (
-                <div className="bg-gray-700 border border-fuchsia-600 p-4 rounded-lg shadow-lg space-y-2">
-                    <h2 className="text-xl text-center text-green-400 mb-4">
-                        Search Result
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* 搜索结果内容 */}
-                        <div>
-                            <span className="font-semibold text-sm">Block Number:</span>
-                            <p className="text-fuchsia-200 break-words">{searchResult.blockNumber}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">Block Hash:</span>
-                            <p className="text-fuchsia-200 break-words">{searchResult.blockHash}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">Transaction Hash:</span>
-                            <p className="text-fuchsia-200 break-words">{searchResult.transactionHash}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">From:</span>
-                            <p className="text-green-400 break-words">{searchResult.from}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">To:</span>
-                            <p className="text-red-400 break-words">{searchResult.to}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">Value (in Ether):</span>
-                            <p className="text-yellow-400 break-words">{searchResult.value} ETH</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">Gas Price (in Gwei):</span>
-                            <p className="text-blue-400 break-words">{searchResult.gasPrice}</p>
-                        </div>
-                        <div>
-                            <span className="font-semibold text-sm">Gas Limit:</span>
-                            <p className="text-orange-400 break-words">{searchResult.gasLimit}</p>
+                    </div>
+
+
+                ) : (searchResult && (
+                    <div className="bg-gray-700 border-fuchsia-600 p-4 rounded-lg shadow-lg space-y-2">
+                        <h2 className="text-xl text-center text-green-400 mb-4">
+                            Search Result
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* 搜索结果内容 */}
+                            <div>
+                                <span className="font-semibold text-sm">Block Number:</span>
+                                <p className="text-fuchsia-200 break-words">{searchResult.blockNumber}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">Block Hash:</span>
+                                <p className="text-fuchsia-200 break-words">{searchResult.blockHash}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">Transaction Hash:</span>
+                                <p className="text-fuchsia-200 break-words">{searchResult.transactionHash}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">From:</span>
+                                <p className="text-green-400 break-words">{searchResult.from}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">To:</span>
+                                <p className="text-red-400 break-words">{searchResult.to}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">Value (in Ether):</span>
+                                <p className="text-yellow-400 break-words">{searchResult.value} ETH</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">Gas Price (in Gwei):</span>
+                                <p className="text-blue-400 break-words">{searchResult.gasPrice}</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-sm">Gas Limit:</span>
+                                <p className="text-orange-400 break-words">{searchResult.gasLimit}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
 
 
             <h1 className="text-xl text-center text-green-400 mb-4">

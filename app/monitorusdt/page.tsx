@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import Link from "next/link";
@@ -13,7 +13,7 @@ interface Transfer {
     value: string;
 }
 
-const USDTMonitor: React.FC = () => {
+const USDTMonitor = () => {
     const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
     const listen = useListen();
 
@@ -40,7 +40,7 @@ const USDTMonitor: React.FC = () => {
 
     const fetchTransfers = async () => {
         try {
-            const response = await fetch('api/monitor-BNB-log', { cache: 'no-store' });
+            const response = await fetch('api/monitor-BNB-log', {cache: 'no-store'});
             const data = await response.json();
             setTransfers(data.transfers);
 
@@ -61,7 +61,7 @@ const USDTMonitor: React.FC = () => {
     return (
         <div className="min-h-screen bg-900 text-white p-6">
 
-            <Link href="https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7" >
+            <Link href="https://etherscan.io/address/0xdac17f958d2ee523a2206206994597c13d831ec7">
                 <h1 className="text-4xl text-fuchsia-400 font-bold mb-6 text-center">
                     USDT Transfer Monitor
                 </h1>
