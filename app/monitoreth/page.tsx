@@ -5,6 +5,7 @@ import {useListen} from "@/app/hooks/useListen";
 import Link from "next/link";
 import {Button, Input, Textarea} from "@nextui-org/react";
 import {Slider} from "@nextui-org/react";
+import {Progress} from "@nextui-org/react";
 
 interface Transaction {
     blockNumber: string;
@@ -95,11 +96,11 @@ const EthTransactionMonitor = () => {
     useEffect(() => {
         const interval = 1000; // 每次更新的间隔（毫秒）
         const totalDuration = 10000; // 总的更新周期（10秒）
-        const step = 1; // 每次增加的进度值
+        const step = 10; // 每次增加的进度值
 
         const timer = setInterval(() => {
             setProgress((prev) => {
-                if (prev >= 10) {
+                if (prev >= 100) {
                     // 当进度达到 10 时，等待 fetchTransactions 完成后重置进度
                     fetchTransactions().then(() => {
                         setProgress(0); // 重置进度条
@@ -109,7 +110,7 @@ const EthTransactionMonitor = () => {
                     });
                     return prev; // 暂停进度的增长
                 }
-                return Math.min(10, prev + step); // 确保进度不会超过 10
+                return Math.min(100, prev + step); // 确保进度不会超过 10
             });
         }, interval);
 
@@ -200,21 +201,28 @@ const EthTransactionMonitor = () => {
                 ))}
 
 
-
-
             <h1 className="text-xl text-center text-green-400 mb-4">
             </h1>
-            <Slider
-                label="monitoring"
-                size="sm"
-                step={1}
-                hideThumb={true}
-                maxValue={10}
-                minValue={0}
-                aria-label="Player progress"
-                value={progress} // 绑定到进度状态
-                className="mb-4"
-            />
+            {/*<Slider*/}
+            {/*    label="monitoring"*/}
+            {/*    size="sm"*/}
+            {/*    step={1}*/}
+            {/*    hideThumb={true}*/}
+            {/*    maxValue={10}*/}
+            {/*    minValue={0}*/}
+            {/*    aria-label="Player progress"*/}
+            {/*    value={progress} // 绑定到进度状态*/}
+            {/*    className="mb-4"*/}
+            {/*/>*/}
+            <div className="flex flex-col gap-6 m-4 ">
+                <Progress
+                    size="sm"
+                    aria-label="Loading..."
+                    value={progress}
+                    // showValueLabel={true}
+                    label="Loading..."
+                />
+            </div>
 
             {loading ? (
                 <p className="text-center text-gray-400">Loading transactions...</p>
