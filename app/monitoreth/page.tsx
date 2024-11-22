@@ -28,6 +28,7 @@ const EthTransactionMonitor = () => {
     const [searchHash, setSearchHash] = useState<string>(""); // 输入的交易哈希
     const [searchResult, setSearchResult] = useState<Transaction | null>(null); // 搜索结果
     const [progress, setProgress] = useState<number>(0); // 初始为 1，表示 100% 进度
+    const [isPaused, setIsPaused] = useState(false); // 控制是否暂停
 
     const fetchTransactions = async () => {
         try {
@@ -88,35 +89,54 @@ const EthTransactionMonitor = () => {
     }, []);
 
     // useEffect(() => {
-    //     fetchTransactions();
-    //     const interval = setInterval(fetchTransactions, 3000);
-    //     return () => clearInterval(interval);
+    //     const interval = 500; // 每次更新的间隔（毫秒）
+    //     const totalDuration = 10000; // 总的更新周期（10秒）
+    //     const step = 5; // 每次增加的进度值
+    //
+    //     const timer = setInterval(() => {
+    //         setProgress((prev) => {
+    //             if (prev >= 100) {
+    //                 // 当进度达到 10 时，等待 fetchTransactions 完成后重置进度
+    //                 fetchTransactions().then(() => {
+    //                     setProgress(0); // 重置进度条
+    //                 }).catch((error) => {
+    //                     console.error("Failed to fetch transactions:", error);
+    //                     setProgress(0); // 即使出错也重置进度条
+    //                 });
+    //                 return prev; // 暂停进度的增长
+    //             }
+    //             return Math.min(100, prev + step); // 确保进度不会超过 10
+    //         });
+    //     }, interval);
+    //
+    //     return () => clearInterval(timer); // 组件卸载时清除定时器
     // }, []);
 
     useEffect(() => {
-        const interval = 500; // 每次更新的间隔（毫秒）
-        const totalDuration = 10000; // 总的更新周期（10秒）
-        const step = 5; // 每次增加的进度值
+        const interval = 1000; // 每次更新的间隔（毫秒）
+        const step = 10; // 每次增加的进度值
 
+        // 定义定时器逻辑
         const timer = setInterval(() => {
+            if (isPaused) return; // 如果暂停，则直接返回，不更新进度
+
             setProgress((prev) => {
                 if (prev >= 100) {
-                    // 当进度达到 10 时，等待 fetchTransactions 完成后重置进度
-                    fetchTransactions().then(() => {
-                        setProgress(0); // 重置进度条
-                    }).catch((error) => {
-                        console.error("Failed to fetch transactions:", error);
-                        setProgress(0); // 即使出错也重置进度条
-                    });
-                    return prev; // 暂停进度的增长
+                    // 当进度达到 100 时，调用 fetchTransactions
+                    fetchTransactions()
+                        .then(() => setProgress(0)) // 重置进度条
+                        .catch((error) => {
+                            console.error("Failed to fetch transactions:", error);
+                            setProgress(0); // 出错时也重置
+                        });
+                    return prev; // 暂停进度增长
                 }
-                return Math.min(100, prev + step); // 确保进度不会超过 10
+                return Math.min(100, prev + step); // 确保进度不会超过 100
             });
         }, interval);
 
         return () => clearInterval(timer); // 组件卸载时清除定时器
-    }, []);
-
+    }, [isPaused, fetchTransactions]); // 当 isPaused 或 fetchTransactions 变化时重新运行
 
     return (
         <div className="min-h-screen bg-900 p-6">
@@ -155,7 +175,6 @@ const EthTransactionMonitor = () => {
                         </h2>
 
                     </div>
-
 
                 ) : (searchResult && (
                     <div className="bg-gray-700 border-fuchsia-600 p-4 rounded-lg shadow-lg space-y-2">
@@ -201,20 +220,8 @@ const EthTransactionMonitor = () => {
                 ))}
 
 
-            <h1 className="text-xl text-center text-green-400 mb-4">
-            </h1>
-            {/*<Slider*/}
-            {/*    label="monitoring"*/}
-            {/*    size="sm"*/}
-            {/*    step={1}*/}
-            {/*    hideThumb={true}*/}
-            {/*    maxValue={10}*/}
-            {/*    minValue={0}*/}
-            {/*    aria-label="Player progress"*/}
-            {/*    value={progress} // 绑定到进度状态*/}
-            {/*    className="mb-4"*/}
-            {/*/>*/}
-            <div className="flex flex-col gap-6 m-4 ">
+            <div className="mt-6 mb-3 flex gap-6 ">
+
                 <Progress
                     size="sm"
                     aria-label="Loading..."
@@ -222,6 +229,16 @@ const EthTransactionMonitor = () => {
                     // showValueLabel={true}
                     label="Loading..."
                 />
+
+                <Button
+                    onClick={() => setIsPaused((prev) => !prev)}
+                    color="primary"
+                    variant="flat"
+                    className="mt-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white p-3 rounded-md"
+                    // isIconOnly={true}
+                >
+                    {isPaused ? "继续更新" : "暂停更新"}
+                </Button>
             </div>
 
             {loading ? (
