@@ -94,9 +94,9 @@ const EthTransactionMonitor = () => {
     // }, []);
 
     useEffect(() => {
-        const interval = 100; // 每次更新的间隔（毫秒）
+        const interval = 500; // 每次更新的间隔（毫秒）
         const totalDuration = 10000; // 总的更新周期（10秒）
-        const step = 1; // 每次增加的进度值
+        const step = 5; // 每次增加的进度值
 
         const timer = setInterval(() => {
             setProgress((prev) => {
