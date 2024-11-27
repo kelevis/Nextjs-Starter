@@ -38,6 +38,7 @@ const EthTransactionMonitor = () => {
     const [isRefresh, setIsRefresh] = useState(false); // 控制是否旋转
     const fetchTransactions = async () => {
         try {
+            setError(null);
             const response = await fetch("api/monitor-eth-transactions", {
                 cache: "no-store",
             });
@@ -169,7 +170,6 @@ const EthTransactionMonitor = () => {
                     <CiSearch size={24}  className={iconColor}/>
                 </Button>
             </div>
-
 
             {
                 searchLoading ? (
