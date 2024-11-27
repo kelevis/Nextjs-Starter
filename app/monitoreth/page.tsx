@@ -9,7 +9,7 @@ import {LuRefreshCw} from "react-icons/lu";
 import {MdOutlineNotStarted} from "react-icons/md";
 import {FaRegCirclePause} from "react-icons/fa6";
 import {CiSearch} from "react-icons/ci";
-
+import { useTheme } from 'next-themes';
 
 interface Transaction {
     blockNumber: string;
@@ -33,7 +33,9 @@ const EthTransactionMonitor = () => {
     const [searchResult, setSearchResult] = useState<Transaction | null>(null); // 搜索结果
     const [progress, setProgress] = useState<number>(0); // 初始为 1，表示 100% 进度
     const [isPaused, setIsPaused] = useState(false); // 控制是否暂停
-
+    const { theme } = useTheme(); // 获取当前主题
+    const iconColor = theme ==='dark'? 'text-[#F4F4F4]':theme === 'purple-dark'? 'text-[#F9B6E8]' : 'text-black';
+    const [isRefresh, setIsRefresh] = useState(false); // 控制是否旋转
     const fetchTransactions = async () => {
         try {
             const response = await fetch("api/monitor-eth-transactions", {
@@ -80,6 +82,19 @@ const EthTransactionMonitor = () => {
         }
     };
 
+    const handleRefreshClick = () => {
+        setIsRefresh(true); // 启动旋转
+
+        fetchTransactions()
+            .then(() => setProgress(0),) // 重置进度条
+            .then(()=>setIsRefresh(false)) // 请求完成后停止旋转)
+            .catch((error) => {
+                console.error("Failed to fetch transactions:", error);
+                setProgress(0); // 出错时也重置
+            })
+
+    };
+
     useEffect(() => {
         if (typeof window !== undefined) {
             const ethereumProviderInjected = typeof window.ethereum !== "undefined";
@@ -100,30 +115,6 @@ const EthTransactionMonitor = () => {
         }
         console.log("连接metamask成功！");
     }, []);
-
-    // useEffect(() => {
-    //     const interval = 500; // 每次更新的间隔（毫秒）
-    //     const totalDuration = 10000; // 总的更新周期（10秒）
-    //     const step = 5; // 每次增加的进度值
-    //
-    //     const timer = setInterval(() => {
-    //         setProgress((prev) => {
-    //             if (prev >= 100) {
-    //                 // 当进度达到 10 时，等待 fetchTransactions 完成后重置进度
-    //                 fetchTransactions().then(() => {
-    //                     setProgress(0); // 重置进度条
-    //                 }).catch((error) => {
-    //                     console.error("Failed to fetch transactions:", error);
-    //                     setProgress(0); // 即使出错也重置进度条
-    //                 });
-    //                 return prev; // 暂停进度的增长
-    //             }
-    //             return Math.min(100, prev + step); // 确保进度不会超过 10
-    //         });
-    //     }, interval);
-    //
-    //     return () => clearInterval(timer); // 组件卸载时清除定时器
-    // }, []);
 
     useEffect(() => {
         const interval = 1000; // 每次更新的间隔（毫秒）
@@ -149,7 +140,7 @@ const EthTransactionMonitor = () => {
         }, interval);
 
         return () => clearInterval(timer); // 组件卸载时清除定时器
-    }, [isPaused, fetchTransactions]); // 当 isPaused 或 fetchTransactions 变化时重新运行
+    }, [isPaused]); // 当 isPaused 或 fetchTransactions 变化时重新运行
 
     return (
         <div className="min-h-screen bg-900 p-6">
@@ -171,11 +162,11 @@ const EthTransactionMonitor = () => {
                 />
                 <Button
                     onClick={handleSearch}
-                    variant="light"
+                    variant="flat"
                     className="capitalize absolute right-0 top-1/2 transform -translate-y-1/2"
                     isIconOnly={true}
                 >
-                    <CiSearch size={24} />
+                    <CiSearch size={24}  className={iconColor}/>
                 </Button>
             </div>
 
@@ -246,20 +237,23 @@ const EthTransactionMonitor = () => {
 
                 <Button
                     onClick={() => setIsPaused((prev) => !prev)}
-                    variant="light"
+                    // variant="light"
+                    variant="flat"
                     className="capitalize"
                     isIconOnly={true}
                 >
-                    {isPaused ? <MdOutlineNotStarted size={30}/> : <FaRegCirclePause size={24}/>}
+                    {isPaused ? <MdOutlineNotStarted size={30} className={iconColor}/> : <FaRegCirclePause size={24} className={iconColor}/>}
                 </Button>
 
                 <Button
-                    onClick={fetchTransactions}
-                    variant="light"
+                    onClick={handleRefreshClick}
+                    // variant="light"
+                    variant="flat"
                     className="capitalize"
                     isIconOnly
+                    isLoading={isRefresh} // 控制加载状态
                 >
-                    <LuRefreshCw size={24}/>
+                    <LuRefreshCw size={24} className={iconColor}/>
                 </Button>
             </div>
 
@@ -278,21 +272,22 @@ const EthTransactionMonitor = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
                                     <div>
                                         <span className="font-semibold text-sm">Block Number:</span>
-                                        <p className="text-fuchsia-200 break-words">
-                                            <Snippet
-                                                symbol=""
-                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
-                                            >
-                                                {transaction.blockNumber}
-                                            </Snippet>
-                                        </p>
+                                        <p className="text-fuchsia-200 break-words">{transaction.blockNumber} </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Block Hash:</span>
-                                        <p className="text-fuchsia-200 break-words">
+                                        <p className="text-fuchsia-200 break-words  line-clamp-3">
                                             <Snippet
                                                 symbol=""
-                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                                style={{
+                                                    all: 'unset',
+                                                    // display: 'inline-flex', // 保证文本和图标在同一行
+                                                    // alignItems: 'center', // 垂直居中对齐文本和图标
+                                                    // width: '100%', // 使 Snippet 宽度自动填充父容器
+                                                    // wordBreak: 'break-word', // 强制长单词换行
+                                                    // overflowWrap: 'break-word', // 防止单词溢出
+                                                    // whiteSpace: 'normal' // 允许换行
+                                                }}
                                             >
                                                 {transaction.blockHash}
                                             </Snippet>
@@ -300,11 +295,12 @@ const EthTransactionMonitor = () => {
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Transaction Hash:</span>
-                                        <p className="text-fuchsia-200 break-words">
-                                            {/* symbol="" 去掉默认的 $ 符号 */}
+                                        <p className="text-fuchsia-200 break-words line-clamp-3">
                                             <Snippet
                                                 symbol=""
-                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                                style={{
+                                                    all: 'unset',
+                                                }}
                                             >
                                                 {transaction.transactionHash}
                                             </Snippet>
@@ -312,25 +308,12 @@ const EthTransactionMonitor = () => {
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">From:</span>
-                                        <p className="text-green-400 break-words">
-                                            <Snippet
-                                                symbol=""
-                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
-                                            >
-                                                {transaction.from}
-                                            </Snippet>
-                                        </p>
+                                        <p className="text-green-400 break-words">{transaction.from}</p>
+
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">To:</span>
-                                        <p className="text-red-400 break-words">
-                                            <Snippet
-                                                symbol=""
-                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
-                                            >
-                                                {transaction.to}
-                                            </Snippet>
-                                        </p>
+                                        <p className="text-red-400 break-words">{transaction.to}</p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Value (in Ether):</span>
