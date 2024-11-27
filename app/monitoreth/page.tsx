@@ -3,9 +3,13 @@ import React, {useEffect, useState} from "react";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {useListen} from "@/app/hooks/useListen";
 import Link from "next/link";
-import {Button, Input, Textarea} from "@nextui-org/react";
-import {Slider} from "@nextui-org/react";
+import {Button, Input, Snippet, Textarea} from "@nextui-org/react";
 import {Progress} from "@nextui-org/react";
+import {LuRefreshCw} from "react-icons/lu";
+import {MdOutlineNotStarted} from "react-icons/md";
+import {FaRegCirclePause} from "react-icons/fa6";
+import {CiSearch} from "react-icons/ci";
+
 
 interface Transaction {
     blockNumber: string;
@@ -35,11 +39,19 @@ const EthTransactionMonitor = () => {
             const response = await fetch("api/monitor-eth-transactions", {
                 cache: "no-store",
             });
-            const data = await response.json();
-            setTransactions(data.transactions || []);
-            setLoading(false);
+            if (response.status == 200) {
+                const data = await response.json();
+                setTransactions(data.transactions || []);
+                setLoading(false);
+            } else {
+                console.error(`Failed to Load Transactions... Code: ${response.status}`);
+                setError("Failed to Load Transactions...");
+                setLoading(false);
+            }
+
         } catch (error) {
             setError("Failed to fetch monitor transactions. Please try again.");
+            console.error("api 请求失败. error is:", error);
             setLoading(false);
         }
     };
@@ -52,20 +64,21 @@ const EthTransactionMonitor = () => {
             const response = await fetch(`/api/search-transaction?hash=${encodeURIComponent(searchHash)}`);
             const data = await response.json();
 
-            if (response.ok) {
+            // if (response.ok) {
+            if (response.status == 200) {
                 setSearchResult(data);
             } else {
                 setSearchResult(null);
-                setError(data.error || "Failed to search transaction.");
+                console.error(`Error Try again! Code: ${response.status}`);
+                alert(`Error Try again`);
             }
-        } catch (err) {
-            setError("An unexpected error occurred. Please try again.");
+        } catch (error) {
             setSearchResult(null);
+            console.error("api 请求失败:", error);
         } finally {
             setSearchLoading(false);
         }
     };
-
 
     useEffect(() => {
         if (typeof window !== undefined) {
@@ -147,24 +160,25 @@ const EthTransactionMonitor = () => {
             </Link>
 
             {/* 搜索交易 */}
-            <div className="mb-6 flex  text-center">
+            <div className="mb-6 flex items-center relative">
                 <Input
                     type="text"
                     placeholder="Enter transaction hash"
                     variant="bordered"
                     value={searchHash}
                     onChange={(e) => setSearchHash(e.target.value)}
-                    className="p-3 rounded-md"
+                    className="p-3 rounded-md pr-12" // 加入右侧内边距给按钮留出空间
                 />
                 <Button
                     onClick={handleSearch}
-                    color="primary"
-                    variant="flat"
-                    className="mt-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white p-3 rounded-md"
+                    variant="light"
+                    className="capitalize absolute right-0 top-1/2 transform -translate-y-1/2"
+                    isIconOnly={true}
                 >
-                    Search
+                    <CiSearch size={24} />
                 </Button>
             </div>
+
 
             {
                 searchLoading ? (
@@ -219,8 +233,8 @@ const EthTransactionMonitor = () => {
                     </div>
                 ))}
 
-
-            <div className="mt-6 mb-3 flex gap-6 ">
+            <div className="mt-6 mb-3 flex items-center gap-6">
+                {/*<div className="mt-6 mb-3 flex gap-6 ">*/}
 
                 <Progress
                     size="sm"
@@ -232,12 +246,20 @@ const EthTransactionMonitor = () => {
 
                 <Button
                     onClick={() => setIsPaused((prev) => !prev)}
-                    color="primary"
-                    variant="flat"
-                    className="mt-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white p-3 rounded-md"
-                    // isIconOnly={true}
+                    variant="light"
+                    className="capitalize"
+                    isIconOnly={true}
                 >
-                    {isPaused ? "继续更新" : "暂停更新"}
+                    {isPaused ? <MdOutlineNotStarted size={30}/> : <FaRegCirclePause size={24}/>}
+                </Button>
+
+                <Button
+                    onClick={fetchTransactions}
+                    variant="light"
+                    className="capitalize"
+                    isIconOnly
+                >
+                    <LuRefreshCw size={24}/>
                 </Button>
             </div>
 
@@ -256,23 +278,59 @@ const EthTransactionMonitor = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
                                     <div>
                                         <span className="font-semibold text-sm">Block Number:</span>
-                                        <p className="text-fuchsia-200 break-words">{transaction.blockNumber}</p>
+                                        <p className="text-fuchsia-200 break-words">
+                                            <Snippet
+                                                symbol=""
+                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                            >
+                                                {transaction.blockNumber}
+                                            </Snippet>
+                                        </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Block Hash:</span>
-                                        <p className="text-fuchsia-200 break-words">{transaction.blockHash}</p>
+                                        <p className="text-fuchsia-200 break-words">
+                                            <Snippet
+                                                symbol=""
+                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                            >
+                                                {transaction.blockHash}
+                                            </Snippet>
+                                        </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Transaction Hash:</span>
-                                        <p className="text-fuchsia-200 break-words">{transaction.transactionHash}</p>
+                                        <p className="text-fuchsia-200 break-words">
+                                            {/* symbol="" 去掉默认的 $ 符号 */}
+                                            <Snippet
+                                                symbol=""
+                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                            >
+                                                {transaction.transactionHash}
+                                            </Snippet>
+                                        </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">From:</span>
-                                        <p className="text-green-400 break-words">{transaction.from}</p>
+                                        <p className="text-green-400 break-words">
+                                            <Snippet
+                                                symbol=""
+                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                            >
+                                                {transaction.from}
+                                            </Snippet>
+                                        </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">To:</span>
-                                        <p className="text-red-400 break-words">{transaction.to}</p>
+                                        <p className="text-red-400 break-words">
+                                            <Snippet
+                                                symbol=""
+                                                style={{all: 'unset', display: 'inline-flex', alignItems: 'center'}}
+                                            >
+                                                {transaction.to}
+                                            </Snippet>
+                                        </p>
                                     </div>
                                     <div>
                                         <span className="font-semibold text-sm">Value (in Ether):</span>

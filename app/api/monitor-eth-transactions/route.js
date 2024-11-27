@@ -22,7 +22,7 @@ export async function GET(request) {
 
         // 如果没有交易数据，返回空
         if (!block.transactions || block.transactions.length === 0) {
-            return NextResponse.json({ message: 'No transactions found in the latest block' });
+            return NextResponse.json({ message: 'No transactions found in the latest block' }, { status: 404 });
         }
 
         // 获取每个交易的详细信息，带重试机制
@@ -41,12 +41,12 @@ export async function GET(request) {
         }));
 
         // 设置响应头，禁用缓存优化
-        const response = NextResponse.json({ transactions });
+        const response = NextResponse.json({ transactions }, { status: 200 });
         response.headers.set('Cache-Control', 'no-store, max-age=0');
         return response;
 
     } catch (error) {
         console.error('Error fetching data:', error);
-        return NextResponse.json({ error: 'Unable to fetch data', details: error.message });
+        return NextResponse.json({ error: 'Unable to fetch data', details: error.message }, { status: 500 });
     }
 }

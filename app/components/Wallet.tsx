@@ -399,12 +399,22 @@ export default function Wallet() {
                         </Link>
                         {/*<CopyButton textToCopy={config.demoContractSepoliaPrivateKey}/>*/}
                         <br/>
+                        {/*<Snippet*/}
+                        {/*    variant="flat"*/}
+                        {/*    color={"primary"}*/}
+                        {/*    className={"my-4 mx-4"}*/}
+                        {/*>*/}
+                        {/*    demo-PrivateKey:{config.demoContractSepoliaPrivateKey}</Snippet>*/}
+
                         <Snippet
+                            symbol=""
+                            style={{ display: 'inline-flex', alignItems: 'center' }}
                             variant="flat"
                             color={"primary"}
                             className={"my-4 mx-4"}
                         >
-                            demo-PrivateKey:{config.demoContractSepoliaPrivateKey}</Snippet>
+                            demo-PrivateKey:{config.demoContractSepoliaPrivateKey}
+                        </Snippet>
 
                         <br/>
 
