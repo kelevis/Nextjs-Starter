@@ -29,8 +29,6 @@ const Home = () => {
                 setError('验证码验证失败，请重新尝试。'); // 验证失败，设置错误信息
                 console.error('Verification failed! data is:', data);
             }
-
-
         }
     };
 

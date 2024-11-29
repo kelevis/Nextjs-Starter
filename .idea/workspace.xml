@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/monitoreth/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/monitoreth/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,13 +56,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet.xml" />
     <property name="ts.external.directory.path" value="C:\Program Files\nodeWorkspace\Nextjs-Starter\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -88,6 +88,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.route.js" />
+        <item itemvalue="Node.js.route.js" />
         <item itemvalue="Node.js.route.js" />
         <item itemvalue="Node.js.route.js" />
         <item itemvalue="Node.js.route.js" />
@@ -194,6 +196,8 @@
       <workItem from="1732587950900" duration="128000" />
       <workItem from="1732670654262" duration="6000" />
       <workItem from="1732670978775" duration="8580000" />
+      <workItem from="1732842974339" duration="1506000" />
+      <workItem from="1732848900248" duration="2707000" />
     </task>
     <servers />
   </component>

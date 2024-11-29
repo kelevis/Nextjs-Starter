@@ -141,7 +141,7 @@ const EthTransactionMonitor = () => {
         }, interval);
 
         return () => clearInterval(timer); // 组件卸载时清除定时器
-    }, [isPaused]); // 当 isPaused 或 fetchTransactions 变化时重新运行
+    }, [isPaused]); // 当 isPaused  变化时重新运行
 
     return (
         <div className="min-h-screen bg-900 p-6">
