@@ -23,7 +23,8 @@ interface Transaction {
 }
 
 const EthTransactionMonitor = () => {
-    const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
+    // const {dispatch, state: {status, isMetamaskInstalled, wallet},} = useMetamask();
+    const {dispatch} = useMetamask();
     const listen = useListen();
     const [transactions, setTransactions] = useState<Transaction[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
