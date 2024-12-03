@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
-      <change afterPath="$PROJECT_DIR$/README-以太坊客户端.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,11 +67,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-eth-transactions" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\monitor" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-BNB-log" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\music" />
@@ -199,7 +198,6 @@
       <workItem from="1732842974339" duration="1506000" />
       <workItem from="1732848900248" duration="2707000" />
       <workItem from="1733107200174" duration="5014000" />
-      <workItem from="1733217563156" duration="613000" />
     </task>
     <servers />
   </component>
