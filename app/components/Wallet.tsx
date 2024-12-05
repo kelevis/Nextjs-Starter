@@ -12,8 +12,6 @@ import TimeAndLogo from "@/app/components/uiTimeAndLogo"
 import CalenderBtn from "@/app/components/uiCalender";
 import DashboardClock from "@/app/components/Time"
 
-
-
 export default function Wallet() {
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
@@ -328,7 +326,6 @@ export default function Wallet() {
 
 
                 {MetamaskNotInstall && (
-
                     <div className={"flex flex-row justify-center gap-4"}>
 
                         <TimeAndLogo text={"Please install Metamask"}/>
@@ -345,9 +342,7 @@ export default function Wallet() {
                         {/*<CalenderBtn/>*/}
 
                     </div>
-
                 )}
-
 
                 {MetamaskInstall && (
 
@@ -355,9 +350,7 @@ export default function Wallet() {
                         <TimeAndLogo text={"Please connect Metamask"}/>
 
                     </div>
-
                 )}
-
 
                 {MetamaskInstallAndConnected && (
                     <div className="mx-auto justify-self-center content-center sm:px-6">
@@ -419,8 +412,6 @@ export default function Wallet() {
                         <br/>
 
                     </div>
-
-
                 )}
 
                 {MetamaskInstallAndConnected && (
@@ -458,7 +449,6 @@ export default function Wallet() {
                             />
                         </div>
                     </form>
-
                 )}
 
                 {MetamaskInstallAndConnected && (
@@ -486,11 +476,6 @@ export default function Wallet() {
 
                         </div>
                         )
-
-
-
-
-
                 )}
 
                 {MetamaskInstallAndConnected && (
@@ -523,7 +508,6 @@ export default function Wallet() {
                 )}
 
                 {MetamaskInstallAndConnected && (
-
                     <form className="flex w-full justify-center space-x-2 my-4 gap-6 text-center">
                         <div className="flex flex-col text-center">
                             {/*<label htmlFor="token-id-input" className={""}>tokenId</label>*/}
@@ -555,13 +539,10 @@ export default function Wallet() {
 
                         </div>
                     </form>
-
                 )}
-
 
                 {MetamaskInstallAndConnected && (
                // 只有当 Metamask 安装并连接时才会渲染内容
-
                     invokeLoading ? (
                         <div className="flex  w-full justify-center my-4 space-x-2">
                             <Button
