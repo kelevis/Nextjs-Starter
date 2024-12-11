@@ -9,7 +9,7 @@ import {LuRefreshCw} from "react-icons/lu";
 import {MdOutlineNotStarted} from "react-icons/md";
 import {FaRegCirclePause} from "react-icons/fa6";
 import {CiSearch} from "react-icons/ci";
-import { useTheme } from 'next-themes';
+import {useTheme} from 'next-themes';
 
 interface Transaction {
     blockNumber: string;
@@ -34,8 +34,8 @@ const EthTransactionMonitor = () => {
     const [searchResult, setSearchResult] = useState<Transaction | null>(null); // 搜索结果
     const [progress, setProgress] = useState<number>(0); // 初始为 1，表示 100% 进度
     const [isPaused, setIsPaused] = useState(false); // 控制是否暂停
-    const { theme } = useTheme(); // 获取当前主题
-    const iconColor = theme ==='dark'? 'text-[#F4F4F4]':theme === 'purple-dark'? 'text-[#F9B6E8]' : 'text-black';
+    const {theme} = useTheme(); // 获取当前主题
+    const iconColor = theme === 'dark' ? 'text-[#F4F4F4]' : theme === 'purple-dark' ? 'text-[#F9B6E8]' : 'text-black';
     const [isRefresh, setIsRefresh] = useState(false); // 控制是否旋转
     const fetchTransactions = async () => {
         try {
@@ -89,7 +89,7 @@ const EthTransactionMonitor = () => {
 
         fetchTransactions()
             .then(() => setProgress(0),) // 重置进度条
-            .then(()=>setIsRefresh(false)) // 请求完成后停止旋转)
+            .then(() => setIsRefresh(false)) // 请求完成后停止旋转)
             .catch((error) => {
                 console.error("Failed to fetch transactions:", error);
                 setProgress(0); // 出错时也重置
@@ -100,8 +100,7 @@ const EthTransactionMonitor = () => {
     useEffect(() => {
         if (typeof window !== undefined) {
             const ethereumProviderInjected = typeof window.ethereum !== "undefined";
-            const isMetamaskInstalled =
-                ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
+            const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
             const local = window.localStorage.getItem("metamaskState");
 
             // user was previously connected, start listening to MM
@@ -168,7 +167,7 @@ const EthTransactionMonitor = () => {
                     className="capitalize absolute right-0 top-1/2 transform -translate-y-1/2"
                     isIconOnly={true}
                 >
-                    <CiSearch size={24}  className={iconColor}/>
+                    <CiSearch size={24} className={iconColor}/>
                 </Button>
             </div>
 
@@ -243,7 +242,8 @@ const EthTransactionMonitor = () => {
                     className="capitalize"
                     isIconOnly={true}
                 >
-                    {isPaused ? <MdOutlineNotStarted size={30} className={iconColor}/> : <FaRegCirclePause size={24} className={iconColor}/>}
+                    {isPaused ? <MdOutlineNotStarted size={30} className={iconColor}/> :
+                        <FaRegCirclePause size={24} className={iconColor}/>}
                 </Button>
 
                 <Button
