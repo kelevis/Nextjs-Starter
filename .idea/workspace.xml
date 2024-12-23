@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70cce83a-0648-4ad5-b1a4-1557feb82454" name="变更" comment="变更">
+      <change afterPath="$PROJECT_DIR$/app/calendar/Home.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/layout.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/page.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/page2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/page3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/calendar/page4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Wallet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Wallet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/verify-captcha/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/BtnPageSwitch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,10 +63,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/calendar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -68,11 +79,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\calendar" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter" />
+      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api" />
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-eth-transactions" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\monitor" />
-      <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\app\api\monitor-BNB-log" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Program Files\nodeWorkspace\Nextjs-Starter\public\music" />
@@ -200,6 +211,12 @@
       <workItem from="1732848900248" duration="2707000" />
       <workItem from="1733107200174" duration="5014000" />
       <workItem from="1733366971938" duration="27000" />
+      <workItem from="1734313051774" duration="665000" />
+      <workItem from="1734314883784" duration="36000" />
+      <workItem from="1734314941733" duration="586000" />
+      <workItem from="1734923015750" duration="7912000" />
+      <workItem from="1734941813471" duration="1759000" />
+      <workItem from="1734944053217" duration="4296000" />
     </task>
     <servers />
   </component>

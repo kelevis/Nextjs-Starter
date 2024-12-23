@@ -11,6 +11,8 @@ export async function POST(req: Request) {
         return NextResponse.json({code: false, message: 'Token is required'}, {status: 400});
     }
 
+    // return NextResponse.json({code: true});
+
     try {
 // --------------------------------- reCAPTCHA-v2 ---------------------------------------------------------------------
         const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
