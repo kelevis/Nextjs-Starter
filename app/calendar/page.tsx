@@ -150,6 +150,9 @@ const App: React.FC = () => {
     };
 
     const onDateChange: CalendarProps<Dayjs>['onSelect'] = (value, selectInfo) => {
+        console.log("value.format('YYYY-MM-DD'):",value.format('YYYY-MM-DD'));
+        console.log("selectInfo:",selectInfo);
+        console.log("selectInfo.source:",selectInfo.source);
         if (selectInfo.source === 'date') {
             setSelectDate(value);
         }

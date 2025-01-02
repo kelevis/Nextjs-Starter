@@ -1,55 +1,189 @@
 "use client"
-import React, { useState } from 'react';
-import { Calendar, Col, Radio, Row, Select } from 'antd';
-import type { CalendarProps } from 'antd';  // 导入 CalendarProps 类型
+import React, {useEffect} from 'react';
+// import './index.css';
+import {Calendar, Col, Radio, Row, Select} from 'antd';
+import type {CalendarProps} from 'antd';
+import {createStyles} from 'antd-style';
+import classNames from 'classnames';
 import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn'; // 确保加载你需要的语言包
-import localeData from 'dayjs/plugin/localeData'; // 引入 localeData 插件
-import { HolidayUtil, Lunar } from 'lunar-typescript';
-import type { Dayjs } from 'dayjs';
+import type {Dayjs} from 'dayjs';
+import {HolidayUtil, Lunar} from 'lunar-typescript';
 
-// 使用插件
+import localeData from 'dayjs/plugin/localeData';
+import 'dayjs/locale/zh-cn';
+import {useMetamask} from "@/app/hooks/useMetamask";
+import {useListen} from "@/app/hooks/useListen";
+
 dayjs.extend(localeData);
+dayjs.locale('zh-cn');
+
+const useStyle = createStyles(({token, css, cx}) => {
+    const lunar = css`
+      color: ${token.colorTextTertiary};
+      font-size: ${token.fontSizeSM}px;
+    `;
+    const weekend = css`
+      color: ${token.colorError};
+
+      &.gray {
+        opacity: 0.4;
+      }
+    `;
+    return {
+        wrapper: css`
+          width: 450px;
+          border: 1px solid ${token.colorBorderSecondary};
+          border-radius: ${token.borderRadiusOuter};
+          padding: 5px;
+        `,
+        dateCell: css`
+          position: relative;
+
+          &:before {
+            content: '';
+            position: absolute;
+            inset-inline-start: 0;
+            inset-inline-end: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            max-width: 40px;
+            max-height: 40px;
+            background: transparent;
+            transition: background-color 300ms;
+            border-radius: ${token.borderRadiusOuter}px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+          }
+
+          &:hover:before {
+            background: rgba(0, 0, 0, 0.04);
+          }
+        `,
+        today: css`
+          &:before {
+            border: 1px solid ${token.colorPrimary};
+          }
+        `,
+        text: css`
+          position: relative;
+          z-index: 1;
+        `,
+        lunar,
+        current: css`
+          color: ${token.colorTextLightSolid};
+
+          &:before {
+            background: ${token.colorPrimary};
+          }
+
+          &:hover:before {
+            background: ${token.colorPrimary};
+            opacity: 0.8;
+          }
+
+          .${cx(lunar)} {
+            color: ${token.colorTextLightSolid};
+            opacity: 0.9;
+          }
+
+          .${cx(weekend)} {
+            color: ${token.colorTextLightSolid};
+          }
+        `,
+        monthCell: css`
+          width: 120px;
+          color: ${token.colorTextBase};
+          border-radius: ${token.borderRadiusOuter}px;
+          padding: 5px 0;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.04);
+          }
+        `,
+        monthCellCurrent: css`
+          color: ${token.colorTextLightSolid};
+          background: ${token.colorPrimary};
+
+          &:hover {
+            background: ${token.colorPrimary};
+            opacity: 0.8;
+          }
+        `,
+        weekend,
+    };
+});
 
 const App: React.FC = () => {
-    const [selectDate, setSelectDate] = useState<Dayjs>(dayjs());
-    const [panelDateDate, setPanelDate] = useState<Dayjs>(dayjs());
 
-    // 日期面板改变时的回调
+    const {dispatch} = useMetamask();
+
+    const listen = useListen();
+
+    useEffect(() => {
+        if (typeof window !== undefined) {
+            const ethereumProviderInjected = typeof window.ethereum !== "undefined";
+            const isMetamaskInstalled = ethereumProviderInjected && Boolean(window.ethereum.isMetaMask);
+            const local = window.localStorage.getItem("metamaskState");
+
+            // user was previously connected, start listening to MM
+            if (local) {
+                listen();
+            }
+
+            // local could be null if not present in LocalStorage
+            const {wallet, balance} = local ? JSON.parse(local) : {wallet: null, balance: null};
+            dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
+        }
+        console.log("连接metamask成功！")
+
+    }, []);
+
+    const {styles} = useStyle({test: true});
+
+    const [selectDate, setSelectDate] = React.useState<Dayjs>(dayjs());
+    const [panelDateDate, setPanelDate] = React.useState<Dayjs>(dayjs());
+
     const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
         console.log(value.format('YYYY-MM-DD'), mode);
         setPanelDate(value);
     };
 
-    // 日期选择时的回调
     const onDateChange: CalendarProps<Dayjs>['onSelect'] = (value, selectInfo) => {
+        console.log("value.format('YYYY-MM-DD'):",value.format('YYYY-MM-DD'));
+        console.log("selectInfo:",selectInfo);
+        console.log("selectInfo.source:",selectInfo.source);
         if (selectInfo.source === 'date') {
             setSelectDate(value);
         }
     };
 
-    // 自定义单元格渲染
     const cellRender: CalendarProps<Dayjs>['fullCellRender'] = (date, info) => {
         const d = Lunar.fromDate(date.toDate());
         const lunar = d.getDayInChinese();
         const solarTerm = d.getJieQi();
         const isWeekend = date.day() === 6 || date.day() === 0;
-        const h = HolidayUtil.getHoliday(date.year(), date.month() + 1, date.date());
+        const h = HolidayUtil.getHoliday(date.get('year'), date.get('month') + 1, date.get('date'));
         const displayHoliday = h?.getTarget() === h?.getDay() ? h?.getName() : undefined;
-
         if (info.type === 'date') {
             return React.cloneElement(info.originNode, {
-                ...info.originNode.props,
-                className: `date-cell ${selectDate.isSame(date, 'date') ? 'current' : ''} ${
-                    date.isSame(dayjs(), 'date') ? 'today' : ''
-                }`,
+                ...(info.originNode as React.ReactElement<any>).props,
+                className: classNames(styles.dateCell, {
+                    [styles.current]: selectDate.isSame(date, 'date'),
+                    [styles.today]: date.isSame(dayjs(), 'date'),
+                }),
                 children: (
-                    <div>
-                        <span className={isWeekend ? 'weekend' : ''}>
-                            {date.date()}
-                        </span>
+                    <div className={styles.text}>
+            <span
+                className={classNames({
+                    [styles.weekend]: isWeekend,
+                    gray: !panelDateDate.isSame(date, 'month'),
+                })}
+            >
+              {date.get('date')}
+            </span>
                         {info.type === 'date' && (
-                            <div>{displayHoliday || solarTerm || lunar}</div>
+                            <div className={styles.lunar}>{displayHoliday || solarTerm || lunar}</div>
                         )}
                     </div>
                 ),
@@ -57,23 +191,27 @@ const App: React.FC = () => {
         }
 
         if (info.type === 'month') {
-            const d2 = Lunar.fromDate(new Date(date.year(), date.month()));
+            // Due to the fact that a solar month is part of the lunar month X and part of the lunar month X+1,
+            // when rendering a month, always take X as the lunar month of the month
+            const d2 = Lunar.fromDate(new Date(date.get('year'), date.get('month')));
             const month = d2.getMonthInChinese();
             return (
-                <div className={`month-cell ${selectDate.isSame(date, 'month') ? 'month-cell-current' : ''}`}>
-                    {date.month() + 1}月（{month}月）
+                <div
+                    className={classNames(styles.monthCell, {
+                        [styles.monthCellCurrent]: selectDate.isSame(date, 'month'),
+                    })}
+                >
+                    {date.get('month') + 1}月（{month}月）
                 </div>
             );
         }
     };
 
-    // 获取年份标签
     const getYearLabel = (year: number) => {
         const d = Lunar.fromDate(new Date(year + 1, 0));
         return `${d.getYearInChinese()}年（${d.getYearInGanZhi()}${d.getYearShengXiao()}年）`;
     };
 
-    // 获取月份标签
     const getMonthLabel = (month: number, value: Dayjs) => {
         const d = Lunar.fromDate(new Date(value.year(), month));
         const lunar = d.getMonthInChinese();
@@ -81,82 +219,89 @@ const App: React.FC = () => {
     };
 
     return (
-        <div style={{ width: '450px', padding: '5px', border: '1px solid #d9d9d9', borderRadius: '8px' }}>
-            <Calendar
-                fullCellRender={cellRender}
-                fullscreen={false}
-                onPanelChange={onPanelChange}
-                onSelect={onDateChange}
-                headerRender={({ value, type, onChange, onTypeChange }) => {
-                    const start = 0;
-                    const end = 12;
-                    const monthOptions = [];
+        <div
+            className="w-full h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex flex-col items-center justify-center text-white">
+            <h1 className="text-4xl font-bold mb-6">Welcome to Calendar</h1>
+            <div className="bg-white rounded-lg p-8 shadow-lg text-gray-800">
+                <div className={styles.wrapper}>
+                    <Calendar
+                        defaultValue={selectDate}
+                        fullCellRender={cellRender}
+                        fullscreen={false}
+                        onPanelChange={onPanelChange}
+                        onSelect={onDateChange}
+                        headerRender={({value, type, onChange, onTypeChange}) => {
+                            const start = 0;
+                            const end = 12;
+                            const monthOptions = [];
 
-                    let current = value.clone();
-                    const localeData = value.localeData(); // 现在可以调用 localeData 了
-                    const months = [];
-                    for (let i = 0; i < 12; i++) {
-                        current = current.month(i);
-                        months.push(localeData.monthsShort(current));
-                    }
+                            let current = value.clone();
+                            const localeData = value.localeData();
+                            const months = [];
+                            for (let i = 0; i < 12; i++) {
+                                current = current.month(i);
+                                months.push(localeData.monthsShort(current));
+                            }
 
-                    for (let i = start; i < end; i++) {
-                        monthOptions.push({
-                            label: getMonthLabel(i, value),
-                            value: i,
-                        });
-                    }
+                            for (let i = start; i < end; i++) {
+                                monthOptions.push({
+                                    label: getMonthLabel(i, value),
+                                    value: i,
+                                });
+                            }
 
-                    const year = value.year();
-                    const month = value.month();
-                    const options = [];
-                    for (let i = year - 10; i < year + 10; i += 1) {
-                        options.push({
-                            label: getYearLabel(i),
-                            value: i,
-                        });
-                    }
-
-                    return (
-                        <Row justify="end" gutter={8} style={{ padding: 8 }}>
-                            <Col>
-                                <Select
-                                    size="small"
-                                    popupMatchSelectWidth={false}
-                                    value={year}
-                                    options={options}
-                                    onChange={(newYear) => {
-                                        const now = value.clone().year(newYear);
-                                        onChange(now);
-                                    }}
-                                />
-                            </Col>
-                            <Col>
-                                <Select
-                                    size="small"
-                                    popupMatchSelectWidth={false}
-                                    value={month}
-                                    options={monthOptions}
-                                    onChange={(newMonth) => {
-                                        const now = value.clone().month(newMonth);
-                                        onChange(now);
-                                    }}
-                                />
-                            </Col>
-                            <Col>
-                                <Radio.Group
-                                    size="small"
-                                    onChange={(e) => onTypeChange(e.target.value)}
-                                    value={type}
-                                >
-                                    <Radio.Button value="month">月</Radio.Button>
-                                    <Radio.Button value="year">年</Radio.Button>
-                                </Radio.Group>
-                            </Col>
-                        </Row>
-                    );
-                }}
-            />
+                            const year = value.year();
+                            const month = value.month();
+                            const options = [];
+                            for (let i = year - 10; i < year + 10; i += 1) {
+                                options.push({
+                                    label: getYearLabel(i),
+                                    value: i,
+                                });
+                            }
+                            return (
+                                <Row justify="end" gutter={8} style={{padding: 8}}>
+                                    <Col>
+                                        <Select
+                                            size="small"
+                                            popupMatchSelectWidth={false}
+                                            className="my-year-select"
+                                            value={year}
+                                            options={options}
+                                            onChange={(newYear) => {
+                                                const now = value.clone().year(newYear);
+                                                onChange(now);
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <Select
+                                            size="small"
+                                            popupMatchSelectWidth={false}
+                                            value={month}
+                                            options={monthOptions}
+                                            onChange={(newMonth) => {
+                                                const now = value.clone().month(newMonth);
+                                                onChange(now);
+                                            }}
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <Radio.Group
+                                            size="small"
+                                            onChange={(e) => onTypeChange(e.target.value)}
+                                            value={type}
+                                        >
+                                            <Radio.Button value="month">月</Radio.Button>
+                                            <Radio.Button value="year">年</Radio.Button>
+                                        </Radio.Group>
+                                    </Col>
+                                </Row>
+                            );
+                        }}
+                    />
+                </div>
+            </div>
         </div>
     );
 };
