@@ -32,8 +32,8 @@ export default function Home() {
     function testNetwork() {
         // 在新窗口中发起一个 HTTPS 请求
         // const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
-        const newWindow = window.open(`https:websocket-jpxi.onrender.com`, '_blank');
-        // const newWindow = window.open(`https:localhost:8080`, '_blank');
+        // const newWindow = window.open(`https:websocket-jpxi.onrender.com`, '_blank');
+        const newWindow = window.open(`https:localhost:8080`, '_blank');
         setHttps(true); // 设置为已测试
         if (newWindow) {
             newWindow.onload = () => {
@@ -57,8 +57,8 @@ export default function Home() {
 
         // 创建一个新的 WebSocket 连接
         // const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
-        const ws = new WebSocket(`wss://websocket-jpxi.onrender.com/ws/${userId}`);
-        // const ws = new WebSocket(`ws://localhost:8080/ws/${userId}`);
+        // const ws = new WebSocket(`wss://websocket-jpxi.onrender.com/ws/${userId}`);
+        const ws = new WebSocket(`ws://localhost:8080/ws/${userId}`);
 
 
         ws.onopen = () => {
@@ -206,14 +206,7 @@ export default function Home() {
             {https && connected && (
                 <div className="w-full max-w-lg space-y-4 text-center">
                     <h1 className="text-xl font-bold">WebSocket Chat</h1>
-                    <h2 className="text-lg text-gray-500 dark:text-gray-300">My Id: {userId}</h2>
-
-                    {/* 消息框 */}
-                    <div
-                        ref={messagesEndRef}
-                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto text-white dark:text-gray-300 bg-gray-900"
-                        dangerouslySetInnerHTML={{ __html: messages.join('<br>') }}
-                    />
+                    <h2 className="text-lg text-gray-500 dark:text-gray-300">Connected as {userId}</h2>
 
                     <Input
                         variant="bordered"
@@ -252,10 +245,16 @@ export default function Home() {
                         Send
                     </Button>
 
-
-
+                    {/* 消息框 */}
+                    <div
+                        ref={messagesEndRef}
+                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto text-white dark:text-gray-300 bg-gray-900"
+                        dangerouslySetInnerHTML={{ __html: messages.join('<br>') }}
+                    />
                 </div>
             )}
+
+
 
         </div>
 
