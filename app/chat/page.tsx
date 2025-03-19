@@ -31,7 +31,8 @@ export default function Home() {
 
     function testNetwork() {
         // 在新窗口中发起一个 HTTPS 请求
-        const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
+        // const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
+        const newWindow = window.open(`https:websocket-jpxi.onrender.com`, '_blank');
         setHttps(true); // 设置为已测试
         if (newWindow) {
             newWindow.onload = () => {
@@ -54,7 +55,8 @@ export default function Home() {
         }
 
         // 创建一个新的 WebSocket 连接
-        const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
+        // const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
+        const ws = new WebSocket(`wss://websocket-jpxi.onrender.com/ws/${userId}`);
 
         ws.onopen = () => {
             console.log('Connected to WebSocket server');
