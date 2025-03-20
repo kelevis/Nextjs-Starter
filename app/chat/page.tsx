@@ -24,7 +24,8 @@ export default function Home() {
     const [connected, setConnected] = useState<boolean>(false); // 判断是否已连接
     const [https, setHttps] = useState<boolean>(false); // 判断是否已连接
     const [showPicker, setShowPicker] = useState<boolean>(false); // 控制表情选择器的显示
-    const messagesEndRef = useRef<HTMLTextAreaElement>(null);
+    // const messagesEndRef = useRef<HTMLTextAreaElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance}} = useMetamask();
     const listen = useListen();

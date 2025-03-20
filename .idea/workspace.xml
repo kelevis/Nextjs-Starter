@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce1d473b-1a9d-47a7-adae-a3a31ca629c9" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/app/chat/page.txt3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="ce1d473b-1a9d-47a7-adae-a3a31ca629c9" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,6 +214,7 @@
       <workItem from="1741160319483" duration="467000" />
       <workItem from="1741161062966" duration="15000" />
       <workItem from="1741165145356" duration="345000" />
+      <workItem from="1742438266155" duration="649000" />
     </task>
     <servers />
   </component>
