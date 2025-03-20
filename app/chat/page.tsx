@@ -66,35 +66,18 @@ export default function Home() {
             setConnected(true);
         };
 
-        // ws.onmessage = (event) => {
-        //     try {
-        //         const messageData: Message = JSON.parse(event.data);
-        //
-        //         setMessages((prevMessages) => [
-        //             ...prevMessages,
-        //             `${messageData.UserId}: ${messageData.content}`
-        //         ]);
-        //     } catch (err) {
-        //         console.error('Error parsing message:', err);
-        //     }
-        // };
-
         ws.onmessage = (event) => {
             try {
                 const messageData: Message = JSON.parse(event.data);
+
                 setMessages((prevMessages) => [
                     ...prevMessages,
-                    messageData.UserId === userId
-                        ? `<span class="text-primary">${messageData.UserId}: ${messageData.content}</span>`  // 使用主题 primary 颜色
-                        : `<span class="text-foreground">${messageData.UserId}: ${messageData.content}</span>` // 其他用户消息使用 foreground 颜色
+                    `${messageData.UserId}: ${messageData.content}`
                 ]);
             } catch (err) {
                 console.error('Error parsing message:', err);
             }
         };
-
-
-
 
 
         ws.onerror = (error) => {
@@ -204,73 +187,72 @@ export default function Home() {
             )}
 
             {https && connected && (
-                <div className="w-full max-w-lg space-y-4 text-center">
-                    <h1 className="text-xl font-bold">WebSocket Chat</h1>
-                    <h2 className="text-lg text-gray-500 dark:text-gray-300">My Id: {userId}</h2>
+                <div className="w-full max-w-2xl mx-auto space-y-6 text-center">
+                    {/* Title */}
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">WebSocket Chat</h1>
 
-                    {/* 消息框 */}
-                    {/*<div*/}
-                    {/*    ref={messagesEndRef}*/}
-                    {/*    className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto */}
-                    {/*    bg-gray-200 dark:bg-gray-900 */}
-                    {/*    text-black dark:text-gray-300*/}
-                    {/*    "*/}
-                    {/*>*/}
-
-                    {/* 消息框 */}
-                    <div
-                        ref={messagesEndRef}
-                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto
-                        bg-gray-200 dark:bg-gray-900 purple-dark:bg-purple-950"
-                    >
-
-                        {messages.map((msg, index) => (
-                            <p key={index} className="mb-2">{msg}</p>
-                        ))}
+                    {/* Chat messages container */}
+                    <div ref={messagesEndRef} className="w-full h-96 p-4 mt-6 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                        {messages.map((msg, index) => {
+                            const isSender = msg.startsWith(`${userId}:`); // 判断是否是当前用户发送的消息
+                            return (
+                                <p key={index} className={isSender
+                                    ? "block w-fit max-w-[75%] border-2 border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg px-3 py-2 break-words mb-2"
+                                    : "block w-fit max-w-[75%] border-2 border-purple-dark dark:border-purple-400 bg-purple-50 dark:bg-purple-900 text-purple-dark dark:text-purple-400 rounded-lg px-3 py-2 break-words mb-2"}>
+                                    {msg}
+                                </p>
+                            );
+                        })}
                     </div>
 
+                    {/* Target User ID Input */}
+                    <div className="w-full">
+                        <Input
+                            variant="bordered"
+                            type="text"
+                            placeholder="Target User ID"
+                            value={targetUserId}
+                            onChange={(e) => setTargetUserId(e.target.value)}
+                            className="mb-4"
+                        />
+                    </div>
 
-                    <Input
-                        variant="bordered"
-                        type="text"
-                        placeholder="Target User ID"
-                        value={targetUserId}
-                        onChange={(e) => setTargetUserId(e.target.value)}
-                    />
-
+                    {/* Message Input with Emoji Button */}
                     <div className="relative w-full">
                         <Input
                             variant="bordered"
                             type="text"
                             placeholder="Enter a message"
                             value={message}
-                            className="pr-10"
+                            className="mb-4"
                             onChange={(e) => setMessage(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                         />
                         <Button
                             variant="light"
                             onClick={() => setShowPicker((val) => !val)}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2"
                         >
                             😀
                         </Button>
 
                         {showPicker && (
-                            <div className="absolute z-10 mt-2">
+                            <div className="absolute z-10 right-0 bottom-full mb-2">
                                 <EmojiPicker onEmojiClick={onEmojiClick} />
                             </div>
                         )}
                     </div>
 
-                    <Button color="primary" variant="flat" onClick={sendMessage} className="w-full">
+
+
+
+                    {/* Send Button */}
+                    <Button color="primary" variant="flat" onClick={sendMessage} className="w-full py-3">
                         Send
                     </Button>
-
-
-
                 </div>
             )}
+
 
         </div>
 
