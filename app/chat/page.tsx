@@ -94,6 +94,9 @@ export default function Home() {
         };
 
 
+
+
+
         ws.onerror = (error) => {
             console.error('WebSocket error:', error);
         };
@@ -193,8 +196,7 @@ export default function Home() {
                                 }
                             }}
                         />
-                        <Button color="primary" variant="flat" onClick={() => connectWeb(userId)}
-                                className="w-full mt-2">
+                        <Button color="primary" variant="flat" onClick={() => connectWeb(userId)} className="w-full mt-2">
                             Connect
                         </Button>
                     </div>
@@ -209,9 +211,12 @@ export default function Home() {
                     {/* 消息框 */}
                     <div
                         ref={messagesEndRef}
-                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto text-foreground bg-gray-100 dark:bg-gray-900 dark:text-gray-300"
-                        dangerouslySetInnerHTML={{__html: messages.join('<br>')}}
-                    />
+                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto bg-gray-200 dark:bg-gray-900 text-black dark:text-gray-300"
+                    >
+                        {messages.map((msg, index) => (
+                            <p key={index} className="mb-2">{msg}</p>
+                        ))}
+                    </div>
 
 
                     <Input
@@ -242,7 +247,7 @@ export default function Home() {
 
                         {showPicker && (
                             <div className="absolute z-10 mt-2">
-                                <EmojiPicker onEmojiClick={onEmojiClick}/>
+                                <EmojiPicker onEmojiClick={onEmojiClick} />
                             </div>
                         )}
                     </div>
@@ -252,10 +257,12 @@ export default function Home() {
                     </Button>
 
 
+
                 </div>
             )}
 
         </div>
+
 
 
     );
