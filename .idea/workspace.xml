@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ce1d473b-1a9d-47a7-adae-a3a31ca629c9" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +235,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="github/main" />
+                        <option value="cmcc/nextjs-app-demo" />
                       </list>
                     </value>
                   </entry>

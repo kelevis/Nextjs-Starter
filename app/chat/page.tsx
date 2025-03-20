@@ -198,7 +198,7 @@ export default function Home() {
                             return (
                                 <p key={index} className={isSender
                                     ? "block w-fit max-w-[75%] border-2 border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg px-3 py-2 break-words mb-2"
-                                    : "block w-fit max-w-[75%] border-2 border-purple-dark dark:border-purple-400 bg-purple-50 dark:bg-purple-900 text-purple-dark dark:text-purple-400 rounded-lg px-3 py-2 break-words mb-2"}>
+                                    : "block w-fit max-w-[75%] border-2 border-purple-dark dark:border-purple-400 bg-purple-100 dark:bg-purple-900 text-purple-dark dark:text-purple-400 rounded-lg px-3 py-2 break-words mb-2"}>
                                     {msg}
                                 </p>
                             );
