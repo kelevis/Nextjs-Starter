@@ -209,10 +209,21 @@ export default function Home() {
                     <h2 className="text-lg text-gray-500 dark:text-gray-300">My Id: {userId}</h2>
 
                     {/* 消息框 */}
+                    {/*<div*/}
+                    {/*    ref={messagesEndRef}*/}
+                    {/*    className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto */}
+                    {/*    bg-gray-200 dark:bg-gray-900 */}
+                    {/*    text-black dark:text-gray-300*/}
+                    {/*    "*/}
+                    {/*>*/}
+
+                    {/* 消息框 */}
                     <div
                         ref={messagesEndRef}
-                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto bg-gray-200 dark:bg-gray-900 text-black dark:text-gray-300"
+                        className="w-full h-64 p-4 mt-4 border rounded overflow-y-auto
+                        bg-gray-200 dark:bg-gray-900 purple-dark:bg-purple-950"
                     >
+
                         {messages.map((msg, index) => (
                             <p key={index} className="mb-2">{msg}</p>
                         ))}
