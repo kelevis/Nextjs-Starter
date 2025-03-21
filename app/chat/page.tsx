@@ -189,18 +189,27 @@ export default function Home() {
             {https && connected && (
                 <div className="w-full max-w-2xl mx-auto space-y-6 text-center">
                     {/* Title */}
-                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">WebSocket Chat</h1>
+                    <h1 className="text-3xl font-bold text-foreground dark:text-gray-200 ">WebSocket Chat</h1>
 
                     {/* Chat messages container */}
-                    <div ref={messagesEndRef} className="w-full h-96 p-4 mt-6 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                    <div ref={messagesEndRef} className="w-full h-96 p-4 mt-6 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-y-auto foreground dark:bg-gray-800">
                         {messages.map((msg, index) => {
                             const isSender = msg.startsWith(`${userId}:`); // 判断是否是当前用户发送的消息
                             return (
-                                <p key={index} className={isSender
-                                    ? "block w-fit max-w-[75%] border-2 border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg px-3 py-2 break-words mb-2"
-                                    : "block w-fit max-w-[75%] border-2 border-purple-dark dark:border-purple-400 bg-purple-100 dark:bg-purple-900 text-purple-dark dark:text-purple-400 rounded-lg px-3 py-2 break-words mb-2"}>
-                                    {msg}
-                                </p>
+                                <div
+                                    key={index}
+                                    className={`flex ${isSender ? "justify-end" : "justify-start"} mb-2`}
+                                >
+                                    <p
+                                        className={`w-fit max-w-[75%] px-4 py-2 rounded-lg break-words border ${
+                                            isSender
+                                                ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-300 border-gray-400 dark:border-gray-600"
+                                                : "bg-primary-400 text-primary-foreground border-primary"
+                                        }`}
+                                    >
+                                        {msg}
+                                    </p>
+                                </div>
                             );
                         })}
                     </div>
@@ -242,9 +251,6 @@ export default function Home() {
                             </div>
                         )}
                     </div>
-
-
-
 
                     {/* Send Button */}
                     <Button color="primary" variant="flat" onClick={sendMessage} className="w-full py-3">
