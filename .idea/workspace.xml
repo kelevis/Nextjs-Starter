@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ce1d473b-1a9d-47a7-adae-a3a31ca629c9" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/chat/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="nextjs-app-demo" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -218,6 +219,7 @@
       <workItem from="1741165145356" duration="345000" />
       <workItem from="1742438266155" duration="649000" />
       <workItem from="1742454176241" duration="6664000" />
+      <workItem from="1742526535524" duration="3065000" />
     </task>
     <servers />
   </component>
