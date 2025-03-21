@@ -24,14 +24,17 @@ export default function Home() {
     const [connected, setConnected] = useState<boolean>(false); // 判断是否已连接
     const [https, setHttps] = useState<boolean>(false); // 判断是否已连接
     const [showPicker, setShowPicker] = useState<boolean>(false); // 控制表情选择器的显示
-    const messagesEndRef = useRef<HTMLTextAreaElement>(null);
+    // const messagesEndRef = useRef<HTMLTextAreaElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance}} = useMetamask();
     const listen = useListen();
 
     function testNetwork() {
         // 在新窗口中发起一个 HTTPS 请求
-        const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
+        // const newWindow = window.open(`https://36.138.57.57:5050`, '_blank');
+        const newWindow = window.open(`https:websocket-jpxi.onrender.com`, '_blank');
+        // const newWindow = window.open(`https:localhost:8080`, '_blank');
         setHttps(true); // 设置为已测试
         if (newWindow) {
             newWindow.onload = () => {
@@ -54,7 +57,9 @@ export default function Home() {
         }
 
         // 创建一个新的 WebSocket 连接
-        const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
+        // const ws = new WebSocket(`wss://36.138.57.57:5050/ws/${userId}`);
+        const ws = new WebSocket(`wss://websocket-jpxi.onrender.com/ws/${userId}`);
+        // const ws = new WebSocket(`ws://localhost:8080/ws/${userId}`);
 
         ws.onopen = () => {
             console.log('Connected to WebSocket server');
@@ -73,6 +78,7 @@ export default function Home() {
                 console.error('Error parsing message:', err);
             }
         };
+
 
         ws.onerror = (error) => {
             console.error('WebSocket error:', error);
@@ -146,101 +152,111 @@ export default function Home() {
     };
 
     return (
-        <div className="w-full h-full">
+        <div className="flex flex-col items-center w-full min-h-screen p-6">
             {!https && (
-                <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
-                    <h1>The Network is connecting</h1>
-                    <div className="flex justify-center">
-                        <form className="flex flex-col gap-2">
-                            <Button color="primary" variant="flat" onClick={testNetwork}>
-                                Test Network
-                            </Button>
-                        </form>
-                    </div>
+                <div className="text-center space-y-4">
+                    <h1 className="text-lg font-semibold">The Network is connecting</h1>
+                    <Button color="primary" variant="flat" onClick={testNetwork}>
+                        Test Network
+                    </Button>
                 </div>
             )}
 
             {https && !connected && (
-                <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
-                    <h1>Enter your User ID to connect</h1>
-                    <div className="flex justify-center">
-                        <form className="flex flex-col gap-2">
-                            <Input
-                                variant="bordered"
-                                type="text"
-                                placeholder="Your User ID"
-                                value={userId}
-                                onChange={(e) => setUserId(e.target.value)}
-                                width="300px"
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter') {
-                                        e.preventDefault();
-                                        connectWeb(userId);
-                                    }
-                                }}
-                            />
-                            <Button color="primary" variant="flat" onClick={() => connectWeb(userId)}>
-                                Send
-                            </Button>
-                        </form>
+                <div className="text-center space-y-4">
+                    <h1 className="text-lg font-semibold">Enter your User ID to connect</h1>
+                    <div className="w-full max-w-md">
+                        <Input
+                            variant="bordered"
+                            type="text"
+                            placeholder="Your User ID"
+                            value={userId}
+                            onChange={(e) => setUserId(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    connectWeb(userId);
+                                }
+                            }}
+                        />
+                        <Button color="primary" variant="flat" onClick={() => connectWeb(userId)} className="w-full mt-2">
+                            Connect
+                        </Button>
                     </div>
                 </div>
             )}
 
             {https && connected && (
-                <div className="mx-auto px-auto text-center space-y-2 sm:py-20 sm:px-6 lg:px-8">
-                    <div className="flex w-full space-x-2 space-y-2 my-4 gap-6 text-center">
-                        <form className="flex flex-col text-center gap-3">
-                            <h1>WebSocket Chat</h1>
-                            <h2>Connected as {userId}</h2>
-                            <Input
-                                variant="bordered"
-                                type="text"
-                                placeholder="Target User ID"
-                                value={targetUserId}
-                                onChange={(e) => setTargetUserId(e.target.value)}
-                            />
-                            <div className="relative">
-                                <Input
-                                    variant="bordered"
-                                    type="text"
-                                    placeholder="Enter a message"
-                                    value={message}
-                                    className="overflow-x-auto whitespace-nowrap"
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                                />
-                                <Button
-                                    // color="primary"
-                                    variant="flat"
-                                    onClick={() => setShowPicker((val) => !val)}
-                                    className="absolute top-1/2 transform -translate-y-1/2"
-                                >
-                                    😀
-                                </Button>
+                <div className="w-full max-w-2xl mx-auto space-y-6 text-center">
+                    {/* Title */}
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">WebSocket Chat</h1>
 
-                                {showPicker && (
-                                    // <div className="absolute z-10 right-0 top-full mt-2">
-                                    <div className="absolute z-10 mt-2">
-                                        <EmojiPicker onEmojiClick={onEmojiClick}/>
-                                    </div>
-                                )}
+                    {/* Chat messages container */}
+                    <div ref={messagesEndRef} className="w-full h-96 p-4 mt-6 border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                        {messages.map((msg, index) => {
+                            const isSender = msg.startsWith(`${userId}:`); // 判断是否是当前用户发送的消息
+                            return (
+                                <p key={index} className={isSender
+                                    ? "block w-fit max-w-[75%] border-2 border-gray-400 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg px-3 py-2 break-words mb-2"
+                                    : "block w-fit max-w-[75%] border-2 border-purple-dark dark:border-purple-400 bg-purple-100 dark:bg-purple-900 text-purple-dark dark:text-purple-400 rounded-lg px-3 py-2 break-words mb-2"}>
+                                    {msg}
+                                </p>
+                            );
+                        })}
+                    </div>
 
-                            </div>
-                            <Button color="primary" variant="flat" onClick={sendMessage}>
-                                Send
-                            </Button>
-                        </form>
-
-                        <textarea
-                            ref={messagesEndRef}
-                            readOnly
-                            value={messages.join('\n')}
-                            className="w-full h-84 p-2 mt-2 border rounded"
+                    {/* Target User ID Input */}
+                    <div className="w-full">
+                        <Input
+                            variant="bordered"
+                            type="text"
+                            placeholder="Target User ID"
+                            value={targetUserId}
+                            onChange={(e) => setTargetUserId(e.target.value)}
+                            className="mb-4"
                         />
                     </div>
+
+                    {/* Message Input with Emoji Button */}
+                    <div className="relative w-full">
+                        <Input
+                            variant="bordered"
+                            type="text"
+                            placeholder="Enter a message"
+                            value={message}
+                            className="mb-4"
+                            onChange={(e) => setMessage(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                        />
+                        <Button
+                            variant="light"
+                            onClick={() => setShowPicker((val) => !val)}
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2"
+                        >
+                            😀
+                        </Button>
+
+                        {showPicker && (
+                            <div className="absolute z-10 right-0 bottom-full mb-2">
+                                <EmojiPicker onEmojiClick={onEmojiClick} />
+                            </div>
+                        )}
+                    </div>
+
+
+
+
+                    {/* Send Button */}
+                    <Button color="primary" variant="flat" onClick={sendMessage} className="w-full py-3">
+                        Send
+                    </Button>
                 </div>
             )}
+
+
         </div>
+
+
+
     );
 }
