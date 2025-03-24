@@ -1,10 +1,11 @@
+"use client"
 import Link from "next/link";
 import {useListen} from "@/app/hooks/useListen";
 import {useMetamask} from "@/app/hooks/useMetamask";
 import {Loading} from "./Loading";
 import {ethers} from "ethers";
 import * as config from "@/config.js"
-import React, {useState} from 'react';
+import { useState, useEffect } from "react";
 import {FaCopy} from 'react-icons/fa';
 import {Button, Input, Textarea} from "@nextui-org/react";
 import {Snippet} from "@nextui-org/react";
@@ -13,7 +14,6 @@ import CalenderBtn from "@/app/components/uiCalender";
 import DashboardClock from "@/app/components/Time"
 
 export default function Wallet() {
-
     const {dispatch, state: {status, isMetamaskInstalled, wallet, balance},} = useMetamask();
     const listen = useListen();
     const MetamaskNotInstall = status !== "pageNotLoaded" && !isMetamaskInstalled;
@@ -39,6 +39,7 @@ export default function Wallet() {
         // const wallet = ethers.Wallet.fromPhrase(config.myMnemonic6)
 
         // const wallet = new ethers.Wallet(config.demoContractSepoliaPrivateKey)
+
         const browserProvider = new ethers.BrowserProvider(window.ethereum);
         // 获取当前钱包账户
         const signer = await browserProvider.getSigner()
@@ -62,6 +63,7 @@ export default function Wallet() {
     };
 
     const handleAddUsdc = async () => {
+
         dispatch({type: "loading"});
 
         await window.ethereum.request({
@@ -157,7 +159,6 @@ export default function Wallet() {
     };
 
     const handleContractWrite = async () => {
-
         setInvokeLoading(true);
 
         const browserProvider = new ethers.BrowserProvider(window.ethereum);
