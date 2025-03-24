@@ -38,52 +38,39 @@ export default function WebRTCChat() {
             const {wallet, balance} = local ? JSON.parse(local) : {wallet: null, balance: null};
             dispatch({type: "pageLoaded", isMetamaskInstalled, wallet, balance});
         }
-        console.log("连接metamask成功！");
+        console.log("连接metamask成功！")
 
     }, []);
 
+
     useEffect(() => {
         socket.on("room-joined", ({ roomId, users }) => {
-            console.log(`已加入房间: ${roomId}, 当前用户: ${users.join(", ")}`);
             setJoinedRoom(roomId);
             setUsers(users);
             startLocalStream();
         });
 
-        // socket.on("user-joined", async ({ userId }) => {
-        //     console.log(`用户加入: ${userId}`);
-        //     setUsers((prevUsers) => [...prevUsers, userId]);
-        //     if (Object.keys(peerConnections).length === 1) {
-        //         console.log(`为用户 ${userId} 创建 offer`);
-        //         await createOffer(userId);
-        //     }
-        // });
         socket.on("user-joined", async ({ userId }) => {
-            console.log(`用户加入: ${userId}`);
             setUsers((prevUsers) => [...prevUsers, userId]);
-            // 无论 peerConnections 的数量如何，都尝试创建 offer
-            console.log(`为用户 ${userId} 创建 offer`);
-            await createOffer(userId);
+            if (Object.keys(peerConnections).length === 1) {
+                await createOffer(userId);
+            }
         });
 
         socket.on("user-left", ({ userId }) => {
-            console.log(`用户离开: ${userId}`);
             setUsers((prevUsers) => prevUsers.filter((id) => id !== userId));
             closePeerConnection(userId);
         });
 
         socket.on("offer", async ({ from, offer }) => {
-            console.log(`收到来自 ${from} 的 offer`);
             await handleOffer(from, offer);
         });
 
         socket.on("answer", async ({ from, answer }) => {
-            console.log(`收到来自 ${from} 的 answer`);
             await peerConnections[from].setRemoteDescription(new RTCSessionDescription(answer));
         });
 
         socket.on("ice-candidate", async ({ from, candidate }) => {
-            console.log(`收到来自 ${from} 的 ICE 候选者`);
             await peerConnections[from].addIceCandidate(new RTCIceCandidate(candidate));
         });
 
@@ -99,77 +86,33 @@ export default function WebRTCChat() {
 
     const startLocalStream = async () => {
         try {
-            console.log("开始获取本地视频流");
             const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
             localStream.current = stream;
             if (localVideoRef.current) {
                 localVideoRef.current.srcObject = stream;
             }
-            console.log("本地视频流获取成功");
         } catch (error) {
             console.error("获取本地视频失败:", error);
         }
     };
 
-    // const createPeerConnection = (userId: string) => {
-    //     console.log(`为用户 ${userId} 创建 RTCPeerConnection`);
-    //     const peerConnection = new RTCPeerConnection(ICE_SERVERS);
-    //     localStream.current?.getTracks().forEach((track) => {
-    //         console.log(`将本地轨道 ${track.kind} 添加到 RTCPeerConnection`);
-    //         peerConnection.addTrack(track, localStream.current!);
-    //     });
-    //
-    //     peerConnection.ontrack = (event) => {
-    //         console.log(`收到来自 ${userId} 的远程流`);
-    //         const remoteVideo = document.createElement("video");
-    //         remoteVideo.srcObject = event.streams[0];
-    //         remoteVideo.autoplay = true;
-    //         remoteVideo.playsInline = true;
-    //         remoteVideo.className = "w-1/2 rounded-md shadow-md";
-    //         videoContainerRef.current?.appendChild(remoteVideo);
-    //         console.log(`远程视频流已添加到 DOM`);
-    //     };
-    //
-    //     peerConnection.onicecandidate = (event) => {
-    //         if (event.candidate) {
-    //             console.log(`发送 ICE 候选者给 ${userId}`);
-    //             socket.emit("ice-candidate", { roomId, to: userId, candidate: event.candidate });
-    //         }
-    //     };
-    //
-    //     setPeerConnections((prev) => ({ ...prev, [userId]: peerConnection }));
-    //     return peerConnection;
-    // };
     const createPeerConnection = (userId: string) => {
-        console.log(`为用户 ${userId} 创建 RTCPeerConnection`);
         const peerConnection = new RTCPeerConnection(ICE_SERVERS);
-        if (!localStream.current) {
-            console.error("本地流未初始化");
-            return;
-        }
-        localStream.current.getTracks().forEach((track) => {
-            console.log(`将本地轨道 ${track.kind} 添加到 RTCPeerConnection`);
+        localStream.current?.getTracks().forEach((track) => {
             peerConnection.addTrack(track, localStream.current!);
         });
 
         peerConnection.ontrack = (event) => {
-            console.log(`收到来自 ${userId} 的远程流`, event.streams[0]);
-            if (!event.streams || event.streams.length === 0) {
-                console.error("远程流为空");
-                return;
-            }
             const remoteVideo = document.createElement("video");
             remoteVideo.srcObject = event.streams[0];
             remoteVideo.autoplay = true;
             remoteVideo.playsInline = true;
             remoteVideo.className = "w-1/2 rounded-md shadow-md";
             videoContainerRef.current?.appendChild(remoteVideo);
-            console.log(`远程视频流已添加到 DOM`);
         };
 
         peerConnection.onicecandidate = (event) => {
             if (event.candidate) {
-                console.log(`发送 ICE 候选者给 ${userId}`);
                 socket.emit("ice-candidate", { roomId, to: userId, candidate: event.candidate });
             }
         };
@@ -179,26 +122,21 @@ export default function WebRTCChat() {
     };
 
     const createOffer = async (userId: string) => {
-        console.log(`为用户 ${userId} 创建 offer`);
         const peerConnection = createPeerConnection(userId);
         const offer = await peerConnection.createOffer();
         await peerConnection.setLocalDescription(offer);
         socket.emit("offer", { roomId, to: userId, offer });
-        console.log(`offer 已发送给 ${userId}`);
     };
 
     const handleOffer = async (from: string, offer: RTCSessionDescriptionInit) => {
-        console.log(`处理来自 ${from} 的 offer`);
         const peerConnection = createPeerConnection(from);
         await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
         const answer = await peerConnection.createAnswer();
         await peerConnection.setLocalDescription(answer);
         socket.emit("answer", { roomId, to: from, answer });
-        console.log(`answer 已发送给 ${from}`);
     };
 
     const closePeerConnection = (userId: string) => {
-        console.log(`关闭与 ${userId} 的连接`);
         peerConnections[userId]?.close();
         setPeerConnections((prev) => {
             const newConnections = { ...prev };
@@ -214,7 +152,6 @@ export default function WebRTCChat() {
                 video.remove();
             }
         });
-        console.log(`与 ${userId} 的连接已关闭`);
     };
 
     const toggleVideo = () => {
@@ -233,12 +170,10 @@ export default function WebRTCChat() {
 
     const joinRoom = () => {
         if (!roomId.trim()) return;
-        console.log(`尝试加入房间: ${roomId}`);
         socket.emit("join-room", roomId);
     };
 
     const leaveRoom = () => {
-        console.log(`离开房间: ${roomId}`);
         socket.emit("leave-room", { roomId });
         setJoinedRoom(null);
         setUsers([]);
