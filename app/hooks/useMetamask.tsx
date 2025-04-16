@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, type PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 type ConnectAction = { type: "connect"; wallet: string; balance: string };
 type DisconnectAction = { type: "disconnect" };

@@ -54,6 +54,7 @@ export default function MultiPageNavButton() {
                 <DropdownItem key="/music">Music</DropdownItem>
                 <DropdownItem key="/city">City</DropdownItem>
                 <DropdownItem key="/picture">Pic</DropdownItem>
+                <DropdownItem key="/hosedata">Housing sale</DropdownItem>
             </DropdownMenu>
         </Dropdown>
     );
